@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1574787445 source:d:\users\dhruv\documents\github\robotics\oop with c++\test\test\main.cpp
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<ctime>
+
