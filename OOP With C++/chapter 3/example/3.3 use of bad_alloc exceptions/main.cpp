@@ -4,24 +4,41 @@
 
 using namespace std;
 
+class sample{
+private:
+    int Number;
+    char Alphabet;
+
+public:
+    void initializer(int n,char c){
+        Number = n;
+        Alphabet = c;
+    }
+
+    void display(){
+
+        cout << "Enter the Number "<< Number;
+        cout << "Enter the Alphabet "<< Alphabet;
+
+    }
+};
+
+
 int main(){
-    srand(time(0));
-    int sizee;
+    sample * ptr_sml;
 
-    cout << "Enter size of array Here : " ;
-    cin >> sizee;
+    try {
+        ptr_sml = new sample;
+    }
+    catch (bad_alloc ba){
+        cout << "Bad Allocation Occurred .. program will terminate now ..";
+        return 1;
+    }
 
-    int * arr = new int[sizee];
-    cout << "Dynamic allocation of Array of Size "<< sizee <<" is Successful"<< endl;
+    ptr_sml->initializer(251,'w');
+    ptr_sml->display();
 
-    for(int i=0;i<sizee;i++){
-        arr[i]= rand()%1500 +1;
-        }
-
-    for(int i=0;i<sizee;i++){
-        cout << i+1 <<" . "<< arr[i] << endl;
-        }
-
+    delete ptr_sml;
 }
 
 

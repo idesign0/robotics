@@ -8,7 +8,7 @@ public:
     int fun(int a){
 
     int w = a;
-    cout << a;
+    cout << w;
     }
 
 };
