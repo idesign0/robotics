@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1574351291 source:d:\users\dhruv\documents\github\robotics\oop with c++\test\main.cpp
-	<iostream>
-
-1575999275 source:d:\users\dhruv\documents\github\robotics\oop with c++\chapter 3\example\3.2 use of new and delet operations\main.cpp
-	<iostream>
-	<cstdlib>
-	<ctime>
-
