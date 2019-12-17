@@ -49,6 +49,8 @@ int main(){/*
         float rateOfincrementn;
         float maxValuen;
 //for years
+
+
         cout << "Enter Value for years : Min value(n) : Max value(n) : Rate of increment(n)" << endl;
         cin >> minValuen >> maxValuen >> rateOfincrementn;
 
@@ -58,12 +60,6 @@ int main(){/*
         for(int n = minValuen ; n <= maxValuen ; n = n + rateOfincrementn){
 
                 *(years+n)=n;
-
-        }
-
-                for(int n = minValuen ; n <= maxValuen ; n = n + rateOfincrementn){
-
-                cout << *(years+n) << " ";
 
         }
 
@@ -85,11 +81,6 @@ int main(){/*
                 *(pp+n)=p;
 
         }
-         for(int n = minValuen ; n <= maxValuen ; n = n + rateOfincrementn){
-
-                cout << *(pp+n)<< " ";
-
-        }
 
         //using parallel array technique
         double miValuer;
@@ -107,11 +98,6 @@ int main(){/*
                 *(pr+n)=r;
 
         }
-         for(int n = minValuen ; n <= maxValuen ; n = n + rateOfincrementn){
-
-                cout << *(pr+n) << " ";
-
-        }
 
 
        cout <<endl<< setw(15)<<setw(15)<< "Rate of Increment"<< setw(15)<< "Initial value "<<setw(15)<<setw(15)<<setw(15)<<"10th year money VALUE :"<< endl<<endl;
@@ -126,5 +112,9 @@ int main(){/*
             cout << setw(15)<<setw(15) << *(pr+n) <<setw(15)<< *(pp+n) <<setw(15)<<setw(15)<< v << endl;
 
         }
+
+        delete years;
+        delete pp;
+        delete pr;
 
        }
