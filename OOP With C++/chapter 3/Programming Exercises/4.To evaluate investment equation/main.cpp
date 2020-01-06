@@ -54,7 +54,7 @@ int main(){/*
         cout << "Enter Value for years : Min value(n) : Max value(n) : Rate of increment(n)" << endl;
         cin >> minValuen >> maxValuen >> rateOfincrementn;
 
-        int sizee=rateOfincrementn*maxValuen;
+        int sizee=maxValuen/rateOfincrementn;
         int * years = new int[sizee];
 
         for(int n = minValuen ; n <= maxValuen ; n = n + rateOfincrementn){

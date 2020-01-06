@@ -14,7 +14,7 @@ float conditionfun(int);
 void displayfun();
 
 int i = 1;
-int n = 20;
+int n = 500;
 
 int * units = new int[500] ; // arrays of units of users
 float * cost =  new float[500]; // cost per user

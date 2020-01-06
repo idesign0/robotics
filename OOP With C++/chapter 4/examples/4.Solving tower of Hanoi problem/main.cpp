@@ -23,7 +23,7 @@ int main(){
 }
 
 void toh(int d,char tower1,char tower2,char tower3){
-
+    cout <<" "<< tower1 <<" "<< tower2 <<" "<< tower3 << endl;
     if(d==1){
 
         cout <<"Shift top disk from tower "<<tower1<<" to "<<tower2<<endl;
