@@ -5,68 +5,64 @@
 
 using namespace std;
 
-inline void fun(double,int,int);
- void matfun(double,int,int);
-//const int m = 8,n = 8;
-//int  arr[m][n];
+void matfun(double,int,int,int);
+int i=0;
 
 int main(){
 
-        srand(time(0));
-        double t;
-        int i=1;
-/*        for(int j=0;j<m;j++){
-                for(int i=0;i<m;i++){
-                    t = rand()%10 +1;
-                    cout << t ;
-                    fun(t,i,j);
-                }
-                }
+        int m;
+        int n;
 
-  */
-       while(i<=4){
-        t = (rand()%6 +1);
-        cout << t  << " ";
-        matfun(t,2,2);
+        cout << "Numbers of rows : ";
+        cin >> m;
+        cout << "Numbers of Columns : ";
+        cin >> n;
+
+        int mul =m*n;
+        double temp;
+        srand(time(0));
+
+        cout << " Random Values as Input : " << endl << endl;
+
+        while(i<=m*n){
+        temp = rand()%6 +1;
+        matfun(temp,m,n,mul);
         i++;
        }
-
-
-
-     /*   cout << "\n\n\n welcome to the matrix\n\n\n" << endl;
-        for(int j=0;j<n;j++){
-                for(int i=0;i<m;i++){
-                    cout <<setw(10)<<arr[j][i];
-                }
-                cout << endl;
-        }*/
 }
-/*inline void fun(double t,int i,int j){
-        arr[j][i] = t;
-}*/
 
- void matfun(double t,int m,int n){
-    const int r = m;
-    const int c = n;
+ void matfun(double t,int m,int n,int mul){
 
-    int *counterforRow = new int;
-    int *counterforColum = new int;
 
-    *counterforRow = 0;
-    *counterforColum = 0;
+    double singledimarray[mul+2];
+    double twodimarray[m][n];
 
-    double arr[r][c];
 
-    if(*counterforColum >= c){
-        *counterforRow++;   // row index will increment by one
-        *counterforColum=0; // column index will be zero
+    if(i<m*n){ // i for index of arrays
+        singledimarray[i]=t;
+        cout <<singledimarray[i] << " ";
+        return;
+    }else{
+    cout << endl << endl << "welcome to matrix(finally! XD) : " << "m ="<<m << " n ="<<n<< endl;
+    int k=0;
+                    cout << endl;
+                    for(int l=0;l<m;l++){
+                        for(int j=0;j<n;j++){
+                                    twodimarray[l][j]=singledimarray[k+j];
+                                     cout<<twodimarray[l][j]<< " ";
+                                }
+                        k=k+n;
+                        cout << endl;
+                    }
+
+                 /*   for(int l=0;l<m;l++){
+                        for(int j=0;j<n;j++){
+                  //                  cout<<twodimarray[l][j]<< " ";
+                                }
+                        cout << endl;
+                    }*/
+        }
+        return;
     }
 
-    while(*counterforColum<c){
-        arr[*counterforRow][*counterforColum]= t;
 
-        *counterforColum++;
-    }
-
-    return;
-}
