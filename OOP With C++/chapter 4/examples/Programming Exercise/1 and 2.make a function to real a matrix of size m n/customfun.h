@@ -34,12 +34,23 @@ int i=0;
                         for(int j=0;j<column;j++){
 
                                     twodimarray[l][j]=singledimarray[k+j];
-                                    cout<<twodimarray[l][j]<< " ";
+                                  //  cout<<twodimarray[l][j]<< " ";
                                 }
                         k=k+n;
 
                         cout << endl;
                     }
+
+                    for(int l=0;l<row;l++){
+
+                        for(int j=0;j<column;j++){
+
+                                cout<<twodimarray[l][j]<< " ";
+                                }
+
+                        cout << endl;
+                    }
+
         }
 
         return;

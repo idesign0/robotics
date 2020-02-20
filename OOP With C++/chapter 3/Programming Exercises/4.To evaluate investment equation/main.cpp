@@ -113,8 +113,8 @@ int main(){/*
 
         }
 
-        delete years;
-        delete pp;
-        delete pr;
+        delete [] years;
+        delete [] pp;
+        delete [] pr;
 
        }
