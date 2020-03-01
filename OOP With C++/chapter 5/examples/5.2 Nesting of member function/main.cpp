@@ -25,7 +25,7 @@ public:
 
     void ones(void){
         check_bin();
-        for(int i=0;i<s.length();i++){
+        for(int i=0;i<s.length() ;i++){
             if(s.at(i)=='0'){
                 s.at(i)='1';
             }else{
