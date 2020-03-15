@@ -66,14 +66,14 @@ int main(){
     int x;
 
     do{
-        cout <<"\nYOu can do following : \n";
+        cout <<"\nYou can do following : \n";
         cout <<"\nEnter appropriate Number : \n";
         cout <<"\n1 : Add an item";
         cout <<"\n2 : Display Total value";
         cout <<"\n3 : Delete an item";
         cout <<"\n4 : Display all item";
         cout <<"\n5 : Quite";
-        cout <<"\n\nwhat is your option ?";
+        cout <<"\n\nwhat is your option ? ";
 
         cin>>x;
 
