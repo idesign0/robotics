@@ -20,17 +20,21 @@ int sum(M m){
 
     int s = m.*px + pm->*py;
 
-/*    cout << endl << "a.*px : " << m.*px ;
-    cout << endl << "a.x : " << m.x;
-    cout << endl << "pa->*py : " << pm->*py ;
-    cout << endl << "pa->y : " << pm->y << endl ;
-*/0
     return s ;
 }
 
 int main(){
     M n;
-    n.set_xy(5,10);
 
-    cout << "Sum : " << sum(n) ;
-}
+    void(M::*pf)(int,int) = &M::set_xy;
+    (n.*pf)(20,14);
+
+    cout << "SUM : " << sum(n) << endl ;
+
+    M *pn = &n;
+
+    (pn->*pf)(25,1);
+    cout << "SUM : " << sum(n) << endl ;
+
+    return 0;
+    }
