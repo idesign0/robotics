@@ -11,11 +11,35 @@ class class_dipositor{
 
 public :
     void initialvalue(){ balance = 0 };
-    void depositea_amount(float);
-    void withdraw_check(float);
-    void display();
+    void deposit_amount();
+    void withdraw_n_check();
+    void display(int numbers);
     };
 
+    void deposit_amount(float d){
+        cout << "Enter the Amount you want to deposit : ";
+        cin >> d;
+
+        balance += d ;
+    }
+
+    void withdraw_n_check();{
+
+        cout << "Enter the Amount you want to withdraw : ";
+        cin >> d;
+
+        balance -= d ;
+
+        cout << "Your current balance is : " << balance;
+
+    }
+    void display(int numbers){
+        for(int i=0;i<numbers;i++)
+        cout << "Names\t\t"<<"Balance\n";
+        cout << name_depositors <<"\t\t"<< balance ;
+    }
+
 int main(){
-    class_dipositor dipositor[20];
+    const numbers = 20;
+    class_dipositor dipositor[numbers];
 }
