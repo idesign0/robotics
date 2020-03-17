@@ -17,5 +17,5 @@ public :
     };
 
 int main(){
-    class_dipositor dipositor;
+    class_dipositor dipositor[20];
 }
