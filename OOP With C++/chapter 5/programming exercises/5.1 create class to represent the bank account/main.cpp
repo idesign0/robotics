@@ -10,7 +10,8 @@ class item{
     float balance;
 
 public :
-    void initialvalue();
+    void initialvalue(){
+    balance = 0};
     void depositea_amount(float);
     void withdraw_check(float);
     void display();
