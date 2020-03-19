@@ -114,6 +114,7 @@ int main(){
                     case 3 : varray.scalar_multiply();break;
                     case 4 : varray.vectordisplay();break;
                     case 5 : break;
+                    default : "choice is invalid ; select appropriate number !"
                 }
     }
 
