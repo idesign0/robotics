@@ -12,6 +12,7 @@ public :
         scalar_multiply();
         modify_vector();
         vectordisplay();
+        addvectors();
 };
     int vectors::vectorfun(){
         cout << "*********************************************************" << endl;
@@ -66,7 +67,33 @@ public :
          cout << "*********************************************************" << endl;
     }
 
+    int vectors::addvectors(){
+        cout << "*********************************************************" << endl;
 
+        cout << " Function to Add vectors : \n\n";
+            cout << "Enter how many vectors you want to add : ";
+
+            int index,i=1;
+            int storage_var=0;
+            cin >> index;
+
+            while(i<=index){
+                cout << " Enter "<<i<<" vector you want to add : ";
+                int index_num;
+                cin >> index_num;
+                for(int i=0;i<elements;i++){
+                    if(i==index_num){
+                        storage_var += vectorarray[i];
+                    }
+                }
+            i++;
+            }
+
+            cout << "Sum of " << index << " vectors are : "<< storage_var << endl;
+
+
+    cout << "*********************************************************" << endl;
+    }
     int vectors::vectordisplay(){
         cout << "*********************************************************" << endl;
 
@@ -98,13 +125,14 @@ int main(){
     vectors varray;
     int choise ;
 
-    while(choise!=5){
+    while(choise!=6){
                 cout << "You can choose Following options : \n";
-                cout << "\n 1.make a new vector";
-                cout << "\n 2.modify vector";
-                cout << "\n 3.scale the vector";
-                cout << "\n 4.Display vector";
-                cout << "\n 5. Quite\n";
+                cout << "\n 1.Make a new vector";
+                cout << "\n 2.Modify vector";
+                cout << "\n 3.Scale the vector";
+                cout << "\n 4.Add vector";
+                cout << "\n 5.Display vector";
+                cout << "\n 6.Quite\n";
                 cout << "\n What is your Option : ";
 
                 cin >> choise ;
@@ -112,9 +140,10 @@ int main(){
                     case 1 : varray.vectorfun();break;
                     case 2 : varray.modify_vector();break;
                     case 3 : varray.scalar_multiply();break;
-                    case 4 : varray.vectordisplay();break;
-                    case 5 : break;
-                    default : "choice is invalid ; select appropriate number !"
+                    case 4 : varray.addvectors();break;
+                    case 5 : varray.vectordisplay();break;
+                    case 6 : break;
+                    default : "choice is invalid ; select appropriate number !";
                 }
     }
 
