@@ -15,7 +15,7 @@ class bankaccount {
     int account_Number[total_holders];
     float acc_balance[total_holders];
 
-    enum type_of_Acc { savings , current , Fixed_deposit};
+    enum type_of_Acc{ savings , current , Fixed_deposit};
 
     float init_balance = 1000.00 ;
 
@@ -41,11 +41,6 @@ public :
             acc_balance[countt] = init_balance;
 
             cout << endl <<account_Holder[countt][name_Size]<<"'s initial balance is " << acc_balance[countt] << " /- Rupees."<< endl;
-
-          /*  cout << "\nType of account :\n Press 1 for savings \n Press 2 for Current \n Press 3 for Fixed deposit ";
-            cout << "\n\n What is your choice : ";
-            cin >> code ;
-            */
 
             srand(time(0));
             account_Number[countt] = rand()%5555 + 1;
