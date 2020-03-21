@@ -5,10 +5,6 @@ using namespace std;
 
 int main(){
 
-    vectors varray;
-    int choise ;
-
-    while(choise!=6){
                 cout << "You can choose Following options : \n";
                 cout << "\n 1.Make a new vector";
                 cout << "\n 2.Modify vector";
