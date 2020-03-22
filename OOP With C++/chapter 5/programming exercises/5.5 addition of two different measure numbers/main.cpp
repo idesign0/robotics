@@ -20,7 +20,7 @@ public:
 
 class DB{
     float feet;
-    float inches;
+    float inche;
 public:
     void get_data(int f,int i){
         feet = f;
