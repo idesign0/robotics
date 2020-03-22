@@ -45,8 +45,19 @@ int main(){
     DM ometric;
     DB oenglish;
 
-    ometric.get_data(5,50);
-    oenglish.get_data(5,50);
+    float meter,centimeter;
+    float feet,inches;
+
+    cout << "Enter Distances in meter and centimeter : ";
+    cin >> meter >> centimeter ;
+
+
+    cout << "Enter Distances in feet and inches : ";
+    cin >> feet >> inches ;
+
+
+    ometric.get_data(meter,centimeter);
+    oenglish.get_data(feet,inches);
 
     cout << " Dimensions in Metric : " ; ometric.put_data();
 
