@@ -20,7 +20,7 @@ public:
 
 class DB{
     float feet;
-    float inche;
+    float inches;
 public:
     void get_data(int f,int i){
         feet = f;
@@ -34,6 +34,7 @@ public:
 };
 
 DM addition(DM mc, DB fi){
+
     mc.metres += fi.feet*0.3048;
     mc.centimeters += fi.inches*2.54;
 
