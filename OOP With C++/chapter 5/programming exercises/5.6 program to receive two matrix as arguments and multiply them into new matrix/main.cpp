@@ -27,7 +27,7 @@ class matrix{
         }
 
         void matrix::print_data(){
-            cout << "*********************************************\n\n";
+            cout << "**********************************************\n\n";
 
             for(int raw=0;raw<3;raw++){
                 for(int column=0;column<3;column++){
