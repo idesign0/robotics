@@ -28,7 +28,6 @@ class matrix{
 
         void matrix::print_data(){
             cout << "*********************************************\n\n";
-            cout << "3 by 3 Matrix : "<< endl;
 
             for(int raw=0;raw<3;raw++){
                 for(int column=0;column<3;column++){
@@ -40,26 +39,32 @@ class matrix{
         }
 
         matrix multiply_matrix(matrix a,matrix b){
-                for(int raw=0;raw<3;raw++){
-                    for(int column=0;column<3;column++){
-                        for(int trans_raw=0;trans_raw<3;trans_raw++){
-                            for(int trans_column=0;trans_column<3;trans_column++){
+            matrix t;
 
-                            }
-                        }
+            for(int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                t.matrix_var[i][j]=0;
+                    for(int k=0;k<3;k++){
+                    t.matrix_var[i][j]+=a.matrix_var[i][k]*b.matrix_var[k][j];
                     }
                 }
+            }
+        return t;
         }
 
 int main(){
     matrix o_matrix_A,o_matrix_B,o_matrix_C;
-    cout << "Add values about matrix A : \n\n";
+    cout << "\nAdd values about matrix A : \n\n";
     o_matrix_A.add_data();
 
-    cout << "Add values about matrix B : \n\n";
+    cout << "\nAdd values about matrix B : \n\n";
+
     o_matrix_B.add_data();
 
+    o_matrix_C=multiply_matrix(o_matrix_A,o_matrix_B);
 
+    cout << "\nValue of matrix C : \n\n";
+    o_matrix_C.print_data();
 
     return 0;
     }
