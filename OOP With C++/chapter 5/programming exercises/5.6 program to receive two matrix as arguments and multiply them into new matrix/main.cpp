@@ -14,7 +14,7 @@ class matrix{
     };
 
         void matrix::add_data(){
-            cout << "*********************************************\n\n";
+            cout << "**********************************************\n\n";
             int element;
             cout << "Enter the values for 3 by 3 matrix : "<< endl;
             for(int raw=0;raw<3;raw++){
