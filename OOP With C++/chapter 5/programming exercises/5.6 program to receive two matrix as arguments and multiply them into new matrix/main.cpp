@@ -23,7 +23,7 @@ class matrix{
                     matrix_var[raw][column] = element;
                 }
             }
-            cout << "*********************************************";
+            cout << "**********************************************";
         }
 
         void matrix::print_data(){
