@@ -1,79 +1,42 @@
 #include<iostream>
+#include<cmath>
 using namespace std;
 
 
-class faculty{
-    int id;
-    string name;
-    enum post{Instructor=1,Assistant_Professor,Associate_Professor,Professor};
-    int index;
-    string qualification;
-    string address;
+class interest{
+    float principal;
+    float interest;
+    float year;
+public:
 
-public :
-    void get_data();
-    void put_data();
+    float simple_interest(float p,float i,float n=1);
+    float compound_interest(float p,float i,float n=1);
 };
+    float interest::simple_interest(float p,float i,float n){
+            principal = p;
+            interest = i;
+            year = n;
 
-    void faculty::get_data(){
-        cout << "*****************************************************************\n";
-        cout << "Enter Asked Details below : \n\n";
-        cout << "Enter faculty's id : ";
-        cin >> id ;
-        cout << "\nEnter faculty's full Name (surname name father's name): ";
-
-        cin >> name;
-
-        cout << "\nEnter faculty's Post: \n";
-        cout << "\t Instructions : \n";
-        cout << "\t Press 1 for post of instructor : \n";
-        cout << "\t Press 2 for post of Assistant_Professor : \n";
-        cout << "\t Press 3 for post of Associate_Professor : \n";
-        cout << "\t Press 4 for post of Professor : \n";
-        cout << "\t Enter your post : ";
-        cin >> index;
-
-        cout << "Enter faculty's qualification : \n";
-
-        cin >> qualification;
-
-        cout << "Enter faculty's address : \n";
-        cin >> address;
-
-        cout << "*****************************************************************\n";
-        }
-
-    void faculty::put_data(){
-
-        cout << "****************************************************************\n";
-        cout << "faculty's ID : " << id <<endl;
-        cout << "faculty's full Name (surname name father's name): " << name << endl;
-
-        cout << "Enter faculty's Post: ";
-
-        switch(index){
-            case Instructor : cout << "Instructor" <<endl; break;
-            case Assistant_Professor : cout << "Assistant Professor" <<endl; break;
-            case Associate_Professor : cout << "Associate Professor" <<endl; break;
-            case Professor : cout << "Professor" <<endl; break;
-            default : cout << "Invalid information" << endl;break;
-
-        }
-
-        cout << "faculty's qualification : " << qualification <<endl;
-
-        cout << "Enter faculty's address : " << address<<endl;
-        cout << "****************************************************************\n";
+        return principal*interest*year/100;
     }
 
+    float interest::compound_interest(float p,float i,float n){
+            principal = p;
+            interest = i;
+            year = n;
+
+            float cmp = principal*(float)pow(1+interest/100,year);
+
+            return cmp-principal;
+    }
 
 int main(){
-    faculty o_faculty1,o_faculty2;
+    interest roi;
+    float p,n,i;
+    cout << "Enter Principal amount : Interest(in percentage) : Year : ";
 
-    o_faculty1.get_data();
-    o_faculty2.get_data();
+    cin >> p >> i >>n;
 
-    o_faculty1.put_data();
-    o_faculty2.put_data();
-
+    cout << "Simple net return : " << roi.simple_interest(p,i,n)<< endl;
+    cout << "Compound net return : "<<roi.compound_interest(p,i,n) << endl;
 }
