@@ -1,15 +1,15 @@
 #include<iostream>
-#include<cstring>
+#include<string>
 using namespace std;
 
 
 class faculty{
     int id;
-    char name[30];
+    string name;
     enum post{Instructor,Assistant_Professor,Associate_Professor,Professor};
     int index;
-    char qualification[30];
-    char address[35];
+    string qualification;
+    string address;
 
 public :
     void get_data();
@@ -21,10 +21,10 @@ public :
         cout << "Enter Asked Details below : \n\n";
         cout << "Enter faculty's id : ";
         cin >> id ;
-        cout << "Enter faculty's full Name (surname name father's name): ";
-        cin.get(name,30);
+        cout << "\nEnter faculty's full Name (surname name father's name): ";
+        getline(cin,name);
 
-        cout << "Enter faculty's Post: \n";
+        cout << "\nEnter faculty's Post: \n";
         cout << "\t Instructions : \n";
         cout << "\t Press 1 for post of instructor : \n";
         cout << "\t Press 2 for post of Assistant_Professor : \n";
@@ -34,10 +34,10 @@ public :
         cin >> index;
 
         cout << "Enter faculty's qualification : \n";
-        cin.get(qualification,30);
+        getline(cin,qualification);
 
         cout << "Enter faculty's address : \n";
-        cin.get(address,35);
+        getline(cin,address);
         cout << "****************************************************************\n";
         }
 
@@ -58,13 +58,20 @@ public :
 
         }
 
-        cout << "faculty's qualification : " << qualification[30];
+        cout << "faculty's qualification : " << qualification[30] <<endl;
 
-        cout << "Enter faculty's address : " << address[35];
+        cout << "Enter faculty's address : " << address[35]<<endl;
         cout << "****************************************************************\n";
     }
 
 
 int main(){
+    faculty o_faculty1,o_faculty2;
+
+    o_faculty1.get_data();
+    o_faculty2.get_data();
+
+    o_faculty1.put_data();
+    o_faculty2.put_data();
 
 }
