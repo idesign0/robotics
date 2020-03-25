@@ -6,7 +6,7 @@ using namespace std;
 class faculty{
     int id;
     string name;
-    enum post{Instructor,Assistant_Professor,Associate_Professor,Professor};
+    enum post{Instructor=1,Assistant_Professor,Associate_Professor,Professor};
     int index;
     string qualification;
     string address;
@@ -22,7 +22,8 @@ public :
         cout << "Enter faculty's id : ";
         cin >> id ;
         cout << "\nEnter faculty's full Name (surname name father's name): ";
-        getline(cin,name);
+
+        cin >> name;
 
         cout << "\nEnter faculty's Post: \n";
         cout << "\t Instructions : \n";
@@ -34,10 +35,11 @@ public :
         cin >> index;
 
         cout << "Enter faculty's qualification : \n";
-        getline(cin,qualification);
+
+        cin >> qualification;
 
         cout << "Enter faculty's address : \n";
-        getline(cin,address);
+        cin >> address;
         cout << "****************************************************************\n";
         }
 
@@ -45,10 +47,10 @@ public :
 
         cout << "****************************************************************\n";
         cout << "faculty's ID : " << id <<endl;
-        cout << "faculty's full Name (surname name father's name): " << name[30] << endl;
+        cout << "faculty's full Name (surname name father's name): " << name << endl;
 
         cout << "Enter faculty's Post: ";
-        index -= index;
+
         switch(index){
             case Instructor : cout << "Instructor" <<endl; break;
             case Assistant_Professor : cout << "Assistant Professor" <<endl; break;
@@ -58,9 +60,9 @@ public :
 
         }
 
-        cout << "faculty's qualification : " << qualification[30] <<endl;
+        cout << "faculty's qualification : " << qualification <<endl;
 
-        cout << "Enter faculty's address : " << address[35]<<endl;
+        cout << "Enter faculty's address : " << address<<endl;
         cout << "****************************************************************\n";
     }
 
