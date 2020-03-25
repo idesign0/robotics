@@ -1,70 +1,43 @@
 #include<iostream>
-#include<cstdlib>
-#include<ctime>
-
+#include<cstring>
 using namespace std;
 
-class matrix{
-        int matrix_var[3][3];
-    public:
-        void add_data();
-        void print_data();
 
-        friend matrix multiply_matrix(matrix,matrix);
-    };
+class faculty{
+    int id;
+    char name[30];
+    enum post{Instructor,Assistant_Professor,Associate_Professor,Professor};
+    int index;
+    char qualification[30];
+    char address[35];
 
-        void matrix::add_data(){
-            cout << "**********************************************\n\n";
-            int element;
-            cout << "Enter the values for 3 by 3 matrix : "<< endl;
-            for(int raw=0;raw<3;raw++){
-                for(int column=0;column<3;column++){
-                    cin >> element ;
-                    matrix_var[raw][column] = element;
-                }
-            }
-            cout << "**********************************************";
+public :
+    void get_data(){
+        cout << "****************************************************************\n";
+        cout << "Enter Asked Details below : \n\n";
+        cout << "Enter faculties id : ";
+        cin >> id ;
+        cout << "Enter faculties full Name (surname name father's name): ";
+        cin.get(name,30);
+
+        cout << "Enter faculties Post: \n";
+        cout << "\t Instructions : \n";
+        cout << "\t Press 1 for post of instructor : \n";
+        cout << "\t Press 2 for post of Assistant_Professor : \n";
+        cout << "\t Press 3 for post of Associate_Professor : \n";
+        cout << "\t Press 4 for post of Professor : \n";
+        cout << "\t Enter your post : ";
+        cin >> index;
+
+        cout << "Enter faculties qualification : \n";
+        cin.get(qualification,30);
+
+        cout << "Enter faculties address : \n";
+        cin.get(address,35);
+
         }
-
-        void matrix::print_data(){
-            cout << "**********************************************\n\n";
-
-            for(int raw=0;raw<3;raw++){
-                for(int column=0;column<3;column++){
-                    cout << matrix_var[raw][column] <<"\t";
-                }
-                cout << "\n";
-            }
-            cout << "*********************************************";
-        }
-
-        matrix multiply_matrix(matrix a,matrix b){
-            matrix t;
-
-            for(int i=0;i<3;i++){
-                for(int j=0;j<3;j++){
-                t.matrix_var[i][j]=0;
-                    for(int k=0;k<3;k++){
-                    t.matrix_var[i][j]+=a.matrix_var[i][k]*b.matrix_var[k][j];
-                    }
-                }
-            }
-        return t;
-        }
+};
 
 int main(){
-    matrix o_matrix_A,o_matrix_B,o_matrix_C;
-    cout << "\nAdd values about matrix A : \n\n";
-    o_matrix_A.add_data();
 
-    cout << "\nAdd values about matrix B : \n\n";
-
-    o_matrix_B.add_data();
-
-    o_matrix_C=multiply_matrix(o_matrix_A,o_matrix_B);
-
-    cout << "\nValue of matrix C : \n\n";
-    o_matrix_C.print_data();
-
-    return 0;
-    }
+}
