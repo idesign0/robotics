@@ -52,7 +52,7 @@ int main()
     cin >> p >> y >> R;
     FD1=fixed_deposit(p,y,R);
 
-    cout << "Enter Amount, period, return rate(in decimal) : " << endl;
+    cout << "Enter Amount, period, return rate(in decimal) :" << endl;
     cin >> p >> y >> r;
     FD2=fixed_deposit(p,y,r);
 
