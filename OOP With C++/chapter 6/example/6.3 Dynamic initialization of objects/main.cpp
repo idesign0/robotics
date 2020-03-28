@@ -48,7 +48,7 @@ int main()
     float r;
     int R;
 
-    cout << "Enter Amount, period, return rate(in percentage) : " << endl;
+    cout << "Enter Amount, period, return rate(in percentage) :" << endl;
     cin >> p >> y >> R;
     FD1=fixed_deposit(p,y,R);
 
