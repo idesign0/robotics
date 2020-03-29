@@ -1,36 +1,45 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
-class code{
-    int item;
+class String{
+    char name*;
+    int length;
 public:
-    code(){};
-    code(int a){
-    item=a;
-    }
-    code(code & i){
-    item=i.item;
+    String(){
+    length = 0;
+    name = new char[length+1];
     }
 
-    void display(){
-    cout << item ;
+    String(char *s){
+    length = strln(s);
+    name = new char[length+1];
+
+    strcpy(name,s);
+    }
+
+    void display(void){
+        cout << name << "\n";
+    }
+
+    void String:: join(String &a,String &b){
+    length = a.length + b.length;
+    delete name;
+
+    name = new char[length+1];
+
+    strcpy(name,a.name);
+    strcpy(name,b.name);
     }
 };
 
 
 int main(){
+    char *first= "Joseph ";
+    String name1(first), name2("Louis "), name3("Lagrange "),s1,s2;
 
-    code A(100);
-    code B(A); // copy constructor called
-    code C = A; // copy constructor called again
+    s1.na
 
-    code D;
-    D=A; // copy constructor called NOT
-
-    cout << "\n id of A : " ; A.display();
-    cout << "\n id of B : " ; B.display();
-    cout << "\n id of C : " ; C.display();
-    cout << "\n id of D : " ; D.display();
-    return 0;
+ return 0;
 
 }
