@@ -1,48 +1,49 @@
 #include <iostream>
-#include <cstring>
 using namespace std;
 
-class String{
-    char *name;
-    int length;
+class matrix{
+    int **mat;
+    int raw,column;
 public:
-        String(){
-        length=0;
-        name = new char[length+1];
+    matrix(int r , int c);
+    void get_element(int i,int j,int value){
+    mat[i][j]=value;
     }
-    String(char *s){
-        length=strlen(s);
-        name = new char[length+1];
-        strcpy(name,s);
+    int & put_element(int i,int j){
+    return mat[i][j];
     }
-    void display(){
-        cout << name << endl;
-    }
-
-    void join(String &a, String &b);
 };
 
-void String::join(String &a, String &b){
+matrix :: matrix(int r,int c){
+    raw = r;
+    column = c;
 
-    length = a.length + b.length;
-    delete name;
-    name = new char[length+1];
-    strcpy(name,a.name);
-    strcat(name,b.name);
+    mat=new int*[raw];
+
+    for(int i=0;i<raw;i++){
+        mat[i]=new int[column];
+    }
 }
 
 int main(){
-    char *first = "Patel ";
-    String name1(first),name2("Dhruv "),name3("PrakashBhai"),s1,s2;
+    int m,n;
 
-    s1.join(name1,name2);
-    s2.join(s1,name3);
+    cout << "Enter size of matrix : ";
+    cin >> m >> n;
 
-    name1.display();
-    name2.display();
-    name3.display();
-    s1.display();
-    s2.display();
+    matrix A(m,n);
 
+    cout << "Enter the matrix Row by row  \n";
+    int i,j,value;
+
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            cin >> value;
+            A.get_element(i,j,value);
+        }
+    cout << "\n";
+    }
+
+    cout << A.put_element(1,2);
     return 0;
 }
