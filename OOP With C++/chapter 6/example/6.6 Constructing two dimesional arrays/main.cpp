@@ -35,7 +35,7 @@ int main(){
 
     cout << "Enter the elements of Matrix : " << endl;
 
-    int value;
+    int value;i
 
     for(int i=0;i<m;i++){
         for(int j=0;j<n;j++){
