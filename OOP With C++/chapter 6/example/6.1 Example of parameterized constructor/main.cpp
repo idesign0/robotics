@@ -1,21 +1,27 @@
 #include<iostream>
 using namespace std;
 
-class test{
-    int x;
+class point{
+    int x,y;
 public:
-    test(int y =0){
-        x=y;
-        cout << x;
-    }
-    test(){
-        x=0;
-        cout << x;
+    point(int a,int b){
+        x=a;
+        y=b;
+        }
+    void display(){
+        cout << "("<<x<<","<<y<<")\n";
     }
 };
 
 int main(){
-    test t;
-    test t1(4);
+    point p1(3,4);
+    point p2(5,5);
+
+    cout << "Point p1 = ";
+    p1.display();
+
+    cout << "Point p2 = ";
+    p2.display();
+    return 0;
 return 0;
 }
