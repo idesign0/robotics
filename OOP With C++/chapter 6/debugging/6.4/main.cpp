@@ -1,24 +1,22 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-class prac{
-    int x,y,z;
-public :
-    prac(int a,int b,int c){
-    x=a;
-    y=b;
-    z=c;
+class dynamic{
+    int *p;
+public:
+    dynamic(){
+    p = new int(10);
     }
-    void show(){
-    cout << "\nValues : " <<"\t"<< x <<"\t"<< y <<"\t"<<z;
+    dynamic(int v){
+    p = new int(v);
+    }
+    int display(){
+    return *p;
     }
 };
-
 int main(){
-    prac obj1(10,20,30);
-    prac obj2=obj1;
-    prac obj3=obj2;
-    obj2.show();
-
-    return 0;
+    dynamic p1,p2(9);
+    cout << "Object p1 is : ";
+    cout <<p1.display();
+    cout << "\nObject p2 is : " << p2.display();
 }
