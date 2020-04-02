@@ -18,6 +18,7 @@ public:
 int test::countt;
 int main(){
     test t1,t2;
+
     test::showcount();
 
     test t3;
