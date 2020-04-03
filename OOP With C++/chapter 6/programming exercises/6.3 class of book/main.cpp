@@ -32,10 +32,8 @@ public:
 
 
         strcpy(title,t);
-        strcpy(author,a);
-        strcpy(publisher,p);
 
-        cout << title << author <<publisher;
+        cout << title ;
 
     }
 
