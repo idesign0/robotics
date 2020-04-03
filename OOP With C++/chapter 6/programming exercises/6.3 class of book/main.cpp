@@ -62,11 +62,11 @@ int main(){
         char* author;
         char* publisher;
 
-        cin >> title;+
+        cin >> title;
         cin>> author;
         cin>> publisher;
 
-        o_book[0]=book(title,author,publisher);
+        o_book[0]=book(c_t,c_a,c_p);
     }
     return 0;
 
