@@ -17,7 +17,7 @@ class book{
 
 public:
     book(){}
-    book( char * t, char * a, char * p){
+    book(const char * t,const char * a,const char * p){
 
 
 
@@ -58,16 +58,16 @@ int main(){
     switch(option){
     case 1 :
 
-        char* title;
-        char* author;
-        char* publisher;
+        string title;
+        string author;
+        string publisher;
 
         cin >> title;
-         char* c_t = title.c_str();
+        const char* c_t = title.c_str();
         cin>> author;
-         char* c_a = author.c_str();
+        const char* c_a = author.c_str();
         cin>> publisher;
-         char* c_p = publisher.c_str();
+        const char* c_p = publisher.c_str();
 
         o_book[0]=book(c_t,c_a,c_p);
     }
