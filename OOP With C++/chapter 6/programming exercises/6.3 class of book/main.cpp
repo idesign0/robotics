@@ -63,8 +63,11 @@ int main(){
         char* publisher;
 
         cin >> title;
+         char* c_t = title.c_str();
         cin>> author;
+         char* c_a = author.c_str();
         cin>> publisher;
+         char* c_p = publisher.c_str();
 
         o_book[0]=book(c_t,c_a,c_p);
     }
