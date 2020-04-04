@@ -22,8 +22,8 @@ public:
     book(){}
     book(const char * t,const char * a,const char * p,float price,int stock);
 
-    void display_items(int s);
-    void add_copies();
+    void display_items();
+    void add_copies(const char *s);
 };
 
     book::book(const char * t,const char * a,const char * p,float price,int stock){
@@ -48,12 +48,21 @@ public:
 
     }
 
-    void book::display_items(int s){
-        int space =s;
+    void book::display_items(){
+        int space =20;
         cout<< setw(space)<< title << setw(space) << author << setw(space) << publisher << setw(10) << stock_position<<setw(10) << price << endl;
     }
 
-    void book::add_copies(){
+    void book::add_copies(const char * s){
+        int copies;
+
+        if(strlen(title)==strlen(s)){
+         cout << "How many copies you want to add ?" << endl;
+         cin >> copies ;
+
+
+         stock_position +=copies ;
+        }
     }
 
 int main(){
@@ -105,30 +114,35 @@ int main(){
         cin >> stock;
 
         o_book[sizee]=book(c_title,c_author,c_publisher,price,stock); // initialized the object
-        sizee++; break;
+        sizee++;
+        break;
+
 }
     case 2 :
-        {
+
+      {
+
         string name;
         cout << "Enter the Name of book : ";
         cin.ignore();
         getline(cin,name);
         const char *c_name = name.c_str();
 
-            for(int i=0;i<sizee;i++){
+        for(int i=0;i<sizee;i++){
+                o_book[i].add_copies(c_name);
+            }break;
 
-            }
-        }
+      }
     case 3 :
-        {
+
         int space = 20;
         cout << setw(space)<<"Book Title :" << setw(space) << "Author" << setw(space) << "Publisher" << setw(10) << "Stock"<<setw(10) << "Price"<< endl;
 
         for(int i =0;i<sizee;i++){
-            o_book[i].display_items(space);
+            o_book[i].display_items();
         }
         break;
-        }
+
     }
     }while(option!=5);
     return 0;
