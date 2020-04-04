@@ -50,7 +50,7 @@ public:
 
     void book::display_items(){
         int space =20;
-        cout<< setw(space)<< title << setw(space) << author << setw(space) << publisher << setw(10) << stock_position<<setw(10) << price << endl;
+        cout<< " " << title << " " << author << " " << publisher << " " << stock_position<< " " << price << endl;
     }
 
     void book::add_copies(const char * s){
