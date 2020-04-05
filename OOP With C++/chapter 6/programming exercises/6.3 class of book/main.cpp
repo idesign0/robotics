@@ -39,7 +39,7 @@ int main(){
     book O_book[sizee];
     int option;
     do{
-                cout << "Give your price : ";
+                cout << "Give your price : " ;
                 cin >> option;
     switch(option){
     case 1:
