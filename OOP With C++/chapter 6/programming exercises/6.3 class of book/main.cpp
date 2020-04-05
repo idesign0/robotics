@@ -27,6 +27,11 @@ public:
         cout << author << endl;
         cout << publisher << endl;
     }
+    ~book(){
+        delete []title;
+        delete []author;
+        delete []publisher;
+    }
 };
 
 int main(){
@@ -34,13 +39,16 @@ int main(){
     book O_book[sizee];
     int option;
     do{
+                cout << "Give your price : ";
+                cin >> option;
     switch(option){
-    case '1' :  string booktitle;
+    case 1:
+        {
+                string booktitle;
                 string bookauthor;
                 string bookpublisher;
 
-                cout << "Give your price : ";
-                cin >> option;
+
                 cout << "\nEnter book title : ";
                 cin.ignore();
                 getline(cin,booktitle);
@@ -55,12 +63,13 @@ int main(){
 
                 const char* c_booktitle = booktitle.c_str();
                 const char* c_bookauthor = bookauthor.c_str();
+
                 const char* c_bookpublisher = bookpublisher.c_str();
                 O_book[sizee] = book(c_booktitle,c_bookauthor,c_bookpublisher);
                 sizee++;
                 break;
-
-    case 2 : break;
+        }
+    case 2 :     break;
     }
     }while(option!=0);
     return 0;
