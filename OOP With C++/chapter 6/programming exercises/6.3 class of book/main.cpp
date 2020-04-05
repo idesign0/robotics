@@ -4,8 +4,6 @@
 
 using namespace std;
 
-const char* string_conversion(string);
-
 class book{
     char* title;
     char* author;
@@ -31,26 +29,18 @@ public:
     }
 };
 
-const char* string_conversion(string a){
-    const char* s = a.c_str();
-    return s;
-}
-
 int main(){
     int sizee=0;
     book O_book[sizee];
     int option;
     do{
-        cout << "Give your price : ";
-        cin >> option;
-
     switch(option){
-        case '1' :
-            {
-                string booktitle;
+    case '1' :  string booktitle;
                 string bookauthor;
                 string bookpublisher;
 
+                cout << "Give your price : ";
+                cin >> option;
                 cout << "\nEnter book title : ";
                 cin.ignore();
                 getline(cin,booktitle);
@@ -63,15 +53,14 @@ int main(){
                 cin.ignore();
                 getline(cin,bookpublisher);
 
-                const char* c_booktitle = string_conversion(booktitle);
-                const char* c_bookauthor = string_conversion(bookauthor);
-                const char* c_bookpublisher = string_conversion(bookpublisher);
+                const char* c_booktitle = booktitle.c_str();
+                const char* c_bookauthor = bookauthor.c_str();
+                const char* c_bookpublisher = bookpublisher.c_str();
                 O_book[sizee] = book(c_booktitle,c_bookauthor,c_bookpublisher);
                 sizee++;
                 break;
-    }
-        case 2 :{ break;}
-        default : cout << "Inappropriate choice ";
+
+    case 2 : break;
     }
     }while(option!=0);
     return 0;
