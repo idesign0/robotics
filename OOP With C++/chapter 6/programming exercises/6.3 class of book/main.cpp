@@ -1,7 +1,11 @@
 #include<iostream>
 #include<iomanip>
 #include<cstring>
+
 using namespace std;
+
+const char* string_conversion(string);
+
 class book{
     char* title;
     char* author;
@@ -26,34 +30,49 @@ public:
         cout << publisher << endl;
     }
 };
+
+const char* string_conversion(string a){
+    const char* s = a.c_str();
+    return s;
+}
+
 int main(){
     int sizee=0;
-
+    book O_book[sizee];
     int option;
     do{
-    string booktitle;
-    string bookauthor;
-    string bookpublisher;
+        cout << "Give your price : ";
+        cin >> option;
 
-    cout << "Give your price : ";
-    cin >> option;
-    cout << "\nEnter book title : ";
-    cin.ignore();
-    getline(cin,booktitle);
+    switch(option){
+        case '1' :
+            {
+                string booktitle;
+                string bookauthor;
+                string bookpublisher;
 
-    cout << "Enter book author : ";
-    cin.ignore();
-    getline(cin,bookauthor);
+                cout << "\nEnter book title : ";
+                cin.ignore();
+                getline(cin,booktitle);
 
-    cout << "Enter book publisher : ";
-    cin.ignore();
-    getline(cin,bookpublisher);
+                cout << "Enter book author : ";
+                cin.ignore();
+                getline(cin,bookauthor);
 
-    const char* c_booktitle = booktitle.c_str();
-    const char* c_bookauthor = bookauthor.c_str();
-    const char* c_bookpublisher = bookpublisher.c_str();
-    book(c_booktitle,c_bookauthor,c_bookpublisher);
+                cout << "Enter book publisher : ";
+                cin.ignore();
+                getline(cin,bookpublisher);
 
+                const char* c_booktitle = string_conversion(booktitle);
+                const char* c_bookauthor = string_conversion(bookauthor);
+                const char* c_bookpublisher = string_conversion(bookpublisher);
+                O_book[sizee] = book(c_booktitle,c_bookauthor,c_bookpublisher);
+                sizee++;
+                break;
+    }
+        case 2 :{ break;}
+        default : cout << "Inappropriate choice ";
+    }
     }while(option!=0);
     return 0;
 }
