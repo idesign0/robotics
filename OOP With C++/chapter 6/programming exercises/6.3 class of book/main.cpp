@@ -2,6 +2,7 @@
 #include<iomanip>
 #include<cstring>
 
+int space =20;
 using namespace std;
 
 class book{
@@ -30,10 +31,16 @@ public:
         this->price=price;
         stock=s;
     }
-    ~book(){
-        delete []title;
-        delete []author;
-        delete []publisher;
+    void displaybooks(){
+        cout << setw(space)<< title << setw(space) <<author<< setw(space) <<publisher<< setw(space) <<price<<setw(space)<<stock<<endl;
+    }
+    void add_items(const char* book_name){
+        if(strlen(book_name)==strlen(title) ){
+            int quantity;
+            cout << "enter how many copies you want to add : ";
+            cin >> quantity;
+            stock = stock + quantity;
+        }
     }
 };
 
@@ -50,7 +57,8 @@ int main(){
                 string booktitle;
                 string bookauthor;
                 string bookpublisher;
-
+                float price;
+                int stock;
 
                 cout << "\nEnter book title : ";
                 cin.ignore();
@@ -64,18 +72,45 @@ int main(){
                 cin.ignore();
                 getline(cin,bookpublisher);
 
+                cout << "Enter books price : ";
+                cin.ignore();
+                cin>>price;
+
+                cout << "Enter books stock : ";
+                cin.ignore();
+                cin>>stock;
+
                 const char* c_booktitle = booktitle.c_str();
                 const char* c_bookauthor = bookauthor.c_str();
-
                 const char* c_bookpublisher = bookpublisher.c_str();
-                O_book[sizee] = book(c_booktitle,c_bookauthor,c_bookpublisher);
+
+                O_book[sizee] = book(c_booktitle,c_bookauthor,c_bookpublisher,price,stock);
                 sizee++;
                 break;
         }
     case 2 :{
+            cout << setw(space)<< "Books Title" << setw(space) <<"Books author" << setw(space) << "Books Publisher" << setw(space) <<"Price"<<setw(space)<<"Stock"<<endl;
+            for(int i=0;i<sizee;i++){
+                O_book[i].displaybooks();
+            }
             break;
             }
+    case 3 :{
+            string book_name;
+            cout << "To add copies enter book name : " ;
+
+            cin.ignore();
+            getline(cin,book_name);
+
+            const char* c_book_name= book_name.c_str();
+
+            for(int i=0;i<sizee;i++){
+                O_book[i].add_items(c_book_name);
+            }
+        }
     }
     }while(option!=0);
+
     return 0;
 }
+
