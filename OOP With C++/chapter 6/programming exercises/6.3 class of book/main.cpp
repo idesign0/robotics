@@ -13,7 +13,7 @@ class book{
     int stock;
 public:
     book(){}
-    book(const char* t,const char* a,const char* p){
+    book(const char* t,const char* a,const char* p,float price,int s){
 
         title = new char[strlen(t)+1];
         author = new char[strlen(a)+1];
@@ -26,6 +26,9 @@ public:
         cout << title << endl;
         cout << author << endl;
         cout << publisher << endl;
+
+        this->price=price;
+        stock=s;
     }
     ~book(){
         delete []title;
@@ -69,7 +72,9 @@ int main(){
                 sizee++;
                 break;
         }
-    case 2 :     break;
+    case 2 :{
+            break;
+            }
     }
     }while(option!=0);
     return 0;
