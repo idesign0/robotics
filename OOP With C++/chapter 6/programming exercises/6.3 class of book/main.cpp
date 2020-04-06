@@ -90,10 +90,9 @@ int main(){
         }
     case 2 :{
             cout << setw(space)<< "Books Title" << setw(space) <<"Books author" << setw(space) << "Books Publisher" << setw(space) <<"Price"<<setw(space)<<"Stock"<<endl;
-            for(int i=0;i<sizee;i++){
+            for(int i=0;i<=sizee;i++){
                 O_book[i].displaybooks();
-            }
-            break;
+            }break;
             }
     case 3 :{
             string book_name;
@@ -104,10 +103,10 @@ int main(){
 
             const char* c_book_name= book_name.c_str();
 
-            for(int i=0;i<sizee;i++){
+            for(int i=0;i<=sizee;i++){
                 O_book[i].add_items(c_book_name);
             }
-        }
+        }break;
     }
     }while(option!=0);
 
