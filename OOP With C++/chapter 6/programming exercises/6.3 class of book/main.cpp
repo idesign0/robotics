@@ -2,7 +2,7 @@
 #include<iomanip>
 #include<cstring>
 
-int space =20 ;
+int space =20;
 using namespace std;
 
 class book{
