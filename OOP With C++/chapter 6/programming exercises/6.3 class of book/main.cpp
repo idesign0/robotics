@@ -12,7 +12,7 @@ class book{
 
     float price;
     int stock;
-    int *pstock =&stock;
+    int *pstock =&stock ;
 public:
     book(){}
     book(const char* t,const char* a,const char* p,float price,int s){
