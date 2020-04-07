@@ -19,7 +19,7 @@ public:
 
         title = new char[strlen(t)+1] ;
         author = new char[strlen(a)+1] ;
-        publisher = new char[strlen(p)+1];
+        publisher = new char[strlen(p)+1] ;
 
         strcpy(title,t);
         strcpy(author,a);
