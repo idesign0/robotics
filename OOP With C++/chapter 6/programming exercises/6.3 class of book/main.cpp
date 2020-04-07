@@ -12,6 +12,7 @@ class book{
 
     float price;
     int stock;
+    int *pstock =&stock;
 public:
     book(){}
     book(const char* t,const char* a,const char* p,float price,int s){
@@ -29,7 +30,7 @@ public:
         cout << publisher << endl;
 
         this->price=price;
-        stock=s;
+        *pstock=s;
     }
     void displaybooks(){
         cout << setw(space)<< title << setw(space) <<author<< setw(space) <<publisher<< setw(space) <<price<<setw(space)<<stock<<endl;
@@ -39,7 +40,7 @@ public:
             int quantity;
             cout << "enter how many copies you want to add : ";
             cin >> quantity;
-            stock = stock + quantity;
+            *pstock = *pstock + quantity;
         }
     }
 };
