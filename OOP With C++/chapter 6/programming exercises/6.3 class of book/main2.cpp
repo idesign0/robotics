@@ -32,10 +32,21 @@ public:
     }
 
     void book::showdata(){
-        cin.ignore();
         cout << "Enter Books name : " << title;
         cout << "Enter authors name : " << author;
         cout << "Enter publisher name : " << publisher;
         cout << "Enter Price : "<< *price;
         cout << "Enter Stock position : "<< *stock;
     }
+    void book::buybook(){
+        int countt;
+        cout << "\nEnter number of books to buy : " ; cin >> countt;
+        if(countt<=*stock){
+            *stock = *stock -countt;
+            cout << "\nBooks bought successfully";
+            cout << "\nAmount : " << (*stock)*price;
+        else
+            cout << "\nRequire copies are not in stock";
+        }
+    }
+
