@@ -66,11 +66,12 @@ int main(){
 		cout<<"\n\n\t\tMENU"
 		<<"\n1. Entry of New Book"
 		<<"\n2. Buy Book"
-		<<"\n3. Search For Book"
-		<<"\n4. Edit Details Of Book"
+		<<"\n3. Display Books"
 		<<"\n5. Exit"
 		<<"\n\nEnter your Choice: ";
 		cin>>choice;
+
+
 	}
     return 0;
 }
