@@ -82,11 +82,11 @@ int main(){
 		cin>>choice;
 
     switch(choice){
-        case 1 : B[i] = new book;
+        case 1 :{ B[i] = new book;
                 B[i]->feeddata();
                 i++; break;
-
-        case 2 : cin.ignore();
+    }
+        case 2 :{ cin.ignore();
         cout << "\nEnter title of the book : "; cin.getline(titlebuy,20);
         cout << "\nEnter name of author of the book : "; cin.getline(authorbuy,20);
         for(t=0;t<i;t++){
@@ -95,11 +95,12 @@ int main(){
                 break;
             }
             }
-        if(t==i){
-            cout<<"\nThis Book is Not in Stock";
+        if(t==i)
+            {cout<<"\nThis Book is Not in Stock";}
             break;
         }
-        case 3 :  cin.ignore();
+
+        case 3 : { cin.ignore();
 				cout<<"\nEnter Title Of Book : "; cin.getline(titlebuy,20);
 				cout<<"Enter Author Of Book : ";  cin.getline(authorbuy,20);
 
@@ -111,9 +112,10 @@ int main(){
 					}
 				}
 				if(t==i)
-				cout<<"\nThis Book is Not in Stock";
+				{cout<<"\nThis Book is Not in Stock";}
 				break;
-        case 4 : cin.ignore();
+}
+        case 4 : { cin.ignore();
         cout << "Enter Book Title : " ;cin.getline(titlebuy,20);
         cout << "Enter Book author name : " ;cin.getline(authorbuy,20);
             for (t=0;t<i;t++){
@@ -123,9 +125,11 @@ int main(){
                 }
             }
             if(t==i)
-                cout<<"\nThis Book is Not in Stock";
+                {cout<<"\nThis Book is Not in Stock";}
 				break;
+}
         case 5 : exit(0);
+
         default: cout<<"\nInvalid Choice Entered";
 
     }
