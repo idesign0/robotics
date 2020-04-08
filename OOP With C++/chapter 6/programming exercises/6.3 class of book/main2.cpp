@@ -42,11 +42,18 @@ public:
         int countt;
         cout << "\nEnter number of books to buy : " ; cin >> countt;
         if(countt<=*stock){
-            *stock = *stock -countt;
+            *stock = *stock - countt;
             cout << "\nBooks bought successfully";
             cout << "\nAmount : " << (*stock)*price;
-        else
+        else{
             cout << "\nRequire copies are not in stock";
         }
+        }
     }
-
+    int book::searchh(char tbuy[20],char abuy[20]){
+        if(strcmp(tbuy,title)==0 && strcmp(abuy,author)==0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
