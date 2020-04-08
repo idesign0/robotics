@@ -59,5 +59,19 @@ public:
     }
 
 int main(){
+    book *B[20];
+	int i=0,r,t,choice;
+	char titlebuy[20],authorbuy[20];
+	while(1)	{
+		cout<<"\n\n\t\tMENU"
+		<<"\n1. Entry of New Book"
+		<<"\n2. Buy Book"
+		<<"\n3. Search For Book"
+		<<"\n4. Edit Details Of Book"
+		<<"\n5. Exit"
+		<<"\n\nEnter your Choice: ";
+		cin>>choice;
+	}
     return 0;
 }
+
