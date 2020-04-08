@@ -1,116 +1,150 @@
-#include<iostream>
-#include<iomanip>
-#include<cstring>
 
-int space =20;
+#include<iostream>
+#include<string.h>
+#include<stdlib.h>
+
 using namespace std;
 
-class book{
-    char* title;
-    char* author;
-    char* publisher;
-
-    float price;
-    int stock;
-    int *pstock =&stock ;
+class book	{
+private:
+	char *author,*title,*publisher;
+	float *price;
+	int *stock;
 public:
-    book(){}
-    book(const char* t,const char* a,const char* p,float price,int s){
+	book()	{
+	author= new char[20];
+	title=new char[20];
+	publisher=new char[20];
+	price= new float;
+	stock=new int;
+	}
+	void feeddata();
+	void editdata();
+	void showdata();
+	int search(char[],char[]);
+	void buybook();
 
-        title = new char[strlen(t)+1] ;
-        author = new char[strlen(a)+1] ;
-        publisher = new char[strlen(p)+1] ;
-
-        strcpy(title,t);
-        strcpy(author,a);
-        strcpy(publisher,p);
-
-        cout << title << endl;
-        cout << author << endl;
-        cout << publisher << endl;
-
-        this->price=price;
-        *pstock=s;
-    }
-    void displaybooks(){
-        cout << setw(space)<< title << setw(space) <<author<< setw(space) <<publisher<< setw(space) <<price<<setw(space)<<stock<<endl;
-    }
-    void add_items(const char* book_name){
-        if(strlen(book_name)==strlen(title) ){
-            int quantity;
-            cout << "enter how many copies you want to add : ";
-            cin >> quantity;
-            *pstock = *pstock + quantity;
-        }
-    }
 };
 
-int main(){
-    int sizee=0;
-    book O_book[sizee];
-    int option;
-    do{
-                cout << "Give your price : " ;
-                cin >> option;
-    switch(option){
-    case 1:
-        {
-                string booktitle;
-                string bookauthor;
-                string bookpublisher;
-                float price;
-                int stock;
+void book::feeddata()	{
+	cin.ignore();
+	cout<<"\nEnter Author Name: ";      cin.getline(author,20);
+	cout<<"Enter Title Name: ";       cin.getline(title,20);
+	cout<<"Enter Publisher Name: ";   cin.getline(publisher,20);
+	cout<<"Enter Price: ";            cin>>*price;
+	cout<<"Enter Stock Position: ";   cin>>*stock;
 
-                cout << "\nEnter book title : ";
-                cin.ignore();
-                getline(cin,booktitle);
-
-                cout << "Enter book author : ";
-                cin.ignore();
-                getline(cin,bookauthor);
-
-                cout << "Enter book publisher : ";
-                cin.ignore();
-                getline(cin,bookpublisher);
-
-                cout << "Enter books price : ";
-                cin.ignore();
-                cin>>price;
-
-                cout << "Enter books stock : ";
-                cin.ignore();
-                cin>>stock;
-
-                const char* c_booktitle = booktitle.c_str();
-                const char* c_bookauthor = bookauthor.c_str();
-                const char* c_bookpublisher = bookpublisher.c_str();
-
-                O_book[sizee] = book(c_booktitle,c_bookauthor,c_bookpublisher,price,stock);
-                sizee++;
-                break;
-        }
-    case 2 :{
-            cout << setw(space)<< "Books Title" << setw(space) <<"Books author" << setw(space) << "Books Publisher" << setw(space) <<"Price"<<setw(space)<<"Stock"<<endl;
-            for(int i=0;i<=sizee;i++){
-                O_book[i].displaybooks();
-            }break;
-            }
-    case 3 :{
-            string book_name;
-            cout << "To add copies enter book name : " ;
-
-            cin.ignore();
-            getline(cin,book_name);
-
-            const char* c_book_name= book_name.c_str();
-
-            for(int i=0;i<=sizee;i++){
-                O_book[i].add_items(c_book_name);
-            }
-        }break;
-    }
-    }while(option!=0);
-
-    return 0;
 }
 
+void book::editdata()	{
+
+	cout<<"\nEnter Author Name: ";      cin.getline(author,20);
+	cout<<"Enter Title Name: ";       cin.getline(title,20);
+	cout<<"Enter Publisher Name: ";   cin.getline(publisher,20);
+	cout<<"Enter Price: ";            cin>>*price;
+	cout<<"Enter Stock Position: ";   cin>>*stock;
+
+}
+
+void book::showdata()	{
+	cout<<"\nAuthor Name: "<<author;
+	cout<<"\nTitle Name: "<<title;
+	cout<<"\nPublisher Name: "<<publisher;
+	cout<<"\nPrice: "<<*price;
+	cout<<"\nStock Position: "<<*stock;
+
+}
+
+int book::search(char tbuy[20],char abuy[20] )	{
+	if(strcmp(tbuy,title)==0 && strcmp(abuy,author)==0)
+		return 1;
+	else return 0;
+
+}
+
+void book::buybook()	{
+	int count;
+	cout<<"\nEnter Number Of Books to buy: ";
+	cin>>count;
+	if(count<=*stock)	{
+		*stock=*stock-count;
+		cout<<"\nBooks Bought Sucessfully";
+		cout<<"\nAmount: Rs. "<<(*price)*count;
+	}
+	else
+		cout<<"\nRequired Copies not in Stock";
+}
+
+int main()	{
+	book *B[20];
+	int i=0,r,t,choice;
+	char titlebuy[20],authorbuy[20];
+	while(1)	{
+		cout<<"\n\n\t\tMENU"
+		<<"\n1. Entry of New Book"
+		<<"\n2. Buy Book"
+		<<"\n3. Search For Book"
+		<<"\n4. Edit Details Of Book"
+		<<"\n5. Exit"
+		<<"\n\nEnter your Choice: ";
+		cin>>choice;
+
+		switch(choice)	{
+			case 1:	B[i] = new book;
+				B[i]->feeddata();
+				i++;	break;
+
+			case 2: cin.ignore();
+				cout<<"\nEnter Title Of Book: "; cin.getline(titlebuy,20);
+				cout<<"Enter Author Of Book: ";  cin.getline(authorbuy,20);
+				for(t=0;t<i;t++)	{
+					if(B[t]->search(titlebuy,authorbuy))	{
+						B[t]->buybook();
+						break;
+					}
+				}
+				if(t==1)
+				cout<<"\nThis Book is Not in Stock";
+
+				break;
+			case 3: cin.ignore();
+				cout<<"\nEnter Title Of Book: "; cin.getline(titlebuy,20);
+				cout<<"Enter Author Of Book: ";  cin.getline(authorbuy,20);
+
+				for(t=0;t<i;t++)	{
+					if(B[t]->search(titlebuy,authorbuy))	{
+						cout<<"\nBook Found Successfully";
+						B[t]->showdata();
+						break;
+					}
+				}
+				if(t==i)
+				cout<<"\nThis Book is Not in Stock";
+				break;
+
+			case 4: cin.ignore();
+				cout<<"\nEnter Title Of Book: "; cin.getline(titlebuy,20);
+				cout<<"Enter Author Of Book: ";  cin.getline(authorbuy,20);
+
+				for(t=0;t<i;t++)	{
+					if(B[t]->search(titlebuy,authorbuy))	{
+						cout<<"\nBook Found Successfully";
+						B[t]->editdata();
+						break;
+					}
+				}
+				if(t==i)
+				cout<<"\nThis Book is Not in Stock";
+				break;
+
+			case 5: exit(0);
+			default: cout<<"\nInvalid Choice Entered";
+
+		}
+	}
+
+
+
+
+	return 0;
+}
