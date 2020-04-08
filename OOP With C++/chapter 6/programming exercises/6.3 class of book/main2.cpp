@@ -71,7 +71,15 @@ int main(){
 		<<"\n\nEnter your Choice: ";
 		cin>>choice;
 
+    switch(choice){
+        case 1 : B[i] = new book;
+                B[i]->feeddata();
+                i++; break;
 
+        case 2 : cin.ignore();
+        cout << "\nEnter title of the book "; cin.getline(titlebuy,20);
+        cout << "\nEnter name of author of the book "; cin.getline(authorbuy,20);
+    }
 	}
     return 0;
 }
