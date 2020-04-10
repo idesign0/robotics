@@ -113,7 +113,7 @@ void book::static_data(){
     }
 }
 int main(){
-    book *o_book[20];
+    book *o_book=new book[20];
     int option,countt=0,i=0;
     char title[20];
     char author[20];
@@ -131,16 +131,15 @@ int main(){
 
         switch(option){
             case 1 : {
-                     o_book[countt] = new book;
-                     o_book[countt]->feeddata();
+                     o_book[countt].feeddata();
                      countt++; break;
                      }
             case 2 :{cin.ignore();
                      cout << "Enter the name of the book : " ; cin.getline(title,20);
                      cout << "Enter the name of the author : " ; cin.getline(author,20);
                      for(i=0;i<countt;i++){
-                        if(o_book[i]->searchh(title,author)){
-                            o_book[i]->buybook();
+                        if(o_book[i].searchh(title,author)){
+                            o_book[i].buybook();
                             break;
                         }
                     }
@@ -151,8 +150,8 @@ int main(){
                      cout << "Enter the name of the book : " ; cin.getline(title,20);
                      cout << "Enter the name of the author : " ; cin.getline(author,20);
                      for(i=0;i<countt;i++){
-                        if(o_book[i]->searchh(title,author)){
-                            o_book[i]->showdata();
+                        if(o_book[i].searchh(title,author)){
+                            o_book[i].showdata();
                             break;
                         }
                     }
@@ -163,8 +162,8 @@ int main(){
                      cout << "Enter the name of the book : " ; cin.getline(title,20);
                      cout << "Enter the name of the author : " ; cin.getline(author,20);
                      for(i=0;i<countt;i++){
-                        if(o_book[i]->searchh(title,author)){
-                            o_book[i]->editdata();
+                        if(o_book[i].searchh(title,author)){
+                            o_book[i].editdata();
                             break;
                         }
                     }
@@ -175,8 +174,8 @@ int main(){
                      cout << "Enter the name of the book : " ; cin.getline(title,20);
                      cout << "Enter the name of the author : " ; cin.getline(author,20);
                      for(i=0;i<countt;i++){
-                        if(o_book[i]->searchh(title,author)){
-                            o_book[i]->price_redirect();
+                        if(o_book[i].searchh(title,author)){
+                            o_book[i].price_redirect();
                             break;
                         }
                     }
