@@ -52,7 +52,10 @@ void book::buybook(){
 
         if(copies<=*stock){
             *stock=*stock-copies;
-            cout << "Total amount of the bill : " << (*price)*copies;
+            cout << "Total amount of the bill : " << (*price)*copies << endl
+                 << "Stock position of book \" " << title << " \" is : " << *stock;
+
+
         }
         else
             cout << "Require amount of books are not in stock";
