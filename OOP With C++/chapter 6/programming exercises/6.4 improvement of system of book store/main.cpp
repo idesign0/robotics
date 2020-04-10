@@ -1,3 +1,4 @@
+
 #include<iostream>
 #include<string.h>
 #include<stdlib.h>
@@ -11,6 +12,7 @@ class book{
     float* price;
     int* stock;
 
+    void price_update();
 public:
     book(){
     title = new char[20];
@@ -24,6 +26,7 @@ public:
     void buybook();
     void showdata();
     void editdata();
+    void price_redirect();
     int searchh(char[],char[]);
 };
 
@@ -71,6 +74,18 @@ void book::editdata(){
     cout << "Enter Books price : "; cin >> *price;
     cout << "Enter Books stock : "; cin >> *stock;
 }
+
+void book::price_redirect(){
+    price_update();
+    }
+
+void book::price_update(){
+    cout << "Current price of the book \" " << title << " \" is : " << *price << endl;
+    cout << "New price of the book : "; cin>>*price;
+    cout << "Current price of the book \" " << title << " \" is : " << *price << endl;
+
+}
+
 int main(){
     book *o_book[20];
     int option,countt=0,i=0;
@@ -82,7 +97,8 @@ int main(){
             << "\n2. Buy books"
             << "\n3. Show books"
             << "\n4. Edit book details"
-            << "\n5. quite";
+            << "\n5. Update price of the book"
+            << "\n6. Quite";
 
         cout << "\n\nEnter appropriate number : "; cin >> option;
 
@@ -128,7 +144,19 @@ int main(){
                     if(i==countt){
                         cout<<"\nThis Book is Not in Stock";
                     }break;}
-            case 5 :{exit(0);}
+            case 5 :{cin.ignore();
+                     cout << "Enter the name of the book : " ; cin.getline(title,20);
+                     cout << "Enter the name of the author : " ; cin.getline(author,20);
+                     for(i=0;i<countt;i++){
+                        if(o_book[i]->searchh(title,author)){
+                            o_book[i]->price_redirect();
+                            break;
+                        }
+                    }
+                    if(i==countt){
+                        cout<<"\nThis Book is Not in Stock";
+                    }break;}
+            case 6 :{exit(0);}
             default : cout << "\nin appropriate input,choose valid option.";
         }
 }
