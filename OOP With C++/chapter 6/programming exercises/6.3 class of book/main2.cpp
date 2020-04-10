@@ -4,9 +4,12 @@
 using namespace std;
 
 class book{
-    char *title,*author,*publisher;
-    float *price;
-    int *stock;
+
+    char* title;
+    char* author;
+    char* publisher;
+    float* price;
+    int* stock;
 
 public:
     book(){
@@ -18,122 +21,117 @@ public:
     }
 
     void feeddata();
-    void editdata();
-    void showdata();
     void buybook();
+    void showdata();
+    void editdata();
     int searchh(char[],char[]);
 };
-    void book::feeddata(){
-        cin.ignore();
-        cout << "\nEnter Books name : " ; cin.getline(title,20);
-        cout << "Enter authors name : " ; cin.getline(author,20);
-        cout << "Enter publisher name : " ; cin.getline(publisher,20);
-        cout << "Enter Price : "; cin >> *price;
-        cout << "Enter Stock position : "; cin >> *stock;
-    }
-    void book::editdata(){
-        cin.ignore();
-        cout << "\nEnter Books name : " ; cin.getline(title,20);
-        cout << "Enter authors name : " ; cin.getline(author,20);
-        cout << "Enter publisher name : " ; cin.getline(publisher,20);
-        cout << "Enter Price : "; cin >> *price;
-        cout << "Enter Stock position : "; cin >> *stock;
-    }
-    void book::showdata(){
-        cout << "\nEnter Books name : " << title;
-        cout << "\nEnter authors name : " << author;
-        cout << "\nEnter publisher name : " << publisher;
-        cout << "\nEnter Price : "<< *price;
-        cout << "\nEnter Stock position : "<< *stock;
-    }
-    void book::buybook(){
-        int countt;
-        cout << "\nEnter number of books to buy : " ; cin >> countt;
-        if(countt<=*stock){
-            *stock = *stock - countt;
-            cout << "\nBooks bought successfully";
-            cout << "\nAmount : " << (*price)*countt<<endl;}
-        else{
-            cout << "\nRequire copies are not in stock";
-        }
 
-        }
-
-    int book::searchh(char tbuy[20],char abuy[20]){
-        if(strcmp(tbuy,title)==0 && strcmp(abuy,author)==0){
+void book::feeddata(){
+    cin.ignore();
+    cout << "\nEnter title name : "; cin.getline(title,20);
+    cout << "Enter author name : "; cin.getline(author,20);
+    cout << "Enter publisher name : "; cin.getline(publisher,20);
+    cout << "Enter Books price : "; cin >> *price;
+    cout << "Enter Books stock : "; cin >> *stock;
+}
+int book::searchh(char tbuy[20],char abuy[20]){
+    if(strcmp(tbuy,title)==0 && strcmp(abuy,author)==0){
             return 1;
-        }else{
-            return 0;
-        }
     }
+    else{
+        return 0;
+        }
+}
+void book::buybook(){
+        int copies;
+        cout << "\nHow many copies need to buy : "; cin >> copies;
 
+        if(copies<=*stock){
+            *stock=*stock-copies;
+            cout << "Total amount of the bill : " << (*price)*copies;
+        }
+        else
+            cout << "Require amount of books are not in stock";
+
+}
+void book::showdata(){
+    cout << "\nDetails of the books : " ;
+    cout << "\nName of the book : " << title;
+    cout << "\nName of the author : " << author;
+    cout << "\nName of the publisher : " << publisher;
+    cout << "\nPrice of the book : " << *price;
+    cout << "\nStock position of the book : " << *stock;
+}
+void book::editdata(){
+    cin.ignore();
+    cout << "\nEnter title name : "; cin.getline(title,20);
+    cout << "Enter author name : "; cin.getline(author,20);
+    cout << "Enter publisher name : "; cin.getline(publisher,20);
+    cout << "Enter Books price : "; cin >> *price;
+    cout << "Enter Books stock : "; cin >> *stock;
+}
 int main(){
-    book *B[20];
-	int i=0,r,t,choice;
-	char titlebuy[20],authorbuy[20];
-	while(1)	{
-		cout<<"\n\nMENU"
-		<<"\n1. Entry of New Book"
-		<<"\n2. Buy Book"
-		<<"\n3. Display Books"
-		<<"\n4. Edit Books data"
-		<<"\n5. Exit"
-		<<"\n\nEnter your Choice: ";
-		cin>>choice;
+    book *o_book[20];
+    int option,countt=0,i=0;
+    char title[20];
+    char author[20];
+    while(1){
+        cout<< "\nMenu : "
+            << "\n1. Add New books"
+            << "\n2. Buy books"
+            << "\n3. Show books"
+            << "\n4. Edit book details"
+            << "\n5. quite";
 
-    switch(choice){
-        case 1 :{ B[i] = new book;
-                B[i]->feeddata();
-                i++; break;
-    }
-        case 2 :{ cin.ignore();
-        cout << "\nEnter title of the book : "; cin.getline(titlebuy,20);
-        cout << "\nEnter name of author of the book : "; cin.getline(authorbuy,20);
-        for(t=0;t<i;t++){
-            if(B[t]->searchh(titlebuy,authorbuy)){
-                B[t]->buybook();
-                break;
-            }
-            }
-        if(t==i)
-            {cout<<"\nThis Book is Not in Stock";}
-            break;
+        cout << "\n\nEnter appropriate number : "; cin >> option;
+
+        switch(option){
+            case 1 : {
+                     o_book[countt] = new book;
+                     o_book[countt]->feeddata();
+                     countt++; break;
+                     }
+            case 2 :{cin.ignore();
+                     cout << "Enter the name of the book : " ; cin.getline(title,20);
+                     cout << "Enter the name of the author : " ; cin.getline(author,20);
+                     for(i=0;i<countt;i++){
+                        if(o_book[i]->searchh(title,author)){
+                            o_book[i]->buybook();
+                            break;
+                        }
+                    }
+                    if(i==countt){
+                        cout<<"\nThis Book is Not in Stock";
+                    }break;}
+            case 3 :{cin.ignore();
+                     cout << "Enter the name of the book : " ; cin.getline(title,20);
+                     cout << "Enter the name of the author : " ; cin.getline(author,20);
+                     for(i=0;i<countt;i++){
+                        if(o_book[i]->searchh(title,author)){
+                            o_book[i]->showdata();
+                            break;
+                        }
+                    }
+                    if(i==countt){
+                        cout<<"\nThis Book is Not in Stock";
+                    }break;}
+            case 4 :{cin.ignore();
+                     cout << "Enter the name of the book : " ; cin.getline(title,20);
+                     cout << "Enter the name of the author : " ; cin.getline(author,20);
+                     for(i=0;i<countt;i++){
+                        if(o_book[i]->searchh(title,author)){
+                            o_book[i]->editdata();
+                            break;
+                        }
+                    }
+                    if(i==countt){
+                        cout<<"\nThis Book is Not in Stock";
+                    }break;}
+            case 5 :{exit(0);}
+            default : cout << "\nin appropriate input,choose valid option.";
         }
-
-        case 3 : { cin.ignore();
-				cout<<"\nEnter Title Of Book : "; cin.getline(titlebuy,20);
-				cout<<"Enter Author Of Book : ";  cin.getline(authorbuy,20);
-
-				for(t=0;t<i;t++)	{
-					if(B[t]->searchh(titlebuy,authorbuy))	{
-						cout<<"\nBook Found Successfully";
-						B[t]->showdata();
-						break;
-					}
-				}
-				if(t==i)
-				{cout<<"\nThis Book is Not in Stock";}
-				break;
 }
-        case 4 : { cin.ignore();
-        cout << "Enter Book Title : " ;cin.getline(titlebuy,20);
-        cout << "Enter Book author name : " ;cin.getline(authorbuy,20);
-            for (t=0;t<i;t++){
-                if(B[i]->searchh(titlebuy,authorbuy)){
-                    B[i]->editdata();
-                    break;
-                }
-            }
-            if(t==i)
-                {cout<<"\nThis Book is Not in Stock";}
-				break;
-}
-        case 5 : exit(0);
-
-        default: cout<<"\nInvalid Choice Entered";
-
-    }
-	}
     return 0;
-}
 
+}
