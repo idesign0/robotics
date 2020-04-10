@@ -5,6 +5,9 @@
 using namespace std;
 
 class book{
+    static int total_transaction;
+    static int successful_transaction;
+    static int unsuccessful_transaction;
 
     char* title;
     char* author;
@@ -28,7 +31,12 @@ public:
     void editdata();
     void price_redirect();
     int searchh(char[],char[]);
+    static void static_data();
 };
+
+int book::total_transaction;
+int book::successful_transaction;
+int book::unsuccessful_transaction;
 
 void book::feeddata(){
     cin.ignore();
@@ -49,17 +57,17 @@ int book::searchh(char tbuy[20],char abuy[20]){
 void book::buybook(){
         int copies;
         cout << "\nHow many copies need to buy : "; cin >> copies;
-
+        total_transaction++;
         if(copies<=*stock){
             *stock=*stock-copies;
             cout << "Total amount of the bill : " << (*price)*copies << endl
                  << "Stock position of book \" " << title << " \" is : " << *stock;
 
-
+        successful_transaction++;
         }
         else
-            cout << "Require amount of books are not in stock";
-
+            {cout << "Require amount of books are not in stock";
+            unsuccessful_transaction++;}
 }
 void book::showdata(){
     cout << "\nDetails of the books : " ;
@@ -89,6 +97,21 @@ void book::price_update(){
 
 }
 
+void book::static_data(){
+    if(total_transaction>0){
+        float persent_success;
+        float persent_failure;
+        float ration_of_failure;
+
+        persent_success = (((float)successful_transaction)/(float)total_transaction)*100;
+        persent_failure = (((float)unsuccessful_transaction)/(float)total_transaction)*100;
+        ration_of_failure = (float)unsuccessful_transaction/(float)successful_transaction;
+
+        cout << "Percentage of transaction was successful : " << persent_success << endl;
+        cout << "Percentage of transaction was unsuccessful : " << persent_failure << endl;
+        cout << "ration of failure to success : " << ration_of_failure << endl;
+    }
+}
 int main(){
     book *o_book[20];
     int option,countt=0,i=0;
@@ -101,7 +124,8 @@ int main(){
             << "\n3. Show books"
             << "\n4. Edit book details"
             << "\n5. Update price of the book"
-            << "\n6. Quite";
+            << "\n6. statical analysis"
+            << "\n7. Quite";
 
         cout << "\n\nEnter appropriate number : "; cin >> option;
 
@@ -159,7 +183,12 @@ int main(){
                     if(i==countt){
                         cout<<"\nThis Book is Not in Stock";
                     }break;}
-            case 6 :{exit(0);}
+            case 6 :{
+                    if(countt>0){
+                        book::static_data();
+                    }
+                    break;}
+            case 7 :{exit(0);}
             default : cout << "\nin appropriate input,choose valid option.";
         }
 }
