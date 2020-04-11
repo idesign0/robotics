@@ -3,7 +3,12 @@ using namespace std;
 
 class prime{
     int value,k;
-    public:
+public:
+    prime(int x):(value)(x);
+    void show_number(){
+        cout << "Value : " << value << endl;
+
+    }
 };
 int main(){
 
