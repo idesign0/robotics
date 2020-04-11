@@ -2,7 +2,8 @@
 using namespace std;
 
 class prime{
-    int value;
+    int value,k;
+    public:
 };
 int main(){
 
