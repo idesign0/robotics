@@ -2,7 +2,7 @@
 using namespace std;
 class car{
 public:
-
+    car(){};
 };
 int main(){
 
