@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-class{
+class car{
 };
 int main(){
 
