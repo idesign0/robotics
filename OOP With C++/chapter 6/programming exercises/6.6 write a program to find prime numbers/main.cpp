@@ -11,6 +11,7 @@ public:
         for(int i=2;i<=value/2;i++){
             if(value%i==0){
                 k=0;
+                return;
             }else{
                 k=1;
             }
@@ -26,7 +27,7 @@ public:
     }
 };
 int main(){
-        prime o_prime(7);
+        prime o_prime(23);
         o_prime.check_number();
         o_prime.show_number();
     return 0;
