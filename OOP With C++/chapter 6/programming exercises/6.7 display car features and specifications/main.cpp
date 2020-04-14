@@ -40,7 +40,7 @@ void car::listof_names(){
 }
 int main(){
     int sizee=0,i=0;
-    car *o_car[0];
+    car *o_car[sizee];
     while(1){
     int option;
         cout << "\n1. Enter new Car details"
@@ -55,7 +55,7 @@ int main(){
                      sizee++;
                      break;
 
-            case 2 : cout << "Car details : " ;
+            case 2 : cout << "Car details : " << endl;
                     for(i=0;i<sizee;i++){
                         o_car[i]->listof_names();
                     }
