@@ -28,7 +28,7 @@ public:
 };
 void car::feed_data(){
      cin.ignore();
-     cout << "Enter Car name : "; getline(cin,name);
+     cout << "\nEnter Car name : "; getline(cin,name);
      cout << "Enter Car model : "; getline(cin,model);
      cout << "Enter Car color : "; getline(cin,color);
      cout << "Enter Car type : "; getline(cin,type);
@@ -37,13 +37,13 @@ void car::feed_data(){
      cout << "Enter Car mileage : "; cin>>mileage;
 }
 void car::show_details(){
-     cout << "Enter Car name : "; cout << name;
-     cout << "Enter Car model : "; cout << model;
-     cout << "Enter Car color : "; cout << color;
-     cout << "Enter Car type : "; cout << type;
+     cout << "\nEnter Car name : "; cout << name;
+     cout << "\nEnter Car model : "; cout << model;
+     cout << "\nEnter Car color : "; cout << color;
+     cout << "\nEnter Car type : "; cout << type;
 
-     cout << "Enter Car year : "; cout<<year;
-     cout << "Enter Car mileage : "; cout<<mileage;
+     cout << "\nEnter Car year : "; cout<<year;
+     cout << "\nEnter Car mileage : "; cout<<mileage;
 }
 void car::listof_names(){
     cout << name << "\t\t" << model << endl;
@@ -84,7 +84,7 @@ int main(){
                         cout << "There is no details of car in list";
                     }break;
             case 3 : cin.ignore();
-                     cout << "Enter car name : ";getline(cin,car_name);
+                     cout << "\nEnter car name : ";getline(cin,car_name);
                      cout << "Enter car model name : ";getline(cin,car_model);
                      cout << endl;
                     for(i=0;i<sizee;i++){
