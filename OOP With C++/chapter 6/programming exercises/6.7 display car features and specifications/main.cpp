@@ -56,10 +56,11 @@ int main(){
                      break;
 
             case 2 : cout << "Car details : " << endl;
-                     cout << "Car name"<<"\t\t"<<"Model"<<endl;
+                     cout << "\nCar name"<<"\t\t"<<"Model"<<endl;
                     for(i=0;i<sizee;i++){
                         o_car[i]->listof_names();
                     }
+                    cout << "\n";
                     if(i==sizee){
                         cout << "There is no details of car in list";
                     }break;
