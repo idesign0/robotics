@@ -24,6 +24,7 @@ public:
     void feed_data();
     void listof_names();
     void show_details();
+    int searchh(string,string);
 };
 void car::feed_data(){
      cin.ignore();
@@ -35,11 +36,29 @@ void car::feed_data(){
      cout << "Enter Car year : "; cin>>year;
      cout << "Enter Car mileage : "; cin>>mileage;
 }
+void car::show_details(){
+     cout << "Enter Car name : "; cout << name;
+     cout << "Enter Car model : "; cout << model;
+     cout << "Enter Car color : "; cout << color;
+     cout << "Enter Car type : "; cout << type;
+
+     cout << "Enter Car year : "; cout<<year;
+     cout << "Enter Car mileage : "; cout<<mileage;
+}
 void car::listof_names(){
     cout << name << "\t\t" << model << endl;
 }
+int car::searchh(string car_name,string car_model){
+    if(name.compare(car_name)==0 && model.compare(car_model)==0){
+        return 1;
+    }
+    else
+        return 0;
+
+}
 int main(){
     int sizee=0,i=0;
+    string car_name,car_model;
     car *o_car[sizee];
     while(1){
     int option;
@@ -60,6 +79,20 @@ int main(){
                     for(i=0;i<sizee;i++){
                         o_car[i]->listof_names();
                     }
+                    cout << "\n";
+                    if(i==sizee){
+                        cout << "There is no details of car in list";
+                    }break;
+            case 3 : cin.ignore();
+                     cout << "Enter car name : ";getline(cin,car_name);
+                     cout << "Enter car model name : ";getline(cin,car_model);
+                     cout << endl;
+                    for(i=0;i<sizee;i++){
+                     if(o_car[i]->searchh(car_name,car_model)){
+                        o_car[i]->show_details();
+                        break;
+                    }
+                     }
                     cout << "\n";
                     if(i==sizee){
                         cout << "There is no details of car in list";
