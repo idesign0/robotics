@@ -9,7 +9,7 @@ class car{
     string model; // model
     string color;  // color
     int	year;  // year
-    int mileage;  // miles on car
+    float mileage;  // miles on car
 	string type;  //Type of vehicle
 
 public:
@@ -18,7 +18,7 @@ public:
      model=" ";
      color=" ";
      year=0;
-     mileage=0;
+     mileage=0.0;
      type=" ";
     }
     void feed_data();
@@ -36,7 +36,7 @@ void car::feed_data(){
      cout << "Enter Car mileage : "; cin>>mileage;
 }
 void car::listof_names(){
-    cout << name << setw(space) << model << endl;
+    cout << name << "\t\t" << model << endl;
 }
 int main(){
     int sizee=0,i=0;
@@ -56,6 +56,7 @@ int main(){
                      break;
 
             case 2 : cout << "Car details : " << endl;
+                     cout << "Car name"<<"\t\t"<<"Model"<<endl;
                     for(i=0;i<sizee;i++){
                         o_car[i]->listof_names();
                     }
