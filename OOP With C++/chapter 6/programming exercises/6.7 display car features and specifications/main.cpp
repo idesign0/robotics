@@ -21,20 +21,18 @@ public:
      mileage=0.0;
      type=" ";
     }
-    void feed_data();
+    car(string,string,string,string,int,float);
     void listof_names();
     void show_details();
     int searchh(string,string);
 };
-void car::feed_data(){
-     cin.ignore();
-     cout << "\nEnter Car name : "; getline(cin,name);
-     cout << "Enter Car model : "; getline(cin,model);
-     cout << "Enter Car color : "; getline(cin,color);
-     cout << "Enter Car type : "; getline(cin,type);
-
-     cout << "Enter Car year : "; cin>>year;
-     cout << "Enter Car mileage : "; cin>>mileage;
+    car::car(string n,string m,string c,string t,int y,float mi){
+     name=n;
+     model=m;
+     color=c;
+     type=t;
+     year=y;
+     mileage=mi;
 }
 void car::show_details(){
      cout << "\nEnter Car name : "; cout << name;
@@ -62,6 +60,14 @@ int main(){
     car *o_car[sizee];
     while(1){
     int option;
+
+    string name;
+    string model;
+    string color;
+    string type;
+    int year;
+    float mileage;
+
         cout << "\n1. Enter new Car details"
              << "\n2. List the names of Cars"
              << "\n3. Show Details of particular Car"
@@ -69,8 +75,17 @@ int main(){
              << "\nChoose appropriate option : "; cin>>option;
 
         switch(option){
-            case 1 :o_car[sizee]= new car;
-                     o_car[sizee]->feed_data();
+            case 1 :
+                     cin.ignore();
+                     cout << "\nEnter Car name : "; getline(cin,name);
+                     cout << "Enter Car model : "; getline(cin,model);
+                     cout << "Enter Car color : "; getline(cin,color);
+                     cout << "Enter Car type : "; getline(cin,type);
+
+                     cout << "Enter Car year : "; cin>>year;
+                     cout << "Enter Car mileage : "; cin>>mileage;
+
+                     o_car[sizee]= new car(name,model,color,type,year,mileage);
                      sizee++;
                      break;
 
@@ -83,6 +98,7 @@ int main(){
                     if(i==sizee){
                         cout << "There is no details of car in list";
                     }break;
+
             case 3 : cin.ignore();
                      cout << "\nEnter car name : ";getline(cin,car_name);
                      cout << "Enter car model name : ";getline(cin,car_model);
