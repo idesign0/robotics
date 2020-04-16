@@ -1,9 +1,8 @@
 #include<iostream>
 #include<string>
-#include<iomanip>
+
 using namespace std;
 
-int space = 20;
 class car{
     string name;  //name
     string model; // model
