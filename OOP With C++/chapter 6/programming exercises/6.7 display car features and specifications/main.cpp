@@ -24,6 +24,7 @@ public:
     car(string,string,string,string,int,float);
     void listof_names();
     void show_details();
+    void update_details();
     int searchh(string,string);
 };
     car::car(string n,string m,string c,string t,int y,float mi){
@@ -45,6 +46,16 @@ void car::show_details(){
 }
 void car::listof_names(){
     cout << name << "\t\t" << model << endl;
+}
+void car::update_details(){
+ cin.ignore();
+ cout << "\nEnter Car name : "; getline(cin,name);
+ cout << "Enter Car model : "; getline(cin,model);
+ cout << "Enter Car color : "; getline(cin,color);
+ cout << "Enter Car type : "; getline(cin,type);
+
+ cout << "Enter Car year : "; cin>>year;
+ cout << "Enter Car mileage : "; cin>>mileage;
 }
 int car::searchh(string car_name,string car_model){
     if(name.compare(car_name)==0 && model.compare(car_model)==0){
@@ -113,6 +124,22 @@ int main(){
                     if(i==sizee){
                         cout << "There is no details of car in list";
                     }break;
+            case 4 : cin.ignore();
+                     cout << "\nEnter car name : ";getline(cin,car_name);
+                     cout << "Enter car model name : ";getline(cin,car_model);
+                     cout << endl;
+                    for(i=0;i<sizee;i++){
+                     if(o_car[i]->searchh(car_name,car_model)){
+                        o_car[i]->update_details();
+                        break;
+                    }
+                     }
+                    cout << "\n";
+                    if(i==sizee){
+                        cout << "There is no details of car in list";
+                    }break;
+
+
         }
 
     }
