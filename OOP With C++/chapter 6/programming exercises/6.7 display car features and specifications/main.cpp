@@ -25,6 +25,7 @@ public:
     void show_details();
     void update_details();
     int searchh(string,string);
+
 };
     car::car(string n,string m,string c,string t,int y,float mi){
      name=n;
@@ -142,5 +143,6 @@ int main(){
         }
 
     }
+    delete []o_car;
     return 0;
 }
