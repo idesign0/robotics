@@ -15,11 +15,7 @@ public:
 };
 
 complexx complexx::operator+(complexx c){
-    complexx temp;
-    temp.x= x+c.x;
-    temp.y= y+c.y;
-
-    return temp;
+    return complexx(x+c.x,y+c.y);
 }
 
 void complexx::display(){
@@ -31,7 +27,9 @@ int main(){
     c1=complexx(2.5,3.5);
     c2=complexx(1.6,2.7);
 
-    c3 = c1 + c2;
+   //c3 = c1.operator+(c2);
+   c3 = c1 + c2;
+
 
     cout << "C1 = ";c1.display();
     cout << "C2 = ";c2.display();
