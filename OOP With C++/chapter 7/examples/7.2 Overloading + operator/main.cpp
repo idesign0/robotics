@@ -15,8 +15,10 @@ public:
 };
 
 complexx complexx::operator+(complexx c){
+
     return complexx(x+c.x,y+c.y);
-}
+
+    }
 
 void complexx::display(){
     cout << x <<" + j"<<y<<endl;
