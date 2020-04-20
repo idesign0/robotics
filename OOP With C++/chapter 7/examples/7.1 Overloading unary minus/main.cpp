@@ -26,16 +26,14 @@ public:
         s.y = -s.y;
         s.z = -s.z;
 
-        return s;
     }
 };
 int main(){
     space s(1,2,3);
     cout << "S : \n"; s.display();
 
-    space s1;
-    s1 = -s;
-    cout << "-S : \n"; s1.display();
+    -s;
+    cout << "-S : \n"; s.display();
 
     return 0;
 }

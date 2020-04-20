@@ -2,15 +2,27 @@
 
 using namespace std;
 class test{
+        int val;
 public:
-    int operator++(int a){
-        a +=5;
-        return a;
-        }
+    test(){}
+    test(int x){
+        val = x;
+    }
+    int show(){
+        return val;
+    }
+
+    friend test operator+(test &t1,test &t2){
+        return (test(t1.val+t2.val));
+    }
+};
 
 int main(){
-    test A;
-    int a = 0;
-    int c=A.operator++(a);
-    cout << c;
+    test T1(5);
+    test T2(5);
+    test T3;
+
+    T3 = T1 + T2;
+
+    cout << T3.show();
 }
