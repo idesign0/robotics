@@ -1,28 +1,22 @@
 #include<iostream>
-
 using namespace std;
-class test{
-        int val;
+class hrs{
 public:
-    test(){}
-    test(int x){
-        val = x;
+    int minutes;
+    int hours;
+    hrs(){
     }
-    int show(){
-        return val;
-    }
-
-    friend test operator+(test &t1,test &t2){
-        return (test(t1.val+t2.val));
+    hrs(int time){
+    hours = time/60;
+    minutes = time%60;
     }
 };
-
 int main(){
-    test T1(5);
-    test T2(5);
-    test T3;
+    hrs o_hr;
+    int time=180;
 
-    T3 = T1 + T2;
+    o_hr = time;
 
-    cout << T3.show();
+    cout << o_hr.hours << "\t" << o_hr.minutes;
+    return 0;
 }
