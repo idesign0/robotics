@@ -53,5 +53,10 @@ int main(){
     float total_price;
     total_price = s1;
 
+    cout << "Details of inventory 1 : " << "\n";
+    s1.putdata();
+    cout << "Total price : " << total_price << "\n\n";
+
+
     return 0;
 }
