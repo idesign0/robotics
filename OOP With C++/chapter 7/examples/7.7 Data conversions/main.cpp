@@ -19,8 +19,21 @@ public:
         cout << "Items : " << items << "\n";
         cout << "Price : " << price << "\n\n";
     }
+    int get_code{return code;}
+    float get_price{return price;}
+    int get_items{return items;}
 
-     ;
+    operator float(){
+        return (price*items);
+    }
+};
+
+class invent_2{
+    int code;
+    float total_price;
+public:
+
+
 };
 int main(){
 
