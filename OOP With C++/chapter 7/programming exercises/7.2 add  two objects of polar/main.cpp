@@ -27,15 +27,16 @@ public:
 
         float x,y,x1,y1,x2,y2;
 
-        x1 = radius*cos(angle);
-        y1 = radius*sin(angle);
+        x1 = radius*cos(a.angle*3.14159/180);
+        y1 = radius*sin(a.angle*3.14159/180);
 
-        x2 = a.radius*cos(a.angle);
-        y2 = a.radius*sin(a.angle);
+        x2 = a.radius*cos(a.angle*3.14159/180);
+        y2 = a.radius*sin(a.angle*3.14159/180);
 
         x = x1 + x2;
         y = y1 + y2;
 
+        cout << x << " " << y1 << " ";
         polar temp;
         int div = y/x;
 
