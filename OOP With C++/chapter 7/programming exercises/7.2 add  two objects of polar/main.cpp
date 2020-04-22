@@ -27,11 +27,11 @@ public:
 
         float x,y,x1,y1,x2,y2;
 
-        x1 = radius * cos(angle);
-        y1 = radius * sin(angle);
+        x1 = radius*cos(angle);
+        y1 = radius*sin(angle);
 
-        x2 = a.radius * cos(a.angle);
-        y2 = a.radius * sin(a.angle);
+        x2 = a.radius*cos(a.angle);
+        y2 = a.radius*sin(a.angle);
 
         x = x1 + x2;
         y = y1 + y2;
@@ -40,7 +40,7 @@ public:
         int div = y/x;
 
         temp.radius = sqrt((pow(x,2)+pow(y,2)));
-        temp.angle = atan((div))*180/3.1415;
+        temp.angle = atan(y/x)*180/3.1415;
 
         return temp;
         }
