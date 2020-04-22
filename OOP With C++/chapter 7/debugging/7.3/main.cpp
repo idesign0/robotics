@@ -5,10 +5,12 @@ class room{
     float mwidth;
     float mlength;
 public:
+
     room(){
     }
     room(float w,float h):mwidth(w),mlength(h){
     }
+
     operator float(){
         return (mwidth*mlength);
     }
