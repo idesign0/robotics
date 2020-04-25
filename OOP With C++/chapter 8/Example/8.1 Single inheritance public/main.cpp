@@ -10,6 +10,10 @@ public:
     void get_x{return a;}
     void show{cout << "X : "<<x << endl;}
 };
+
+class B : public A{
+    int c;
+};
 int main(){
 
     return 0;
