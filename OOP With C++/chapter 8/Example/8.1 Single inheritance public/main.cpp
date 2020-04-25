@@ -13,6 +13,9 @@ public:
 
 class B : public A{
     int c;
+public:
+    void mul(){ c = b*get_x();}
+    void show(){cout << "C : " << c << endl;}
 };
 int main(){
 
