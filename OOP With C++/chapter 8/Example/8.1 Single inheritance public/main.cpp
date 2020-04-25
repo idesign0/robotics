@@ -4,11 +4,12 @@ using namespace std;
 class A{
     int a;
 public:
-    int b=10;
-
-    void set_x(){a=10;}
+    int b;
+    A(){
+        a=10;b=10;
+    }
     int get_x(){return a;}
-    void show_x(){cout << "X : "<<a << endl;}
+    void show_x(){cout << "A : "<<a << endl;}
 };
 
 class B : public A{
