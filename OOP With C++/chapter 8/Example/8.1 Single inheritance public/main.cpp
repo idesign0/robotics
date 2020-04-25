@@ -17,7 +17,8 @@ public:
     void mul(){ c = b*get_x();}
     void show(){cout << "C : " << c << endl;}
 };
-int main(){
 
+int main(){
+    B b;
     return 0;
 }
