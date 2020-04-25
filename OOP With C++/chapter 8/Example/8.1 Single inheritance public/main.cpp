@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-class b{
+class B{
     int a;
 public:
     int b;// public; ready for inheritance
@@ -17,6 +17,25 @@ public :
     void display();
 };
 
+void B::set_ab(){
+    a=5;b=10;
+}
+
+int B::get_a(){
+    return a;
+}
+
+int B::show_a(){
+    cout << "a = "<<a<<endl;
+}
+
+int D::mul(){
+    c = b * get_a();
+}
+
+void D :: display(){
+
+}
 
 int main(){
     return 0;
