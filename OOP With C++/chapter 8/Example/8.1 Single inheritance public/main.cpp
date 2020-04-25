@@ -10,6 +10,14 @@ public:
     void show_a();
 };
 
+class D :: public b{
+    int c;
+public :
+    void mul();
+    void display();
+};
+
+
 int main(){
     return 0;
 }
