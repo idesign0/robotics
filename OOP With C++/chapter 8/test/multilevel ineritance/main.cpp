@@ -3,10 +3,14 @@ using namespace std;
 
 class student_number{
     int roll_number;
-protected:
-
+public:
+    void get_number(int number){ roll_number = number;}
+    void put_number(){cout << "Student Number : "<<roll_number;}
 };
-
+class student_marks{
+    int marks;
+    protected
+};
 int main(){
 
     return 0;
