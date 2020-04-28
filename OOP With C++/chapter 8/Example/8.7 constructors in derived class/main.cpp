@@ -9,7 +9,7 @@ public:
         cout << "Alpha initialized \n"<<endl;
     }
 
-    void show(){
+    void show_x(){
         cout << "X = "<<x <<endl;
     }
 };
@@ -22,27 +22,30 @@ public:
         cout << "beta initialized \n"<<endl;
     }
 
-    void show(){
+    void show_y(){
         cout << "Y = "<<y <<endl;
     }
 };
 
-class gamma:public alpha,public beta{
+class gamma:public beta,public alpha{
     int m,n;
 public:
-    alpha(int a,float b,int c,int d):alpha(a),beta(b){
+    gamma(int a,float b,int c,int d):alpha(a),beta(b){
         m=c;
         n=d;
         cout << "Gamma initialized \n"<<endl;
     }
 
-    void show(){
+    void show_z(){
         cout << "M = "<<m <<endl
-        cout << "N = "<<n <<endl;
+             << "N = "<<n <<endl;
     }
 };
 
 int main(){
-
+    gamma g(5,10.15,15,20);
+    g.show_x();
+    g.show_y();
+    g.show_z();
     return 0;
 }
