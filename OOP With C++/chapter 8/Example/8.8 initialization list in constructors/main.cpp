@@ -7,7 +7,17 @@ public:
     alpha(int i):x(i){cout << "\nAlpha constructed"<<endl;}
 
     void show_alpha(){
-        cout << ""
+        cout << "X : "<< x << endl
+    }
+};
+
+class beta{
+    float p,q;
+public:
+    beta(float i,float j):p(i),q(j+p){cout << "\nBeta constructed"<<endl;}
+
+    void show_alpha(){
+        cout << "X : "<< x << endl
     }
 };
 
