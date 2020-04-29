@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-// class student numbers
+// class student number
 
 class student_number{
     int roll_number;
