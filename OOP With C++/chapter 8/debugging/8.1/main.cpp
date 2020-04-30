@@ -12,6 +12,19 @@ private:
     }
 };
 
+class details: faculty{
+public:
+    int age,exp;
+    void getdetails(){
+        getdata();
+        cout << "Enter Age : ";cin>>age;
+        cout << "Enter Year of experience : ";cin>>exp;
+    }
+    void display(){
+
+    }
+};
+
 int main(){
 
     return 0;
