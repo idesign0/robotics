@@ -3,11 +3,9 @@ using namespace std;
 
 class account{
 protected:
-    char * customer_name;
-    char * type_of_account
+    char * customer_name = new char[20];
+    char * type_of_account =  new char[10];
     int account;
-public:
-
 };
 
 int main(){
