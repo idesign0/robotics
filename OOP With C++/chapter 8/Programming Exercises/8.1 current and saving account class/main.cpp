@@ -6,7 +6,7 @@ protected:
     string customer_name ;
     string type_of_account ;
     int account_number;
-    float balance=0;
+    float balance_var=0;
 public:
     void add_details();
     void show_details();
@@ -46,7 +46,7 @@ public:
 
         cout << "Enter amount of money to deposit : " ; cin >> deposite;
         balance += deposite;
-        cout << "Current balance of " << customer_name <<" : " << balance;
+        cout << "Current balance of " << customer_name <<" : " << balance_var;
     }
 };
 
@@ -57,14 +57,17 @@ public:
 
         cout << "Enter amount of money to deposit : " ; cin >> deposite;
         balance += deposite;
-        cout << "Current balance of " << customer_name <<" : " << balance;
+        cout << "Current balance of " << customer_name <<" : " << balance_var << endl;
+    }
+    void deposite_interest(){
+
     }
 };
 
 class bank_account:public cur_acct,public sav_acct{
 public:
     void balance(){
-        cout << "Balance of " << customer
+        cout << "Balance of " << customer_name << " is : " << balance_var << endl;
     }
 };
 
