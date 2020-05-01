@@ -1,5 +1,6 @@
 #include<iostream>
 #include<cmath>
+#include<cstring>
 using namespace std;
 
 class account{
@@ -8,6 +9,7 @@ protected:
     string type_of_account ;
     int account_number;
     float balance_var=0;
+    float minimum_balance=1000;
     float interest_rate;
 public:
     void add_details();
@@ -48,8 +50,19 @@ public:
         float deposite ;
 
         cout << "Enter amount of money to deposit : " ; cin >> deposite;
-        balance += deposite;
+        balance_var += deposite;
         cout << "Current balance of " << customer_name <<" : " << balance_var;
+    }
+
+    void withdraw_value(){
+        float withdraw_ammount;
+        cout << "Enter amount value to withdraw : "; cin >>withdraw_ammount;
+        if(balance_var<=minimum_balance || (balance_var-withdraw_ammount)<=minimum_balance){
+
+            balance_var=balance_var-withdraw_ammount;
+            cout << "Balance of " << customer_name << " is : " << balance_var << endl;
+        }
+
     }
 };
 
@@ -59,24 +72,40 @@ public:
         float deposite ;
 
         cout << "Enter amount of money to deposit : " ; cin >> deposite;
-        balance += deposite;
+        balance_var += deposite;
         cout << "Current balance of " << customer_name <<" : " << balance_var << endl;
     }
     void deposite_interest(){
         int years;
         float net_value;
         cout << "Enter Number of years : " ; cin >> years;
-        net_value = balance_var*pow(1+interest_rate,years)-balance_var;
+        net_value = balance_var*pow(1+interest_rate,years)- balance_var;
         cout << "Net increase : " << net_value;
         balance_var= balance_var + net_value;
         cout << "Total Balance " << balance_var;
     }
+    void withdraw_value(){
+        float withdraw_ammount;
+        cout << "Enter amount value to withdraw : "; cin >>withdraw_ammount;
+            if((balance_var-withdraw_ammount)>0){
+                balance_var=balance_var-withdraw_ammount;
+                cout << "Balance of " << customer_name << " is : " << balance_var << endl;
+            }
+        }
 };
 
 class bank_account:public cur_acct,public sav_acct{
 public:
     void balance(){
         cout << "Balance of " << customer_name << " is : " << balance_var << endl;
+    }
+
+    void minimum_bal_chk(){
+        if(type_of_account=="current"){
+            cur_acct::withdraw_value();
+    }else{
+        sav_acct::withdraw_value();
+    }
     }
 };
 
