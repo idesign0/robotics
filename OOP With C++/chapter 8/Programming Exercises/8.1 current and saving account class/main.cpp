@@ -40,19 +40,32 @@ void account::show_details(){
 }
 
 class cur_acct:virtual public account{
-   public:
+public:
     void accept_deposit(){
         float deposite ;
+
         cout << "Enter amount of money to deposit : " ; cin >> deposite;
-
         balance += deposite;
-
         cout << "Current balance of " << customer_name <<" : " << balance;
     }
 };
 
-class cur_acct(): virtual public account{
+class sav_acct : virtual public account{
+public:
+    void accept_deposit(){
+        float deposite ;
 
+        cout << "Enter amount of money to deposit : " ; cin >> deposite;
+        balance += deposite;
+        cout << "Current balance of " << customer_name <<" : " << balance;
+    }
+};
+
+class bank_account:public cur_acct,public sav_acct{
+public:
+    void balance(){
+        cout << "Balance of " << customer
+    }
 };
 
 int main(){
