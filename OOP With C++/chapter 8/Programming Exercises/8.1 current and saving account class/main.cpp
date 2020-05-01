@@ -17,6 +17,10 @@ public:
 };
 
     void account::add_details(){
+
+        cout << "*****************************************************************"<<endl;
+        cout << "Add details Section : " << endl;
+
         int choice;
         cout << "Enter customer name : " ; getline(cin,customer_name);
         cout << "Enter type of account : " << endl
@@ -26,35 +30,58 @@ public:
         cin >> choice ;
 
         if(choice==1){
-                type_of_account="Current";
+                type_of_account="current";
                     }
             else if(choice==2){
-                type_of_account="Savings";
+                type_of_account="savings";
                     }
             else{
                 cout << "Invalid choice !";
             }
         cout << "Enter account number : " ; cin >> account_number;
         cout << "Enter Interest rate of bank : " ; cin >> interest_rate;
+
+
+        cout << "*****************************************************************"<<endl;
     }
 
 void account::show_details(){
+
+        cout << "*****************************************************************"<<endl;
+        cout << "Show details Section : " << endl;
+
         cout << "customer name : " << customer_name <<endl;
         cout << "type of account : " << type_of_account <<endl;
         cout << "type of account : " << account_number <<endl;
+
+
+        cout << "*****************************************************************"<<endl;
 }
 
 class cur_acct:virtual public account{
 public:
     void accept_deposit(){
+
+        cout << "*****************************************************************"<<endl;
+        cout << "Accept details Section : " << endl;
+
         float deposite ;
 
         cout << "Enter amount of money to deposit : " ; cin >> deposite;
         balance_var += deposite;
-        cout << "Current balance of " << customer_name <<" : " << balance_var;
+        cout << "Current balance of " << customer_name <<" : " << balance_var<<endl;
+
+
+        cout << "*****************************************************************"<<endl;
+
     }
 
     void withdraw_value(){
+
+
+        cout << "*****************************************************************"<<endl;
+        cout << "Withdraw value Section : " << endl;
+
         float withdraw_ammount;
         cout << "Enter amount value to withdraw : "; cin >>withdraw_ammount;
         if(balance_var<=minimum_balance || (balance_var-withdraw_ammount)<=minimum_balance){
@@ -63,41 +90,72 @@ public:
             cout << "Balance of " << customer_name << " is : " << balance_var << endl;
         }
 
+        cout << "*****************************************************************"<<endl;
     }
 };
 
 class sav_acct : virtual public account{
 public:
     void accept_deposit(){
+
+        cout << "*****************************************************************"<<endl;
+        cout << "Accept deposit Section : " << endl;
+
         float deposite ;
 
         cout << "Enter amount of money to deposit : " ; cin >> deposite;
         balance_var += deposite;
         cout << "Current balance of " << customer_name <<" : " << balance_var << endl;
+
+
+        cout << "*****************************************************************"<<endl;
     }
     void deposite_interest(){
+
+        cout << "*****************************************************************"<<endl;
+        cout << "Deposit interest Section : " << endl;
+
         int years;
         float net_value;
         cout << "Enter Number of years : " ; cin >> years;
         net_value = balance_var*pow(1+interest_rate,years)- balance_var;
-        cout << "Net increase : " << net_value;
+        cout << "Net increase : " << net_value << endl;
         balance_var= balance_var + net_value;
-        cout << "Total Balance " << balance_var;
+        cout << "Total Balance " << balance_var << endl;
+
+
+        cout << "*****************************************************************"<<endl;
     }
     void withdraw_value(){
+
+        cout << "*****************************************************************"<<endl;
+        cout << "withdraw Section : " << endl;
+
         float withdraw_ammount;
         cout << "Enter amount value to withdraw : "; cin >>withdraw_ammount;
             if((balance_var-withdraw_ammount)>0){
                 balance_var=balance_var-withdraw_ammount;
                 cout << "Balance of " << customer_name << " is : " << balance_var << endl;
             }
+
+        cout << "*****************************************************************"<<endl;
+
         }
 };
 
 class bank_account:public cur_acct,public sav_acct{
 public:
+
     void balance(){
         cout << "Balance of " << customer_name << " is : " << balance_var << endl;
+    }
+
+     void accept_deposit(){
+        if(type_of_account=="current"){
+            cur_acct::accept_deposit();
+    }else{
+        sav_acct::accept_deposit()_value();
+    }
     }
 
     void minimum_bal_chk(){
@@ -107,9 +165,19 @@ public:
         sav_acct::withdraw_value();
     }
     }
+
+    void deposite_interest(){
+        if(type_of_account=="savings"){
+            sav_acct::deposite_interest();
+    }
+    }
+
+
 };
 
 int main(){
-
+    bank_account holder1;
+    holder1.add_details();
+    holder1.show_details();
     return 0;
 }
