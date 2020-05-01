@@ -6,6 +6,7 @@ protected:
     string customer_name ;
     string type_of_account ;
     int account_number;
+    float balance=0;
 public:
     void add_details();
     void show_details();
@@ -38,8 +39,16 @@ void account::show_details(){
         cout << "type of account : " << account_number <<endl;
 }
 
-class cur_acct():virtual public account{
+class cur_acct:virtual public account{
+   public:
+    void accept_deposit(){
+        float deposite ;
+        cout << "Enter amount of money to deposit : " ; cin >> deposite;
 
+        balance += deposite;
+
+        cout << "Current balance of " << customer_name <<" : " << balance;
+    }
 };
 
 class cur_acct(): virtual public account{
