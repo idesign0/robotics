@@ -13,21 +13,21 @@ public:
 
     void account::add_details(){
         int choice;
-        cin.ignore();
         cout << "Enter customer name : " ; getline(cin,customer_name);
         cout << "Enter type of account : " << endl
              << "Press 1 for Current account" << endl
-             << "Press 2 for Savings account" << endl;
+             << "Press 2 for Savings account" << endl
+             << "Option : ";
         cin >> choice ;
 
         if(choice==1){
-                type_of_account="current";
+                type_of_account="Current";
                     }
             else if(choice==2){
-                type_of_account="savings";
+                type_of_account="Savings";
                     }
             else{
-                cout << "Invalid choice !"
+                cout << "Invalid choice !";
             }
         cout << "Enter account number : " ; cin >> account_number;
     }
@@ -38,6 +38,15 @@ void account::show_details(){
         cout << "type of account : " << account_number <<endl;
 }
 
+class cur_acct():virtual public account{
+
+};
+
+class cur_acct(): virtual public account{
+
+};
+
 int main(){
+
     return 0;
 }
