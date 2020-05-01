@@ -64,9 +64,12 @@ public:
     }
     void deposite_interest(){
         int years;
+        float net_value;
         cout << "Enter Number of years : " ; cin >> years;
-        balance_var = balance_var*pow(1+interest_rate,years);
-
+        net_value = balance_var*pow(1+interest_rate,years)-balance_var;
+        cout << "Net increase : " << net_value;
+        balance_var= balance_var + net_value;
+        cout << "Total Balance " << balance_var;
     }
 };
 
