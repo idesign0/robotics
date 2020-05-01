@@ -1,4 +1,5 @@
 #include<iostream>
+#include<cmath>
 using namespace std;
 
 class account{
@@ -7,6 +8,7 @@ protected:
     string type_of_account ;
     int account_number;
     float balance_var=0;
+    float interest_rate;
 public:
     void add_details();
     void show_details();
@@ -31,6 +33,7 @@ public:
                 cout << "Invalid choice !";
             }
         cout << "Enter account number : " ; cin >> account_number;
+        cout << "Enter Interest rate of bank : " ; cin >> interest_rate;
     }
 
 void account::show_details(){
@@ -60,6 +63,9 @@ public:
         cout << "Current balance of " << customer_name <<" : " << balance_var << endl;
     }
     void deposite_interest(){
+        int years;
+        cout << "Enter Number of years : " ; cin >> years;
+        balance_var = balance_var*pow(1+interest_rate,years);
 
     }
 };
