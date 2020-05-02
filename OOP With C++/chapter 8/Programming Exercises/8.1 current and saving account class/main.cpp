@@ -182,6 +182,8 @@ int main(){
     bank_account * acc_holder = new bank_account[members];
 
     int option;
+    string name;
+    int account;
 
     while(1){
           cout << "Menu : " << endl;
@@ -195,7 +197,9 @@ int main(){
           switch(option){
                 case 1 : acc_holder[members].add_details();
                          members++; break;
-          }
+
+                case 2 :
+        }
     }
 
     return 0;
