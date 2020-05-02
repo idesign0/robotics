@@ -53,6 +53,7 @@ void account::show_details(){
         cout << "customer name : " << customer_name <<endl;
         cout << "type of account : " << type_of_account <<endl;
         cout << "type of account : " << account_number <<endl;
+        cout << "Balance in account : " << balance_var <<endl;
 
 
         cout << "*****************************************************************"<<endl;
@@ -176,7 +177,11 @@ public:
 };
 
 int main(){
-    bank_account * acc_holder = new bank_account[20];
+
+    int members=0;
+    bank_account * acc_holder = new bank_account[members];
+
+    int option;
 
     while(1){
           cout << "Menu : " << endl;
@@ -185,6 +190,12 @@ int main(){
           cout << "2. Withdraw value" << endl;
           cout << "3. Deposit interest" << endl;
           cout << "4. Display Balance" << endl;
+          cout << "Choose your option : "; cin >> option;
+
+          switch(option){
+                case 1 : acc_holder[members].add_details();
+                         members++; break;
+          }
     }
 
     return 0;
