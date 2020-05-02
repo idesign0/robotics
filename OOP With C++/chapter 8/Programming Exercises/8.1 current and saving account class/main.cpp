@@ -176,8 +176,7 @@ public:
 };
 
 int main(){
-    bank_account holder1;
-    holder1.add_details();
-    holder1.show_details();
+    bank_account * acc_holder = new bank_account[20];
+
     return 0;
 }
