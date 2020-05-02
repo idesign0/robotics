@@ -178,5 +178,14 @@ public:
 int main(){
     bank_account * acc_holder = new bank_account[20];
 
+    while(1){
+          cout << "Menu : " << endl;
+          cout << "1. Add new account" << endl;
+          cout << "2. Show details of account" << endl;
+          cout << "2. Withdraw value" << endl;
+          cout << "3. Deposit interest" << endl;
+          cout << "4. Display Balance" << endl;
+    }
+
     return 0;
 }
