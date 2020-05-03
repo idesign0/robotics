@@ -142,13 +142,12 @@ public:
 };
 
 int main(){
-    employees *emp1[30];
+    employees emp1[30];
     bool value = true;
     int member=0;
     while(value){
 
         int option,i=0;
-        emp1[member] = new employees;
         string name;int code_number;
         cout << "Menu : \n\n"
              << "\n1.Add details of employees"
@@ -157,7 +156,7 @@ int main(){
              << "\nYour option : ";cin>>option;
 
          switch(option){
-            case 1 : emp1[member]->get_details();
+            case 1 : emp1[member].get_details();
                      member++;break;
             case 2 :
                      cin.ignore();
@@ -165,8 +164,8 @@ int main(){
                      cout << "Enter code number of the Employee : "; cin>>code_number;
 
                      for(i=0;i<member;i++){
-                        if(emp1[i]->searchh(name,code_number)==1){
-                            emp1[i]->show_details();
+                        if(emp1[i].searchh(name,code_number)==1){
+                            emp1[i].show_details();
                             break;
                         }
                      }
