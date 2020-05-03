@@ -20,12 +20,7 @@ public:
         cout << "Code of Staff member : "<<code<<endl;
         cout << "Name of Staff member : "<<name<<endl;
     }
-    friend int searchh(string &,int);
 };
-
-int searchh(string &a,int b){
-
-}
 
 // officer class
 
@@ -134,15 +129,27 @@ public:
         }
      }
 
+    int searchh(string a,int b){
+    if(b==code){
+        return 1;
+
+    }else{
+        return 0;
+    }
+}
+
+
 };
 
 int main(){
-    employees *emp1;
+    employees *emp1[30];
     bool value = true;
+    int member=0;
     while(value){
-        emp1 = new employees[members];
-        int option,members=0;
-        string name;int account_number;
+
+        int option,i=0;
+        emp1[member] = new employees;
+        string name;int code_number;
         cout << "Menu : \n\n"
              << "\n1.Add details of employees"
              << "\n2.Show details of employees"
@@ -150,11 +157,22 @@ int main(){
              << "\nYour option : ";cin>>option;
 
          switch(option){
-            case 1 : emp1[members].get_details();
-                     members++;break;
-            case 2 : cin.ignore();
+            case 1 : emp1[member]->get_details();
+                     member++;break;
+            case 2 :
+                     cin.ignore();
                      cout << "Enter name of the Employee : "; getline(cin,name);
-                     cout << "Enter a/c number of the Employee : "; cin>>account_number;
+                     cout << "Enter code number of the Employee : "; cin>>code_number;
+
+                     for(i=0;i<member;i++){
+                        if(emp1[i]->searchh(name,code_number)==1){
+                            emp1[i]->show_details();
+                            break;
+                        }
+                     }
+                     if(i==member){"employees are not listed\n";}break;
+
+            case 3 : value = false;
          }
 
     }
