@@ -59,6 +59,10 @@ public:
         admin::get_details();
         account::get_details();
     }
+    update_details(){
+        admin::update_details();
+        account::update_details();
+    }
     show_details(){
         admin::show_details();
         account::show_details();
