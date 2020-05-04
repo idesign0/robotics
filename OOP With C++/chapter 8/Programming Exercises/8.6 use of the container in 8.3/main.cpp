@@ -20,11 +20,13 @@ public:
         cout << "Code of Staff member : "<<code<<endl;
         cout << "Name of Staff member : "<<name<<endl;
     }
+    int get_choice(){return choice;}
+    int get_code(){return code;}
 };
 
 // officer class
 
-class officer:virtual public staff{
+class officer{
 protected:
     char grade;
 public:
@@ -38,7 +40,7 @@ public:
 
 // teacher class
 
-class teacher:virtual public staff{
+class teacher{
 protected:
     string subject;
     string publication;
@@ -56,7 +58,7 @@ public:
 
 // typist class
 
-class typist:virtual public staff{
+class typist{
 protected:
     int speed;
 public:
@@ -70,67 +72,77 @@ public:
 
 // regular class
 
-class regular:virtual public typist{
+class regular{
     public:
+    typist o_typist;
     void get_details(){
-        typist::get_details();
+        o_typist.get_details();
     }
     void show_details(){
-      typist::show_details();
+        o_typist.show_details();
     }
 };
 
 // casual class
 
-class casual:virtual public typist{
+class casual{
 protected:
     float daily_wages;
 public:
+    typist o_typist;
     void get_details(){
-        typist::get_details();
+        o_typist.get_details();
         cout << "Enter daily wages of casual typist (dollars per day): "; cin>>daily_wages;
 
         }
     void show_details(){
-        typist::show_details();
+        o_typist.show_details();
         cout << "Daily wages of typist : "<<daily_wages<<" dollars per day"<<endl;
     }
 };
 
-class employees:public teacher,public regular,public casual,public officer{
+class employees{
 public:
+    staff o_staff;
+    officer o_officer;
+    teacher o_teacher;
+    regular o_regular;
+    casual o_casual;
+
      void get_details(){
         cout << "\nAdd details of Employee : \n\n";
-        staff::get_details();
-        switch(choice){
-            case 1 : officer::get_details();break;
 
-            case 2 : teacher::get_details();break;
+        o_staff.get_details();
+        switch(o_staff.get_choice()){
 
-            case 3 : regular::get_details();break;
+            case 1 : o_officer.get_details();break;
 
-            case 4 : casual::get_details();break;
+            case 2 : o_teacher.get_details();break;
+
+            case 3 : o_regular.get_details();break;
+
+            case 4 : o_casual.get_details();break;
 
         }
      }
 
     void show_details(){
         cout << "\nshow details of Employee : \n\n";
-        staff::show_details();
-        switch(choice){
-            case 1 : officer::show_details();break;
+        o_staff.show_details();
+        switch(o_staff.get_choice()){
+            case 1 : o_officer.show_details();break;
 
-            case 2 : teacher::show_details();break;
+            case 2 : o_teacher.show_details();break;
 
-            case 3 : regular::show_details();break;
+            case 3 : o_regular.show_details();break;
 
-            case 4 : casual::show_details();break;
+            case 4 : o_casual.show_details();break;
 
         }
      }
 
     int searchh(string a,int b){
-    if(b==code){
+    if(b==o_staff.get_code()){
         return 1;
 
     }else{
