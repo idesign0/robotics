@@ -41,7 +41,7 @@ class kitchen_product:public menu{
 public:
     void get_details(){
     cin.ignore();
-    cout << " Name of electronic Product : ";getline(cin,name);
+    cout << " Name of kitchen Product : ";getline(cin,name);
     cout << " Price : ";cin>>price;
     cout << " Stock : ";cin>>stock;
     }
