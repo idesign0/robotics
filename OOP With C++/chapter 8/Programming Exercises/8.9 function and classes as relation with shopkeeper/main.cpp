@@ -23,24 +23,48 @@ public:
         cout << "Code of the Model : " << code << endl;
     }
 };
-
-class two::public virtual cars{
+class manual{
     float power;
+    float engine;
+public:
+    void get_details(){
+
+    }
+};
+class two:public virtual cars,public manual,p{
     string tyre;
     string gear;
     float weight;
+    enum type_ENUM{manual=1,electric,automatic};
+    int choice_type;
+    string type;
+
     void get_details(){
         cin.ignore();
         cout << "Power developed by two wheeler engine : ";cin>>power;
         cout << "Tyre type of two wheeler engine : ";getline(cin,tyre);
         cout << "Gear : ";getline(cin,gear);
         cout << "Weight : ";cin>>weight;
-    }
+        cout << "Operating Type of Vehicle : \n"
+             << "1.Manual\n"
+             << "2.Electric\n"
+             << "3.Automatic\n"
+             << "\nChoose appropriate options : "; cin >> choices;
+
+             switch(choice_type){
+                case manual : type="manual";
+                              m;break;
+                case electric : type="electric" ;break;
+                case automatic : type="automatic" ;break;
+             }
+
+             }
     void show_details(){
         cout << "Power developed by two wheeler engine : "<<power<<endl;
         cout << "Tyre type of two wheeler engine : ";<<tyre<<endl;
         cout << "Gear : "<<gear<<endl;
         cout << "Weight : "<<weight<<endl;
+        cout << "Type : "<<type<<endl;
     }
 };
 
