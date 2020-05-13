@@ -10,13 +10,14 @@ int main(){
     cout << "Enter element need to be search : " ;cin>>num;
 
     for(i=0;i<=10;i++){
-        if(ptr[i]==num){
+        if(*ptr==num){
             cout << "Number is present in array !"<<endl;
             break;
         }else if(i==10){
             cout << endl << num << " is not present in this array"<<endl;
             ptr++;
         }
+        ptr++;
     }
     return 0;
 }

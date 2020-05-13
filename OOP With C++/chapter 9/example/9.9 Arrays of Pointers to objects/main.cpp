@@ -42,7 +42,7 @@ int main(){
     }while(option);
 
     cout << "\n\n";
-    for(int i=0;i<n;i++){
+    for(int i=0;i<=n;i++){
         cptr[i]->printname();
     }
     return 0;
