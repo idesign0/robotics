@@ -36,7 +36,7 @@ int main(){
     bptr->show();
 
     dc *dptr;
-    dptr=&derived;
+    dptr=&derived ;
 
     dptr->d=300;
     cout << "dptr is derived type pointer \n";
