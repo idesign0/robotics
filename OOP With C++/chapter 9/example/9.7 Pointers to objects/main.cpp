@@ -30,7 +30,7 @@ int main(){
     }
 
     for(i=0;i<sizee;i++){
-        cout <<"Item"<<i+1<<" ";
+        cout <<"Item"<<i+1<<"\n";
         d->show();
         d++;
     }
