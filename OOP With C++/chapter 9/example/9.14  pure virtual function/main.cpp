@@ -9,7 +9,7 @@ public:
 class c:public balagurusamy{
 public:
     void example(){
-        cout << "C text book written by balagurusamy ";
+        cout << "C text book written by balagurusamy  ";
     }
 };
 
