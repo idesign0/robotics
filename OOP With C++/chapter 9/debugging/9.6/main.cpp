@@ -17,7 +17,7 @@ public:
         cout << "Print version of derived class\n";
     }
     void show(){
-        cout << "Show version of derived class\n";
+        cout << "Show version of derived class \n";
     }
 };
 
