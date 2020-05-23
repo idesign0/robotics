@@ -15,5 +15,11 @@ int main(){
         cout<<i*i<<"\n";
     }
     cout<<setw(10)<<"TOTAL = "<<setiosflags(ios::fixed)<<setw(10)<<setprecision(2)<<1234.56<<endl;
+    char ch;
+    char c;
+    c=cin.get(ch).get();
+
+    cout << ch <<" "<<c<< endl;
+    cout<<setw(12)<<setiosflags(ios::left | ios::showpos) << 15;
     return 0;
 }
