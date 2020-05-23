@@ -14,19 +14,14 @@ public:
 
 ostream & form(ostream & output){
     output.precision(2);
-    //cout.fill('_');
+    cout.fill('_');
     output.setf(ios::showpoint);
-    output<<setiosflags(ios::fixed)<<setw(20)<<setiosflags(ios::fixed)<<setiosflags(ios::left);
+    output<<setiosflags(ios::fixed)<<setw(20);
     return output;
 }
 
 ostream & space(ostream & output){
-    output<<setw(20)<<setiosflags(ios::left);
-    return output;
-}
-
-ostream & space_right(ostream & output){
-    output<<setw(20)<<setiosflags(ios::right);
+    output<<setw(20);
     return output;
 }
 
