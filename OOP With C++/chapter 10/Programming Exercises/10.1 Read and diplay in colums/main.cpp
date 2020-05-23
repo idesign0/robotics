@@ -14,13 +14,14 @@ public:
 
 ostream & form(ostream & output){
     output.precision(2);
+    cout.fill('_');
     output.setf(ios::showpoint);
-    output<<setiosflags(ios::fixed)<<setw(10);
+    output<<setiosflags(ios::fixed)<<setw(20);
     return output;
 }
 
 ostream & space(ostream & output){
-    output<<setw(10);
+    output<<setw(20);
     return output;
 }
 
@@ -57,7 +58,7 @@ int main(){
                     cout<<endl<<space<<"NAME"<<space<<"CODE"<<space<<"COST"<<"\n";
                     for(i=0;i<countt;i++){
                         o_softwares[i]->display();
-                    }
+                    }break;
             case 3 : exit(0);
         }
     }
