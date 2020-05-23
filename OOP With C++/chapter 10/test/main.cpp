@@ -14,6 +14,6 @@ int main(){
         cout.width(10);
         cout<<i*i<<"\n";
     }
-    cout<<setw(10)<<"TOTAL = "<<setiosflags(ios::fixed)<<setw(10)<<setprecision(2)<<1234.567<<endl;
+    cout<<setw(10)<<"TOTAL = "<<setiosflags(ios::fixed)<<setw(10)<<setprecision(2)<<1234.56<<endl;
     return 0;
 }
