@@ -21,12 +21,12 @@ ostream & form(ostream & output){
 }
 
 ostream & space(ostream & output){
-    output<<setw(20)<<setiosflags(ios::left);
+    output<<setw(20)<<setiosflags(ios::right);
     return output;
 }
 
-ostream & space_right(ostream & output){
-    output<<setw(20)<<setiosflags(ios::right);
+ostream & space_left(ostream & output){
+    output<<setw(20)<<setiosflags(ios::left);
     return output;
 }
 
@@ -38,7 +38,7 @@ softwares::softwares(){
 }
 
 void softwares::display(){
-    cout <<form << name << space << code << space << cost <<endl;
+    cout <<space_left<<name << space << code << space << cost <<endl;
 }
 int main(){
     const int sizee=10;
@@ -59,9 +59,9 @@ int main(){
             case 1 : o_softwares[countt]=new softwares;
                      o_softwares[countt];
                      countt++;break;
-            case 2 :
-                    cout<<endl<<space<<"NAME"<<space<<"CODE"<<space<<"COST"<<"\n";
+            case 2 :cout<<endl<<space_left<<"NAME"<<space<<"CODE"<<space<<"COST"<<"\n";
                     for(i=0;i<countt;i++){
+                        cout.setf(ios::left,ios::adjustfield);
                         o_softwares[i]->display();
                     }break;
             case 3 : exit(0);
