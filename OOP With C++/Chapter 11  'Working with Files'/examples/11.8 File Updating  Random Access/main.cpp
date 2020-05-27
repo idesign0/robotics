@@ -9,66 +9,94 @@ class inventory{
     int code;
     float cost;
 public:
-    void readdata();
-    void writedata();
-};
-
-void inventory::readdata(){
-    cout<<"Enter name : ";cin>>name;
-    cout<<"Enter code : ";cin>>code;
-    cout<<"Enter cost : ";cin>>cost;
-}
-
-void inventory::writedata(){
-    cout<<setw(10)<<name
-        <<setw(10)<<code
-        <<setprecision(2)
-        <<setw(10)<<cost
-        <<endl;
+    void getdata(){
+        cout << "Name : ";cin>>name;
+        cout << "Code : ";cin>>code;
+        cout << "Cost : ";cin>>cost;
+        cout<<endl;
     }
+    void putdata(){
+        cout.setf(ios::fixed);
+        cout<<setw(10)<<name
+            <<setw(10)<<code
+            <<setprecision(2)<<setw(10)<<cost<<endl;
+    }
+};
 
 int main(){
     inventory item;
-    fstream inoutfile; // input/output stream
+    fstream inoutfile;
 
-    inoutfile.open("Stock.dat", ios::ate | ios:: in | ios::out | ios::binary);
-    inoutfile.seekg(0,ios::beg); // go to start
+    /*<<<<<<<<<<<<<<<< Adding new FILe >>>>>>>>>>>>>>>>>>>>>*/
 
-    cout << "Current contents of stock : " << "\n";
+    inoutfile.open("STOCK.DAT",ios::in | ios::out | ios::ate |ios::binary | ios::app);
 
-    while(inoutfile.read((char *) &item,sizeof item)){
-        item.writedata();
+    cout << "\nAdd Data to new file(2 raws): \n";
+    for(int i=0;i<2;i++){
+        item.getdata();
+        inoutfile.write((char*)& item,sizeof(item));
     }
 
-    inoutfile.clear(); // turn of EOF flag
+    inoutfile.seekg(0); // sending pointer to 0th byte
 
-/*>>>>>>>>>>>>>>>>>>>>>> Add one more item <<<<<<<<<<<<<<<<<<<<*/
+    /*<<<<<<<<<<<<<<<< Displaying content of new FILe >>>>>>>>>>>>>>>>>>>>>*/
 
-    cout <<"\nADD AN ITEM\n";
+    cout << "Contents of the file : " << endl;
+    while(inoutfile.read((char*)& item,sizeof(item))){
+        item.putdata();
+    }
 
-    item.readdata();
-    char ch;
-    inoutfile.write((char*)&item,sizeof(item));
+    inoutfile.clear(); // turn off EOF flag
 
-    // display the appended file
+    /*<<<<<<<<<<<<<<<< Add one more column >>>>>>>>>>>>>>>>>>>>>*/
+
+    item.getdata();
+    inoutfile.write((char*)& item,sizeof(item));
 
     inoutfile.seekg(0);
 
-    cout << "Contents of appended file\n";
+    cout << "Contents of appended file : " << endl;
 
-    while(inoutfile.read((char*)&item,sizeof(item))){
-        item.writedata();
+    while(inoutfile.read((char*)& item,sizeof(item))){
+        item.putdata();
     }
+    inoutfile.clear();
 
-    //find number of objects in the file
+    //find number of the objects in file
 
     int last = inoutfile.tellg();
-    int n= last/sizeof(item);
+    int n = last/sizeof(inventory);
 
-    cout << "Number of objects = " << n << endl;
-    cout << "Total bytes in the file = " << last << endl;
+    cout << "\nNumber of objects : "<<n <<endl;
+    cout << "\nTotal number of bytes : "<<last<<endl;
+
+    /*<<<<<<<<<<<<<<<< modify one object >>>>>>>>>>>>>>>>>>>>>*/
+
+    cout << "Object number to be modified : ";
+    int object;
+    cin>>object;
+
+    int location = (object-1)*sizeof(item);
+
+    if(inoutfile.eof())
+    inoutfile.clear();
+
+    cout << "Enter new values of object : "<<endl;
+    inoutfile.seekp(location);
+    item.getdata();
+    inoutfile.write((char*)& item,sizeof(item))<<flush;
 
 
+    /*<<<<<<<<<<<<<<<< New updated FILe >>>>>>>>>>>>>>>>>>>>>*/
 
+    inoutfile.seekg(0);
+
+    cout << "Contents of the file : " << endl;
+    while(inoutfile.read((char*)& item,sizeof(item))){
+        item.putdata();
+    }
+
+    inoutfile.close();
+
+    return 0;
 }
-
