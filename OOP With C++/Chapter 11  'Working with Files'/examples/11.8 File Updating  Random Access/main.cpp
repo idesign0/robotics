@@ -29,14 +29,15 @@ int main(){
 
     /*<<<<<<<<<<<<<<<< Adding new FILe >>>>>>>>>>>>>>>>>>>>>*/
 
-    inoutfile.open("STOCK.DAT",ios::in | ios::out | ios::ate |ios::binary | ios::app);
+    inoutfile.open("STOCK.DAT",ios::in | ios::out | ios::ate |ios::binary );
 
-    cout << "\nAdd Data to new file(2 raws): \n";
+ /*   cout << "\nAdd Data to new file(2 raws): \n";
     for(int i=0;i<2;i++){
         item.getdata();
         inoutfile.write((char*)& item,sizeof(item));
     }
 
+   */
     inoutfile.seekg(0); // sending pointer to 0th byte
 
     /*<<<<<<<<<<<<<<<< Displaying content of new FILe >>>>>>>>>>>>>>>>>>>>>*/
