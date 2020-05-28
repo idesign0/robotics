@@ -1,3 +1,5 @@
+// i am not able to give inputs through command line yet.. so i modified the program and it is not serving its actual purpose :)
+
 #include<iostream>
 #include<fstream>
 #include<stdlib.h>
