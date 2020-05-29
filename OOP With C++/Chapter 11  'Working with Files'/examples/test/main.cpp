@@ -1,30 +1,42 @@
 #include<iostream>
 #include<fstream>
-#include<cstring>
+#include<stdlib.h>
 using namespace std;
 
 int main(){
-    char name[20];
+    ifstream inf1,inf2;
 
-    fstream iof;
-    iof.open("test.text",ios::out | ios::in | ios::app );
+    inf1.open("country");
+    inf2.open("capital");
 
-    cout << "Enter string name : ";
-    cin >> name;
+    ofstream of;
+    of.open("results.text");
 
-    int len = strlen(name);
+    char name[80];
 
-    char ch;
+    for(int i=0;i<10;i++){
 
-    for(int i=0;i<len;i++){
-        iof.put(name[i]);
+        if(inf1.eof() !=0 ){
+            cout<< "....";
+            exit(1);
+        }
+
+        inf1.getline(name,80);
+        of << "Capital of " << name ;
+        cout << "Capital of " << name ;
+
+        if(inf2.eof() !=0 ){
+            cout<< "....";
+            exit(1);
+        }
+
+        inf2.getline(name,80);
+
+        of.seekp(0,ios::end);
+
+        cout << name << "\n";
+        of << name << "\n";
     }
-    iof.seekg(0); // goto start
-
-    while(iof.eof()==0){
-        iof.get(ch);
-        cout<<ch;
-    }
-    iof.close();
     return 0;
+
 }
