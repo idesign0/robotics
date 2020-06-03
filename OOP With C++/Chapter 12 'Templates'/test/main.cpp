@@ -9,7 +9,7 @@ class vectors{
 public:
     vectors(){
     }
-    vectors(int m,T *a){ // create vector
+    vectors(int m,T *a){ // create vectors
         sizee=m;
         v = new T[sizee];
 
