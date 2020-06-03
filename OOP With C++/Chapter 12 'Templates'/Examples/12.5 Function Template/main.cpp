@@ -10,7 +10,7 @@ void swapp(T &x,T &y){
     y=temp;
 }
 
-void fun(int m,int n,int a,int b){
+void fun(int m,int n,float a,float b){
     cout << "m and n Before swap : " << m << " " <<n<<" \n";
     swap(m,n);
     cout << "m and n After swap : " << m << " " <<n<<" \n";
