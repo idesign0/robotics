@@ -13,7 +13,7 @@ t find_minimum(t arr[]){
             MIN=arr[i];
                 }
             }
-            return MIN;
+    return MIN;
 }
 
 int main(){
