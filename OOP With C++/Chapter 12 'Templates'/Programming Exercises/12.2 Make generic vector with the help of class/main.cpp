@@ -48,5 +48,20 @@ int main(){
     arr_int.multiply_elements(10);
     arr_int.display_vectors();
 
+
+    vectorr<float,10> arr_float;
+
+    cout << "\nAdding Data element : " << endl;
+    arr_float.add_elements();
+    arr_float.display_vectors();
+
+    cout << "\nModifying the vector : " << endl;
+    arr_float.modify_elements(5,4);
+    arr_float.display_vectors();
+
+    cout << "\nMultiplying by scaler quantity : " << endl;
+    arr_float.multiply_elements(10);
+    arr_float.display_vectors();
+
     return 0;
 }
