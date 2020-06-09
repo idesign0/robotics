@@ -44,7 +44,7 @@ int main()
     v2.display();
 
     float r = v1*v2;
-    cout << "R = "<<r;
+    cout << "R = "<< r;
 
     return 0;
 }
