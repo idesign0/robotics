@@ -10,17 +10,10 @@ void test(int x){
             if(x==-1) throw 1.0; //double
         cout << "End of try-block \n";
     }
-    catch(char c){
-        cout << "Caught a character \n";
+    catch(...){
+        cout << "Caught an exception \n";
     }
-    catch(int    c){
-        cout << "Caught a integer \n";
     }
-    catch(double c){
-        cout << "Caught a double \n";
-    }
-    cout << "End of try and catch statement !\n";
-}
 
 int main(){
     cout << "Testing multiple catches : \n";
@@ -30,7 +23,5 @@ int main(){
     test(0);
     cout << "x == -1 \n";
     test(-1);
-    cout << "x == 2 \n";
-    test(2);
     return 0;
 }
