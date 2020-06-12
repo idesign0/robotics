@@ -7,7 +7,7 @@ void test(int x) throw(char,double){
         if(x==1) throw x;
     else
         if(x==-1) throw 1.0;
-    cout << "End of function block \n";
+    cout << "End of function block \n" ;
 }
 
 int main(){
