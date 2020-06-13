@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-const int sizee=5;
+
 int main(){
     int a,b;
     float r;
