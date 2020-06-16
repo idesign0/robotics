@@ -25,6 +25,8 @@ int main(){
         *p=(rand()/100);
 
     //list 1
+    p=list1.end();
+    list1.insert(p,10);
     cout << "List 1 : " << endl;
     display(list1);
 
