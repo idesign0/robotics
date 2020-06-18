@@ -3,36 +3,37 @@
 #include<string>
 using namespace std;
 
-typedef map<string,int> phonemap;
+typedef map<string,  0> phonemap;
 
 int main(){
     string name;
     int number;
     phonemap phone;
 
-    cout << "Enter 3 set of name and numbers : \n";
+    cout << "Enter name and number : " << endl;
     for(int i=0;i<3;i++){
-        cin>>name;
-        cin>>number;
-        phone[name] = number; // put them in map
+        cin>>name>>number;
+        phone[name]=number;
     }
 
-    phone["jacob"]=4444; // insert jacob
-    phone.insert(pair<string,int>("Bose",5555));
+    phonemap :: iterator p = phone.begin();
 
-    int n = phone.size();
-    cout << "Size of Map : " << n << endl;
-
-    cout << "Lists of telephone number : " << endl;
-    phonemap :: iterator itr;
-    for(itr=phone.begin();itr != phone.end();itr++){
-        cout << (*itr).first << " " << (*itr).second << endl;
+    //display
+    cout << "Automatically sorted list : \n";
+    for(p ; p!=phone.end() ; p++){
+        cout << (*p).first <<"\t"<<(*p).second <<endl;
     }
 
-    cout << "\n";
-    cout << "Enter name : ";cin>> name;
-    number = phone[name];
+    // add new details
+    phone["Arjun"]=6534;
 
-    cout << "Number : " << number <<endl;
-    return 0;
+    //insert the list
+    phone.insert(pair<string,int>("shivani",423));
+
+    //display
+    cout << "Automatically sorted list : \n";
+    for(p=phone.begin(); p!=phone.end() ; p++){
+        cout << (*p).first <<"\t"<<(*p).second <<endl;
+    }
+
 }

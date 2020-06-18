@@ -20,14 +20,14 @@ int main(){
     cout << "Enter 5 integer values : ";
 
     vec :: iterator itr; // iterator
-    for(itr=v.begin();itr!=v.end()-2;itr++){
+    for(itr=v.begin();itr!=v.end();itr++){
         cin>>x;
         *itr = x;
     }
 
     cout << "Size after adding five values : " << v.size() <<"\n";
 
-
+    cout << *v.begin()<<" ";
     cout << v.back()<<" ";
 
     itr=v.end()-1;

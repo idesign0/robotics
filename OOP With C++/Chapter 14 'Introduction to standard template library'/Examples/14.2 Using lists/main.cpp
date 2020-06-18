@@ -70,6 +70,7 @@ int main(){
     cout << "Reversing the list : ";
     display(listA);
 
+    //removing the element
     list1.remove(200);
     display(list1);
 
