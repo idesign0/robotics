@@ -20,7 +20,7 @@ int main(){
     cout << "Enter 5 integer values : ";
 
     vec :: iterator itr; // iterator
-    for(itr=v.begin();itr!=v.end();itr++){
+    for(itr=v.begin();itr<v.end();itr++){
         cin>>x;
         *itr = x;
     }
