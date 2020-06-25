@@ -13,7 +13,7 @@ int main(){
     s1.resize(10);
     cout << "Capacity of string : " << s1.capacity() << endl;
 
-    s1.shrink_to fit(10);
+    s1.shrink_to_fit(10);
     cout << "Capacity of string : " << s1.capacity() << endl;
 
     return 0;
