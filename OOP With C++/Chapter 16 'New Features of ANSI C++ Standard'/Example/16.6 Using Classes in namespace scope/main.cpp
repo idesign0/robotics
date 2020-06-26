@@ -10,6 +10,7 @@ namespace classes{
         test(int a){
             m=a;
         }
+
         void display(){
         cout << "m = "<< m << endl;
         }
