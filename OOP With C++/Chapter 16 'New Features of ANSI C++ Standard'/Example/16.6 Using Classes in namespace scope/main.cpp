@@ -23,7 +23,7 @@ int main(){
     //using directive
     using namespace classes;
     test t2(400);
-    t2.display();
+    t2.display() ;
 
     return 0;
 }
