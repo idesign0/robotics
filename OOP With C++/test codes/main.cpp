@@ -31,7 +31,7 @@ public:
 };
 
 int main(){
-    stringg dhruv("HII i am dhruv ");
+    stringg dhruv("HII i am dhruv  ");
     dhruv.display();
 
     dhruv = "HIi i am not dhruv ";
