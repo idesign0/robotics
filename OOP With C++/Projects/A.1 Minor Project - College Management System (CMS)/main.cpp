@@ -10,3 +10,19 @@
 // handling simple exception
 // applications for file handling concepts for performing operations, such as read, write, append, check for various i/o errors, etc
 // use of various i/o manipulators to display output in formatted manner
+
+#include<iostream>
+#include<cstdlib>
+#include<cstdio>
+#include<cstring>
+#include<fstream>
+#include<conio.h>
+
+using namespace std;
+
+char un[20];
+
+class Admin{
+    char name[20];
+    int totalsub;
+};
