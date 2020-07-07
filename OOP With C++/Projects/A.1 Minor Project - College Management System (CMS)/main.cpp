@@ -34,5 +34,39 @@ public:
     //this function is used to get the student data entry from the ADMIN portal... all the records entries are made by this method
     void getstdata(){
 
+        cout << "\nEnter the student Name : ";
+        gets(name);
+
+        cout << "\nEnter student ID/roll number : ";
+        cin >> rollno;
+
+        cout << "\nEnter student Father's name : ";
+        gets(fname);
+
+        cout << "\nEnter the Mobile Number : ";
+        gets(mobile);
+
+        cout << "\nEnter E-mail id of student : ";
+        cin >> mail;
+
+        cout << "\nEnter the total subject : ";
+        cin >> totalsub;
+
+        for(int i=0;i<totalsub;i++){
+            cout << "\nEnter the subject "<<i+1<<" name : ";
+            cin>> subject[i];
+        }
+
+        cout << "\nCreate a login Password : ";
+        cin >> passwd;
+
+        cout << "\nEnter the Unique keyword to recover Password : ";
+        cin >> rpasswd;
+
+        cout << "\n\nPlease Note your Username is ID/Roll no.\n";
     }
 };
+
+int main(){
+
+}
