@@ -31,7 +31,7 @@ class Admin{
 public:
     char rollno[15];
 
-    //this function is used to get the student data entry from the ADMIN portal... all the records entries are made by this method
+    // This function is used to get the student data entry from the ADMIN portal... all the records entries are made by this method
     void getstdata(){
 
         cout << "\nEnter the student Name : ";
@@ -65,8 +65,54 @@ public:
 
         cout << "\n\nPlease Note your Username is ID/Roll no.\n";
     }
+
+    // This function authenticates the login of both the students and faculties with their reference to their reference to their unique ID/PASSWORD login is provided
+    int login(){
+        if((strcmp(::un,rollno))==0){
+        cout << "Enter the login password : ";
+        int len=0;
+        len=strlen(passwd);
+
+        char inputpasswd[20];
+        int i=0;
+        for(i;i<len;i++){
+            inputpasswd[i]=getch();
+            cout << "#";
+        }
+        inputpasswd[i]=NULL;
+        //cout <<"\nThe Entered Password is " << inputpasswd;
+
+        if((strcmp(::un,rollno)==0)&&(strcmp(passwd,inputpasswd))==0){
+            return 1;
+        }else
+            return 0;
+        }else
+            return 0;
+    }
+
+    // This function displays the faculty profile to the faculty at their respective portal
+    int faprofile(){
+        if((strcmp(::un,rollno)==0)){
+            cout << "\nFaculty Name          : " << name;
+            cout << "\nFaculty Father's Name : " << fname;
+            cout << "\nFaculty Mobile NO.    : " << mobile;
+            cout << "\nFaculty E-mail ID     : " << mail;
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 };
 
 int main(){
-
+        char name[20]="hiii";
+        char sname[20];
+        cout << strlen(name) << endl << endl;
+        int i=0;
+        for(i;i<strlen(name);i++){
+            sname[i]=getch();
+            cout << "#";
+        }
+        sname[i]=NULL;
+        cout << sname;
 }
