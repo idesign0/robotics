@@ -25,4 +25,14 @@ char un[20];
 class Admin{
     char name[20];
     int totalsub;
+    char subject[10][10];
+    char mobile[15], mail[50], fname[20];
+    char passwd[20],rpasswd[20];
+public:
+    char rollno[15];
+
+    //this function is used to get the student data entry from the ADMIN portal... all the records entries are made by this method
+    void getstdata(){
+
+    }
 };
