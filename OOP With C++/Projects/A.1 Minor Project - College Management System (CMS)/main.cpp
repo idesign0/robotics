@@ -408,6 +408,7 @@ int main(){
             cout << "\nPress 8 to Delete a student record";
             cout << "\nPress 9 to Exit";
             cout << "\n\nEnter your choice : "; cin >> temp;
+
         }
     }
 }
