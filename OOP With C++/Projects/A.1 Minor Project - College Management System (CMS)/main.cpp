@@ -102,17 +102,193 @@ public:
             return 0;
         }
     }
+
+    // This function represents different subjects of the faculty at their portal
+    int knowfasub(){
+        if((strcmp(::un,rollno))==0){
+            cout << "\nFaculty Total subject : " << totalsub;
+            for(int i=0;i<totalsub;i++){
+                cout << "\n\tSubject " << i+1 << subject[i];
+            }
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    // This function help a faculty to add a subject in their profile;
+    void addfasub(){
+        if((strcmp(::un,rollno))==0){
+            cout << "\nEnter the new subject : ";
+            cin >> subject[totalsub];
+            totalsub++;
+            cout << "\n\nNew Subject added Successfully...";
+        }
+    }
+
+    // This  functions helps faculty to delete the subject from their module
+    void delfasub(){
+        knowfasub();
+        int del =0; // variable for number of subjects to be deleted
+        if((strcmp(::un,rollno))==0){
+                if(totalsub ==0 || totalsub <0){
+                    totalsub=0;
+                    cout << "\nNone subject exits...";
+                    getch();
+                    exit(0);
+                }
+
+                cout << "\nEnter Subjects numbers to be deleted : "; cin >> del;
+                if(del==totalsub){
+
+                    totalsub--;
+                    strcpy(subject[totalsub]," ");
+
+                }else if(totalsub==1)
+                {
+                    totalsub=0;
+                    strcpy(subject[totalsub]," ");
+                }else{
+                    del--;
+                    strcpy(subject[totalsub]," ");
+                    for(int p=del;p<totalsub;p++){
+                        strcpy(subject[p],subject[p+1]);
+                    }
+                    totalsub--;
+                }
+                cout << "Records updated Successfully...";
+        }
+    }
+
+    // This Function helps a faculty to modify his personal profile
+    void modfaprofile(){
+        if((strcmp(::un,rollno))==0){
+            cout << "\nThe Profile Details are : ";
+            cout << "\n 1. Faculty E-mail : " << mail;
+            cout << "\n 2. Faculty Mobile : " << mobile;
+
+            int g=-1;
+            cout << "\nEnter Detail Number to Modify : ";
+            cin >> g;
+
+            if(g==1){
+                char nmail[50];
+                cout << "\nEnter mew email address : ";
+                cin >> nmail;
+                strcpy(mail,nmail);
+                cout << "\nRecords Updated Successfully...";
+            }
+
+            if(g==2){
+                char nmobile[15];
+                cout << "\nEnter the new mobile Number : ";
+                gets(nmobile);
+                strcpy(mobile,nmobile);
+                cout << "\nRecords Updated Successfully...";
+            }else
+                cout << "\nInvalid input Provided...";
+        }
+    }
+
+    // This Function displays the student profile at the student portal
+    int stprofile(){
+        if((strcmp(::un,rollno))==0){
+            cout << "\nStudent Name          : " << name;
+            cout << "\nStudent Father's Name : " << fname;
+            cout << "\nStudent Mobile Number : " << mobile;
+            cout << "\nStudent E-mail ID     : " << mail;
+        }else
+            return 0;
+    }
+
+    // This Function display the different enrolled subjects of the respective students...according to their profile.
+    int knowstsub(){
+        if((strcmp(::un,rollno))==0){
+            cout << "\nStudent Total subject : " << totalsub;
+            for(int i=0;i<totalsub;i++){
+                cout << "\n\tSubject " << i+1 << subject[i];
+            }
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    // This function help a student to add a subject in their profile;
+    void addstsub(){
+        if((strcmp(::un,rollno))==0){
+            cout << "\nEnter the new subject : ";
+            cin >> subject[totalsub];
+            totalsub++;
+            cout << "\n\nNew Subject added Successfully...";
+        }
+    }
+
+    // This  functions helps students to delete the subject from their module
+    void delfasub(){
+        knowstsub();
+        int del =0; // variable for number of subjects to be deleted
+        if((strcmp(::un,rollno))==0){
+                if(totalsub ==0 || totalsub <0){
+                    totalsub=0;
+                    cout << "\nNone subject exits...";
+                    getch();
+                    exit(0);
+                }
+
+                cout << "\nEnter Subjects numbers to be deleted : "; cin >> del;
+                if(del==totalsub){
+
+                    totalsub--;
+                    strcpy(subject[totalsub]," ");
+
+                }else if(totalsub==1)
+                {
+                    totalsub=0;
+                    strcpy(subject[totalsub]," ");
+                }else{
+                    del--;
+                    strcpy(subject[totalsub]," ");
+                    for(int p=del;p<totalsub;p++){
+                        strcpy(subject[p],subject[p+1]);
+                    }
+                    totalsub--;
+                }
+                cout << "Records updated Successfully...";
+        }
+    }
+
+    // This Function helps a student to modify his personal profile
+    void modfstrofile(){
+        if((strcmp(::un,rollno))==0){
+            cout << "\nThe Profile Details are : ";
+            cout << "\n 1. Student E-mail : " << mail;
+            cout << "\n 2. Student Mobile : " << mobile;
+
+            int g=-1;
+            cout << "\nEnter Detail Number to Modify : ";
+            cin >> g;
+
+            if(g==1){
+                char nmail[50];
+                cout << "\nEnter mew email address : ";
+                cin >> nmail;
+                strcpy(mail,nmail);
+                cout << "\nRecords Updated Successfully...";
+            }
+
+            if(g==2){
+                char nmobile[15];
+                cout << "\nEnter the new mobile Number : ";
+                gets(nmobile);
+                strcpy(mobile,nmobile);
+                cout << "\nRecords Updated Successfully...";
+            }else
+                cout << "\nInvalid input Provided...";
+        }
+    }
 };
 
 int main(){
-        char name[20]="hiii";
-        char sname[20];
-        cout << strlen(name) << endl << endl;
-        int i=0;
-        for(i;i<strlen(name);i++){
-            sname[i]=getch();
-            cout << "#";
-        }
-        sname[i]=NULL;
-        cout << sname;
+
 }
