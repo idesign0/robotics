@@ -225,7 +225,7 @@ public:
     }
 
     // This  functions helps students to delete the subject from their module
-    void delfasub(){
+    void delstsub(){
         knowstsub();
         int del =0; // variable for number of subjects to be deleted
         if((strcmp(::un,rollno))==0){
@@ -287,8 +287,127 @@ public:
                 cout << "\nInvalid input Provided...";
         }
     }
-};
 
+    // This Function allow the admin to make a new record entry for the different new faculties...new faculty records are uploaded with the help of this functions
+    void getfadata(){
+
+        cout << "\nEnter the Faculty Name : ";
+        gets(name);
+
+        cout << "\nEnter Faculty ID/roll number : ";
+        cin >> rollno;
+
+        cout << "\nEnter Faculty Father's name : ";
+        gets(fname);
+
+        cout << "\nEnter the Mobile Number : ";
+        gets(mobile);
+
+        cout << "\nEnter E-mail id : ";
+        cin >> mail;
+
+        cout << "\nEnter the total subject : ";
+        cin >> totalsub;
+
+        for(int i=0;i<totalsub;i++){
+            cout << "\nEnter the subject "<<i+1<<" name : ";
+            cin>> subject[i];
+        }
+
+        cout << "\nCreate a login Password : ";
+        cin >> passwd;
+
+        cout << "\nEnter the Unique keyword to recover Password : ";
+        cin >> rpasswd;
+
+        cout << "\n\nPlease Note your User-name is ID/Roll no.\n";
+
+    }
+
+    // This function display all the relevant information to the admin related to the students at the admin portal
+    void stdisplay(){
+        cout << "\nStudent Name : " << name ;
+        cout << "\nStudent ID/Roll no. : " << rollno ;
+        cout << "\nStudent Father's name : " << fname;
+        cout << "\nStudent Mobile No. : " << mobile;
+        cout << "\nStudent E-mail ID : " << mail;
+        cout << "\nStudent Subjects : " << totalsub;
+        for(int i=0;i<totalsub;i++){
+            cout << "\n     Subjects " << i+1 <<" : "<<subject[i];
+        }
+        if(totalsub==0){
+            cout << "( None Subjects specified...)";
+        }
+    }
+
+    // This function display all the relevant information to the admin related to the faculty at the admin portal
+    void fadisplay(){
+        cout << "\nFaculty Name : " << name ;
+        cout << "\nFaculty ID/Roll no. : " << rollno ;
+        cout << "\nFaculty Father's name : " << fname;
+        cout << "\nFaculty Mobile No. : " << mobile;
+        cout << "\nFaculty E-mail ID : " << mail;
+        cout << "\nFaculty Subjects : " << totalsub;
+        for(int i=0;i<totalsub;i++){
+            cout << "\n     Subjects " << i+1 <<" : "<<subject[i];
+        }
+        if(totalsub==0){
+            cout << "( None Subjects specified...)";
+        }
+    }
+}a;
+Admin f;
+        // a & f are the objects of the class Admin
 int main(){
+    int choice;
+    system("cls");
+    cout << "\n\n\n\t\t\tWelcome to RKGIT Database Portal ";
+    cout << "\n\n\n\t\t\tEnter to Continue ";
+    getch();
+    system("cls");
 
+    cout << "\n\n\n\t\t\tPress 1 For Admin Portal : ";
+    cout << "\n\t\t\tPress 2 For Faculty Portal : ";
+    cout << "\n\t\t\tPress 3 For Student Portal : ";
+    cout << "\n\n\t\t\tEnter your choice : ";
+    cin >> choice;
+
+    if(choice==1){
+        char adminuser[20],adminpass[20];
+        cout << "\n\t\tWelcome To admin Login Portal ";
+        cout << "\n\nEnter the Username : ";
+        cin >> adminuser;
+        cout << "\n\nEnter the Password : ";
+
+        int k=0;
+        for(k;k<8;k++){
+            adminpass[k]=getch();
+            cout << "*";
+        }
+        adminpass[k]=NULL;
+
+        if((strcmp(adminuser,"admin")==0)&&(strcmp(adminpass,"password"))==0){
+            system("cls");
+        }else{
+            cout << "\n\n\t\t\t Invalid Access to portal";
+            cout << "\n\n\t\t\t Thank you !!";
+        }
+
+        char opera = 'y';
+
+        do{
+            int temp;
+            cout << "\n\t\t\tWelcome to admin portal";
+            cout << "\n\n Press 1 to add a faculty record";
+            cout << "\nPress 2 to add multiple record of Faculty";
+            cout << "\nPress 3 to view all records of faculty";
+            cout << "\nPress 4 to Delete a faculty record";
+            cout << "\nPress 5 to add a Student record";
+            cout << "\nPress 6 to add multiple record of student";
+            cout << "\nPress 7 to view all records of Student";
+            cout << "\nPress 8 to Delete a student record";
+            cout << "\nPress 9 to Exit";
+            cout << "\n\nEnter your choice : "; cin >> temp;
+        }
+    }
 }
