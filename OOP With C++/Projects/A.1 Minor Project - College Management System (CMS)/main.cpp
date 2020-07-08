@@ -90,6 +90,27 @@ public:
             return 0;
     }
 
+    //THis functions helps both students and faculty to recover the password with the help of unique keyword provided by the admin
+    int recover(){
+        // cout << "\nThe input username is : " << ::un ;
+        char key[20];
+        if((strcmp(::un,rollno))==0){
+            cout << "\nEnter the Unique password (Provided by admin)";
+            cin >> key;
+            if(strcmp(key,rpasswd)==0){
+                cout << "\nYOu are valid User.";
+                cout << "\nYour Password is : " << passwd;
+                cout << "Please login to exit again ";
+                return 1;
+            }else{
+                return 0;
+            }
+        }else{
+            return 0;
+        }
+
+    }
+
     // This function displays the faculty profile to the faculty at their respective portal
     int faprofile(){
         if((strcmp(::un,rollno)==0)){
@@ -409,6 +430,6 @@ int main(){
             cout << "\nPress 9 to Exit";
             cout << "\n\nEnter your choice : "; cin >> temp;
 
-        }
+        }while();
     }
 }
