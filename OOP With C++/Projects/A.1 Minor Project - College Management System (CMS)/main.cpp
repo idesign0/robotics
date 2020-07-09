@@ -678,4 +678,177 @@ int main(){
             }
         }while(opera=='Y' || opera=='y');
     }
+
+    //begin of faculty view portal
+    if(choice=2){
+        system("cls");
+        char un[20];
+        int val,s=0;
+
+        cout << "\n\t\t\tWelcome to faculty Login Page";
+        cout << "\n\nEnter the Username : ";
+        cin >> un;
+
+        fstream fs;
+        fs.open("fainfo.txt",ios::in | ios::binary);
+        fs.seekg(0);
+        while(!fs.eof()){
+            val = -1;
+            fs.read((char*)&f,sizeof(Admin));
+            val=f.login();
+            if(val==1){
+                s=1;
+                break;
+            }
+        }
+        fs.close();
+        if(s==1){ // if first login is valid
+            system("cls");
+        }
+        if(s!=1){ // is first login is invalid
+            system("cls");
+            int ho=1;
+            cout << "\n\n\t\tYour Login Credentials are in-correct ";
+            cout << "\nThe Username is Your ID/Roll no. ";
+            cout << "\nThe Password is Case Sensitive ";
+            cout << "\nPress 1 to Re-Cover Password & 2 to Re-Attempt Login ";
+            cout << "\nEnter The Choice : ";
+            cin >> ho;
+
+            if(ho==1){ // recover password
+                cout << "Enter The Username : ";
+            cin >> ::un;
+            fstream fs;
+            fs.open("fainfo.txt",ios::in | ios::binary);
+            fs.seekg(0);
+            int re,su=-1;
+            while(!fs.eof()){
+                re=-1;
+                fs.read((char*)&f,sizeof(Admin));
+                re=f.recover();
+                if(re==1){
+                    su=1;
+                    break;
+                }
+            }
+            fs.close();
+
+            if(su==1){
+                getch();
+                system("cls");
+                cout << "\n\n\n\n\t\tThank you !";
+                getch();
+                exit(0);
+            }else{
+                cout << "\nYou are a Invalid User.";
+                getch();
+                exit(0);
+            }
+            } // recover password
+
+            if(ho==2){ //re-attempt of login
+                cout << "\n\nEnter The Username : ";
+                cin >> ::un;
+                fstream fs;
+                fs.open("fainfo.txt",ios::in | ios::binary);
+                fs.seekg(0);
+                int suc=-1,valu; // valu for storing login() returned value , suc for success login
+                while(!fs.eof()){
+                    valu=-1;
+                    fs.read((char*)&f,sizeof(Admin));
+                    valu = f.login();
+                    if(valu==1){
+                        suc=1;
+                        break;
+                    }
+                }
+                    fs.close();
+                    if(suc==1){
+                        system("cls");
+                    }else{
+                        getch();
+                        cout << "\nYou are an Invalid User";
+                        cout << "\nThank You !!!";
+                        getch();
+                        exit(0);
+                        exit(0);
+                        }
+                }
+
+                if(ho!=1 && ho!=2){
+                    cout << "\n\nInvalid Input Provided.";
+                    cout << "\n\n\t\tThank You !!!";
+                    getch();
+                    exit(0);
+                }
+        }   // Closing of first Invalid login (Forgot password & recover password)
+            // begin of faculty;
+
+        char con='y';
+        do{
+            system("cls");
+            cout << "\n\n\t\t\tWelcome to Faculty Panel  ";
+            cout << "\n\n\t\t\t\t\t\t    Your UserID is : " << :: un;
+            cout << "\n\nPress 1 to View Your Profile.";
+            cout << "\nPress 2 to Know your Subjects.";
+            cout << "\nPress 3 to Add a Subjects.";
+            cout << "\nPress 4 to Delete a Subjects.";
+            cout << "\nPress 5 to Modify your Profile.";
+            int choice;
+            cin >> choice;
+
+            if(choice=1){
+                fstream fs;
+                fs.open("fainfo.txt",ios::in);
+                fs.seekg(0);
+                int x;
+                while(!fs.eof()){
+                    x=0;
+                    fs.read((char*)&f,sizeof(Admin));
+                    x=f.faprofile();
+                    if(x==1){
+                        break;
+                    }
+                }
+                fs.close();
+            }// closing of choice 1;
+
+            if(choice==2){
+                fstream fs;
+                fs.open("fainfo.txt",ios::in);
+                fs.seekg(0);
+                int y;
+                while(!fs.eof()){
+                    y=0;
+                    fs.read((char*)&f,sizeof(Admin));
+                    y=f.faprofile();
+                    if(y==1){
+                        break;
+                    }
+                }
+                fs.close();
+            } // closing of choice = 2;
+
+            if(choice==3){
+                fstream fs;
+                fstream fs1;
+                fs.open("fainfo.txt",ios::in | ios::binary);
+                fs1.open("tmpfainfo.txt",ios::out | ios::app);
+                fs.seekg(0);
+
+                while(!fs.eof()){
+                    fs.read((char*)&f,sizeof(Admin));
+                    f.addfasub();
+                    fs1.write((char*)&f,sizeof(Admin));
+                }
+                fs.close();
+                fs1.close();
+
+                remove("fainfo.txt");
+                rename("tmpfainfo.txt","fainfo.txt");
+            } // closing of choice = 3;
+
+        }while()
+
+
 }
