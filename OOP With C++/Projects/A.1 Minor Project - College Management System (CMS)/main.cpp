@@ -848,7 +848,62 @@ int main(){
                 rename("tmpfainfo.txt","fainfo.txt");
             } // closing of choice = 3;
 
-        }while()
+            if(choice==4){
+                fstream fs;
+                fstream fs1;
+                fs.open("fainfo.txt",ios::in | ios::binary);
+                fs1.open("delfainfo.txt",ios::out | ios::app);
+                fs.seekg(0);
 
+                while(!fs.eof()){
+                    fs.read((char*)&f,sizeof(Admin));
+                    f.delfasub();
+                    fs1.write((char*)&f,sizeof(Admin));
+                }
+                fs.close();
+                fs1.close();
+
+                remove("fainfo.txt");
+                rename("delfainfo.txt","fainfo.txt");
+            } // closing of choice = 4;
+
+            if(choice==5){
+                fstream fs;
+                fstream fs1;
+                fs.open("fainfo.txt",ios::in | ios::binary);
+                fs1.open("modfainfo.txt",ios::out | ios::app);
+                fs.seekg(0);
+
+                while(!fs.eof()){
+                    fs.read((char*)&f,sizeof(Admin));
+                    f.modfaprofile();
+                    fs1.write((char*)&f,sizeof(Admin));
+                }
+                fs.close();
+                fs1.close();
+
+                remove("fainfo.txt");
+                rename("modfainfo.txt","fainfo.txt");
+            } // closing of choice = 5;
+
+            if(choice<1 || choice>5){
+                cout << "\nInvalid Input Provided !!! ";
+            }
+                cout << "\n\n\t\t\t\tEnter to Continue";
+                getch();
+                cout << "\n\nPress y to Continue ; Otherwise n : ";
+
+                cin >> con;
+
+                if(con == 'y' || con == 'Y'){
+                    system("cls");
+                    cout << "\n\n\n\n\n\t\t\t\tThank You !!! ";
+                    getch();
+                    exit(0);
+                }
+        }while(con == 'y' || con == 'Y');
+    } // Close of faculty View
+
+    // begin of student view
 
 }
