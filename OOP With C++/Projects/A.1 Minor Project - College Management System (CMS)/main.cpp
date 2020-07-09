@@ -35,15 +35,18 @@ public:
     void getstdata(){
 
         cout << "\nEnter the student Name : ";
+        cin.ignore();
         gets(name);
 
         cout << "\nEnter student ID/roll number : ";
         cin >> rollno;
 
         cout << "\nEnter student Father's name : ";
+        cin.ignore();
         gets(fname);
 
         cout << "\nEnter the Mobile Number : ";
+        cin.ignore();
         gets(mobile);
 
         cout << "\nEnter E-mail id of student : ";
@@ -313,15 +316,18 @@ public:
     void getfadata(){
 
         cout << "\nEnter the Faculty Name : ";
+        cin.ignore();
         gets(name);
 
         cout << "\nEnter Faculty ID/roll number : ";
         cin >> rollno;
 
         cout << "\nEnter Faculty Father's name : ";
+        cin.ignore();
         gets(fname);
 
         cout << "\nEnter the Mobile Number : ";
+        cin.ignore();
         gets(mobile);
 
         cout << "\nEnter E-mail id : ";
@@ -412,6 +418,8 @@ int main(){
         }else{
             cout << "\n\n\t\t\t Invalid Access to portal";
             cout << "\n\n\t\t\t Thank you !!";
+            getch();
+            exit(0);
         }
 
         char opera = 'y';
@@ -419,7 +427,7 @@ int main(){
         do{
             int temp;
             cout << "\n\t\t\tWelcome to admin portal";
-            cout << "\n\n Press 1 to add a faculty record";
+            cout << "\n\nPress 1 to add a faculty record";
             cout << "\nPress 2 to add multiple record of Faculty";
             cout << "\nPress 3 to view all records of faculty";
             cout << "\nPress 4 to Delete a faculty record";
@@ -430,6 +438,244 @@ int main(){
             cout << "\nPress 9 to Exit";
             cout << "\n\nEnter your choice : "; cin >> temp;
 
-        }while();
+            system("cls");
+
+            // for inserting d single faculty records
+            if(temp==1){
+                cout <<"\nEnter the Details : ";
+                fstream fs;
+                fs.open("fainfo.txt",ios::in | ios::out | ios::app);
+
+                a.getfadata();
+                fs.write((char *)&a,sizeof(Admin));
+                fs.close();
+                cout << "\nRecord Entered Successfully...";
+            }
+
+            // for inserting d multiple faculty records
+            if(temp==2){
+                int m=0;
+                fstream fs;
+                fs.open("fainfo.txt",ios::in | ios::out | ios::app);
+                do{
+                    cout << "\nEnter The Details : ";
+                    a.getfadata();
+                    fs.write((char *)&a,sizeof(Admin));
+                    cout << "Press 0 if you want to enter more records : ";
+                    cin >> m;
+                }while(m==0);
+                fs.close();
+                cout << "\nRecord Entered Successfully...";
+            }
+
+            // for view all faculty records
+            if(temp==3){
+                fstream fs;
+                fs.open("fainfo.txt",ios::in);
+                fs.seekg(0);
+
+                while(!fs.eof()){
+                    fs.read((char*)&a,sizeof(Admin));
+                    a.fadisplay();
+                }
+            }
+
+            //for deleting a faculty record
+            if(temp==4){
+                char tmpfaid[15];
+                int del=0,result=-1;
+                cout << "\nEnter The faculty ID\roll : ";
+                cin >> tmpfaid;
+                fstream fs;
+                fs.open("fainfo.txt",ios::in);
+                fstream fs1;
+                fs1.open("fanewinfo.txt",ios::out | ios::app);
+
+                while(!fs.eof()){
+                        fs.read((char*)&a,sizeof(Admin));
+                        result==strcmp(tmpfaid,a.rollno);
+                        if(result==0){
+                            del=1;
+                        }
+                        else
+                            fs1.write((char*)&a,sizeof(Admin));
+                        if(del==1){
+                            cout << "\nRecord Deleted Successfully...";
+                        }else{
+                            cout << "\nRecord not Found...";
+                        }
+
+                        fs.close();
+                        fs1.close();
+                        remove("fainfo.txt");
+                        rename("fanewinfo.txt","fainfo.txt");
+                }
+            }
+
+                        // for inserting d single faculty records
+            if(temp==1){
+                cout <<"\nEnter the Details : ";
+                fstream fs;
+                fs.open("fainfo.txt",ios::in | ios::out | ios::app);
+
+                a.getfadata();
+                fs.write((char *)&a,sizeof(Admin));
+                fs.close();
+                cout << "\nRecord Entered Successfully...";
+            }
+
+            // for inserting d multiple faculty records
+            if(temp==2){
+                int m=0;
+                fstream fs;
+                fs.open("fainfo.txt",ios::in | ios::out | ios::app);
+                do{
+                    cout << "\nEnter The Details : ";
+                    a.getfadata();
+                    fs.write((char *)&a,sizeof(Admin));
+                    cout << "Press 0 if you want to enter more records : ";
+                    cin >> m;
+                }while(m==0);
+                fs.close();
+                cout << "\nRecord Entered Successfully...";
+            }
+
+            // for view all faculty records
+            if(temp==3){
+                fstream fs;
+                fs.open("fainfo.txt",ios::in);
+                fs.seekg(0);
+
+                while(!fs.eof()){
+                    fs.read((char*)&a,sizeof(Admin));
+                    a.fadisplay();
+                }
+            }
+
+            //for deleting a faculty record
+            if(temp==4){
+                char tmpfaid[15];
+                int del=0,result=-1;
+                cout << "\nEnter The faculty ID\roll : ";
+                cin >> tmpfaid;
+                fstream fs;
+                fs.open("fainfo.txt",ios::in);
+                fstream fs1;
+                fs1.open("fanewinfo.txt",ios::out | ios::app);
+
+                while(!fs.eof()){
+                        fs.read((char*)&a,sizeof(Admin));
+                        result==strcmp(tmpfaid,a.rollno);
+                        if(result==0){
+                            del=1;
+                        }
+                        else
+                            fs1.write((char*)&a,sizeof(Admin));
+                        if(del==1){
+                            cout << "\nRecord Deleted Successfully...";
+                        }else{
+                            cout << "\nRecord not Found...";
+                        }
+
+                        fs.close();
+                        fs1.close();
+                        remove("fainfo.txt");
+                        rename("fanewinfo.txt","fainfo.txt");
+                }
+            }
+
+            // for inserting d single faculty records
+            if(temp==5){
+                cout <<"\nEnter the Details : ";
+                fstream fs;
+                fs.open("stinfo.txt",ios::in | ios::out | ios::app);
+
+                a.getstdata();
+                fs.write((char *)&a,sizeof(Admin));
+                fs.close();
+                cout << "\nRecord Entered Successfully...";
+            }
+
+            // for inserting d multiple faculty records
+            if(temp==6){
+                int m=0;
+                fstream fs;
+                fs.open("stinfo.txt",ios::in | ios::out | ios::app);
+                do{
+                    cout << "\nEnter The Details : ";
+                    a.getstdata();
+                    fs.write((char *)&a,sizeof(Admin));
+                    cout << "Press 0 if you want to enter more records : ";
+                    cin >> m;
+                }while(m==0);
+                fs.close();
+                cout << "\nRecord Entered Successfully...";
+            }
+
+            // for view all faculty records
+            if(temp==7){
+                fstream fs;
+                fs.open("stinfo.txt",ios::in);
+                fs.seekg(0);
+
+                while(!fs.eof()){
+                    fs.read((char*)&a,sizeof(Admin));
+                    a.stdisplay();
+                }
+            }
+
+            //for deleting a faculty record
+            if(temp==8){
+                char tmpstid[15];
+                int del=0,result=-1;
+                cout << "\nEnter The faculty ID\roll : ";
+                cin >> tmpstid;
+                fstream fs;
+                fs.open("stinfo.txt",ios::in);
+                fstream fs1;
+                fs1.open("stnewinfo.txt",ios::out | ios::app);
+
+                while(!fs.eof()){
+                        fs.read((char*)&a,sizeof(Admin));
+                        result==strcmp(tmpstid,a.rollno);
+                        if(result==0){
+                            del=1;
+                        }
+                        else
+                            fs1.write((char*)&a,sizeof(Admin));
+                        if(del==1){
+                            cout << "\nRecord Deleted Successfully...";
+                        }else{
+                            cout << "\nRecord not Found...";
+                        }
+
+                        fs.close();
+                        fs1.close();
+                        remove("stinfo.txt");
+                        rename("stnewinfo.txt","stinfo.txt");
+                }
+            }
+
+            if(temp==9){
+                cout << "\n\n\n\n\t\t\t\tThank You !!! ";
+                getch();
+                exit(0);
+            }
+
+            if(temp<1 || temp>9){
+                system("cls");
+                cout << "\n\n\n\n\t\t\t\tInvalid Input ....";
+            }
+            getch();
+            cout << "\nPress Y : for more operations otherwise N : ";
+            cin >> opera;
+
+            if(opera=='y'){
+                getch();
+                system("cls");
+                cout << "\n\n\n\n\t\t\\ttThank You !!! ";
+                getch();
+            }
+        }while(opera=='Y' || opera=='y');
     }
 }
