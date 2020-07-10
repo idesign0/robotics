@@ -511,79 +511,6 @@ int main(){
                         rename("fanewinfo.txt","fainfo.txt");
                 }
             }
-
-                        // for inserting d single faculty records
-            if(temp==1){
-                cout <<"\nEnter the Details : ";
-                fstream fs;
-                fs.open("fainfo.txt",ios::in | ios::out | ios::app);
-
-                a.getfadata();
-                fs.write((char *)&a,sizeof(Admin));
-                fs.close();
-                cout << "\nRecord Entered Successfully...";
-            }
-
-            // for inserting d multiple faculty records
-            if(temp==2){
-                int m=0;
-                fstream fs;
-                fs.open("fainfo.txt",ios::in | ios::out | ios::app);
-                do{
-                    cout << "\nEnter The Details : ";
-                    a.getfadata();
-                    fs.write((char *)&a,sizeof(Admin));
-                    cout << "Press 0 if you want to enter more records : ";
-                    cin >> m;
-                }while(m==0);
-                fs.close();
-                cout << "\nRecord Entered Successfully...";
-            }
-
-            // for view all faculty records
-            if(temp==3){
-                fstream fs;
-                fs.open("fainfo.txt",ios::in);
-                fs.seekg(0);
-
-                while(!fs.eof()){
-                    fs.read((char*)&a,sizeof(Admin));
-                    a.fadisplay();
-                }
-            }
-
-            //for deleting a faculty record
-            if(temp==4){
-                char tmpfaid[15];
-                int del=0,result=-1;
-                cout << "\nEnter The faculty ID\roll : ";
-                cin >> tmpfaid;
-                fstream fs;
-                fs.open("fainfo.txt",ios::in);
-                fstream fs1;
-                fs1.open("fanewinfo.txt",ios::out | ios::app);
-
-                while(!fs.eof()){
-                        fs.read((char*)&a,sizeof(Admin));
-                        result==strcmp(tmpfaid,a.rollno);
-                        if(result==0){
-                            del=1;
-                        }
-                        else
-                            fs1.write((char*)&a,sizeof(Admin));
-                        if(del==1){
-                            cout << "\nRecord Deleted Successfully...";
-                        }else{
-                            cout << "\nRecord not Found...";
-                        }
-
-                        fs.close();
-                        fs1.close();
-                        remove("fainfo.txt");
-                        rename("fanewinfo.txt","fainfo.txt");
-                }
-            }
-
             // for inserting d single faculty records
             if(temp==5){
                 cout <<"\nEnter the Details : ";
@@ -673,7 +600,7 @@ int main(){
             if(opera=='y'){
                 getch();
                 system("cls");
-                cout << "\n\n\n\n\t\t\\ttThank You !!! ";
+                cout << "\n\n\n\n\t\t\t\tThank You !!! ";
                 getch();
             }
         }while(opera=='Y' || opera=='y');
@@ -797,7 +724,7 @@ int main(){
             int choice;
             cin >> choice;
 
-            if(choice=1){
+            if(choice==1){
                 fstream fs;
                 fs.open("fainfo.txt",ios::in);
                 fs.seekg(0);
@@ -821,7 +748,7 @@ int main(){
                 while(!fs.eof()){
                     y=0;
                     fs.read((char*)&f,sizeof(Admin));
-                    y=f.faprofile();
+                    y=f.knowfasub();
                     if(y==1){
                         break;
                     }
@@ -905,5 +832,236 @@ int main(){
     } // Close of faculty View
 
     // begin of student view
+    if(choice==3){
+        system("cls");
+        //char un[20];
+        int value,s=0;
+        cout << "\n\t\t\tWelcome to student Login Page";
+        cout << "\n\nEnter THe UserName : ";
+        cin >> ::un;
+        fstream fs;
+        fs.open("stinfo.txt",ios::in | ios::binary);
+        fs.seekg(0);
+        while(!fs.eof()){
+            value =-1;
+            fs.read((char *)&f,sizeof(Admin));
+            value = f.login();
+            if(value==1){
+                s=1;
+                break;
+            }
+        }
+        fs.close();
+        if(s==1){
+            system("cls");
+            //cout << "\n\n\n\t\t\t\tWelcome to student page ";
+        } // if first login is valid
+
+        if(s!=1){ // if first login is invalid then
+            system("cls");
+            int sho=0;
+            cout << "\n\n\t\tYour Login Credentials are In-Correct";
+            cout << "\nThe UserName is Your ID/Rollno.";
+            cout << "\nTHe Password is Case-Sensitive.";
+            cout << "\nPress 1 to Re-COver Password & 2 to Re-Attempt Login ";
+            cout << "\nEnter The Choice : ";
+            cin >> sho;
+
+            if(sho==1){ // recover password
+                cout << "Enter the Username : ";
+                cin >> ::un;
+                fstream fs;
+                fs.open("stinfo.txt", ios::in | ios::binary);
+                fs.seekg(0);
+                int re,su=-1;
+                while(!fs.eof()){
+                    value=-1;
+                    fs.read((char *)&f,sizeof(Admin));
+                    value=f.recover();
+                    if(re==1){
+                        su=1;
+                        break;
+                    }
+                }
+                fs.close();
+                if(su==1){
+                    getch();
+                    system("cls");
+                    cout << "\n\n\n\n\t\tThank you !!! ";
+                    system("cls");
+                    exit(0);
+                }else{
+                    cout << "\nYou are a invalid User.";
+                    cout << "\nTHank You !!! ";
+                    exit(0);
+                }
+            } // recover password
+
+            if(sho==2) { // re-attempt of login
+                cout << "\n\nEnter the Username : ";
+                cin >> ::un;
+                fstream fs;
+                fs.open("stinfo.txt", ios::in | ios::binary);
+                fs.seekg(0);
+                int suc=-1,valu; //  value for storing login() returned value , suc for success
+
+                while(!fs.eof()){
+                    valu=-1;
+                    fs.read((char *)&f,sizeof(Admin));
+                    valu=f.login();
+                    if(valu==1){
+                        suc=1;
+                        break;
+                    }
+                }
+                fs.close();
+                if(suc==1){
+                    system("cls");
+                }else{
+                    getch();
+                    cout << "\nYou are a Invalid User...";
+                    cout << "\n\n\t\t\tThank you !!! ";
+                    getch();
+                    exit(0);
+                    exit(0);
+                }
+            }
+
+            if(sho!=1 && sho!=2){
+                cout << "\n\nInvalid Input Provided. ";
+                cout << "\n\n\t\t\tThank You !!!";
+                getch();
+                exit(0);
+            }
+        }// Closing of first invalid login (Forget password & recover password)
+
+    // Begin of student panel
+    char moreop='y';
+        do{
+            system("cls");
+            cout << "\n\n\t\t\tWelcome to Student Panel  ";
+            cout << "\n\n\t\t\t\t\t\t    Your UserID is : " << :: un;
+            cout << "\n\nPress 1 to View Your Profile.";
+            cout << "\nPress 2 to Know your Subjects.";
+            cout << "\nPress 3 to Add a Subjects.";
+            cout << "\nPress 4 to Delete a Subjects.";
+            cout << "\nPress 5 to Modify your Profile.";
+            int inchoice;
+            cin >> inchoice;
+
+            if(inchoice==1){
+                fstream fs;
+                fs.open("stinfo.txt",ios::in);
+                fs.seekg(0);
+                int x;
+                while(!fs.eof()){
+                    x=0;
+                    fs.read((char*)&f,sizeof(Admin));
+                    x=f.stprofile();
+                    if(x==1){
+                        break;
+                    }
+                }
+                fs.close();
+            }// closing of inchoice 1;
+
+            if(inchoice==2){
+                fstream fs;
+                fs.open("stinfo.txt",ios::in);
+                fs.seekg(0);
+                int y;
+                while(!fs.eof()){
+                    y=0;
+                    fs.read((char*)&f,sizeof(Admin));
+                    y=f.knowstsub();
+                    if(y==1){
+                        break;
+                    }
+                }
+                fs.close();
+            } // closing of inchoice = 2;
+
+            if(inchoice==3){
+                fstream fs;
+                fstream fs1;
+                fs.open("stinfo.txt",ios::in | ios::binary);
+                fs1.open("tmpstinfo.txt",ios::out | ios::app);
+                fs.seekg(0);
+
+                while(!fs.eof()){
+                    fs.read((char*)&f,sizeof(Admin));
+                    f.addstsub();
+                    fs1.write((char*)&f,sizeof(Admin));
+                }
+                fs.close();
+                fs1.close();
+
+                remove("stinfo.txt");
+                rename("tmpstinfo.txt","stinfo.txt");
+            } // closing of inchoice = 3;
+
+            if(inchoice==4){
+                fstream fs;
+                fstream fs1;
+                fs.open("stinfo.txt",ios::in | ios::binary);
+                fs1.open("delstinfo.txt",ios::out | ios::app);
+                fs.seekg(0);
+
+                while(!fs.eof()){
+                    fs.read((char*)&f,sizeof(Admin));
+                    f.delstsub();
+                    fs1.write((char*)&f,sizeof(Admin));
+                }
+                fs.close();
+                fs1.close();
+
+                remove("stinfo.txt");
+                rename("delstinfo.txt","stinfo.txt");
+            } // closing of inchoice = 4;
+
+            if(inchoice==5){
+                fstream fs;
+                fstream fs1;
+                fs.open("stinfo.txt",ios::in | ios::binary);
+                fs1.open("modstinfo.txt",ios::out | ios::app);
+                fs.seekg(0);
+
+                while(!fs.eof()){
+                    fs.read((char*)&f,sizeof(Admin));
+                    f.modfstrofile();
+                    fs1.write((char*)&f,sizeof(Admin));
+                }
+                fs.close();
+                fs1.close();
+
+                remove("stinfo.txt");
+                rename("modstinfo.txt","stinfo.txt");
+            } // closing of inchoice = 5;
+
+            if(inchoice<1 || inchoice>5){
+                cout << "\nInvalid Input Provided !!! ";
+            }
+                cout << "\n\n\t\t\t\tEnter to Continue";
+                getch();
+                cout << "\n\nPress y to Continue ; Otherwise n : ";
+
+                cin >> moreop;
+
+                if(moreop == 'y' || moreop == 'Y'){
+                    system("cls");
+                    cout << "\n\n\n\n\n\t\t\t\tThank You !!! ";
+                    getch();
+                    exit(0);
+                }
+        }while(moreop == 'y' || moreop == 'Y');
+        getch();
+    } // Close of faculty View
+
+    if(choice<1 || choice>3){
+        cout << "\nInvalid Input Provided !!! ";
+        getch();
+        system("cls");
+        cout << "\n\n\n\t\t\tThank You ! ";
+    }
 
 }
