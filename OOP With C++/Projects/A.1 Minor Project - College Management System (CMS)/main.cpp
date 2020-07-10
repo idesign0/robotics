@@ -98,12 +98,12 @@ public:
         // cout << "\nThe input username is : " << ::un ;
         char key[20];
         if((strcmp(::un,rollno))==0){
-            cout << "\nEnter the Unique password (Provided by admin)";
+            cout << "\nEnter the Unique password (Provided by admin) : ";
             cin >> key;
             if(strcmp(key,rpasswd)==0){
                 cout << "\nYOu are valid User.";
                 cout << "\nYour Password is : " << passwd;
-                cout << "Please login to exit again ";
+                cout << "\nPlease login to exit again ";
                 return 1;
             }else{
                 return 0;
@@ -132,7 +132,7 @@ public:
         if((strcmp(::un,rollno))==0){
             cout << "\nFaculty Total subject : " << totalsub;
             for(int i=0;i<totalsub;i++){
-                cout << "\n\tSubject " << i+1 << subject[i];
+                cout << "\n\tSubject " << i+1 <<". "<< subject[i];
             }
             return 1;
         }else{
@@ -327,7 +327,6 @@ public:
         gets(fname);
 
         cout << "\nEnter the Mobile Number : ";
-        cin.ignore();
         gets(mobile);
 
         cout << "\nEnter E-mail id : ";
@@ -607,9 +606,8 @@ int main(){
     }
 
     //begin of faculty view portal
-    if(choice=2){
+    if(choice==2){
         system("cls");
-        char un[20];
         int val,s=0;
 
         cout << "\n\t\t\tWelcome to faculty Login Page";
@@ -721,6 +719,7 @@ int main(){
             cout << "\nPress 3 to Add a Subjects.";
             cout << "\nPress 4 to Delete a Subjects.";
             cout << "\nPress 5 to Modify your Profile.";
+            cout << "\nEnter your Choice : ";
             int choice;
             cin >> choice;
 
@@ -758,21 +757,16 @@ int main(){
 
             if(choice==3){
                 fstream fs;
-                fstream fs1;
                 fs.open("fainfo.txt",ios::in | ios::binary);
-                fs1.open("tmpfainfo.txt",ios::out | ios::app);
                 fs.seekg(0);
 
-                while(!fs.eof()){
-                    fs.read((char*)&f,sizeof(Admin));
+                while(fs.read((char*)&f,sizeof(Admin))){
                     f.addfasub();
-                    fs1.write((char*)&f,sizeof(Admin));
+                    fs.write((char*)&f,sizeof(Admin));
                 }
-                fs.close();
-                fs1.close();
 
-                remove("fainfo.txt");
-                rename("tmpfainfo.txt","fainfo.txt");
+                fs.close();
+
             } // closing of choice = 3;
 
             if(choice==4){
@@ -826,7 +820,6 @@ int main(){
                     system("cls");
                     cout << "\n\n\n\n\n\t\t\t\tThank You !!! ";
                     getch();
-                    exit(0);
                 }
         }while(con == 'y' || con == 'Y');
     } // Close of faculty View
