@@ -46,7 +46,6 @@ public:
         gets(fname);
 
         cout << "\nEnter the Mobile Number : ";
-        cin.ignore();
         gets(mobile);
 
         cout << "\nEnter E-mail id of student : ";
@@ -162,7 +161,7 @@ public:
                     exit(0);
                 }
 
-                cout << "\nEnter Subjects numbers to be deleted : "; cin >> del;
+                cout << "\nEnter Subjects Number to be deleted : "; cin >> del;
                 if(del==totalsub){
 
                     totalsub--;
@@ -201,11 +200,10 @@ public:
                 cin >> nmail;
                 strcpy(mail,nmail);
                 cout << "\nRecords Updated Successfully...";
-            }
-
-            if(g==2){
+            }else if(g==2){
                 char nmobile[15];
                 cout << "\nEnter the new mobile Number : ";
+                cin.ignore();
                 gets(nmobile);
                 strcpy(mobile,nmobile);
                 cout << "\nRecords Updated Successfully...";
@@ -217,7 +215,7 @@ public:
     // This Function displays the student profile at the student portal
     int stprofile(){
         if((strcmp(::un,rollno))==0){
-            cout << "\nStudent Name          : " << name;
+            cout << "\n\nStudent Name          : " << name;
             cout << "\nStudent Father's Name : " << fname;
             cout << "\nStudent Mobile Number : " << mobile;
             cout << "\nStudent E-mail ID     : " << mail;
@@ -230,7 +228,7 @@ public:
         if((strcmp(::un,rollno))==0){
             cout << "\nStudent Total subject : " << totalsub;
             for(int i=0;i<totalsub;i++){
-                cout << "\n\tSubject " << i+1 << subject[i];
+                cout << "\n\tSubject " << i+1 <<". "<< subject[i];
             }
             return 1;
         }else{
@@ -304,6 +302,7 @@ public:
             if(g==2){
                 char nmobile[15];
                 cout << "\nEnter the new mobile Number : ";
+                cin.ignore();
                 gets(nmobile);
                 strcpy(mobile,nmobile);
                 cout << "\nRecords Updated Successfully...";
@@ -352,7 +351,7 @@ public:
 
     // This function display all the relevant information to the admin related to the students at the admin portal
     void stdisplay(){
-        cout << "\nStudent Name : " << name ;
+        cout << "\n\nStudent Name : " << name ;
         cout << "\nStudent ID/Roll no. : " << rollno ;
         cout << "\nStudent Father's name : " << fname;
         cout << "\nStudent Mobile No. : " << mobile;
@@ -368,7 +367,7 @@ public:
 
     // This function display all the relevant information to the admin related to the faculty at the admin portal
     void fadisplay(){
-        cout << "\nFaculty Name : " << name ;
+        cout << "\n\nFaculty Name : " << name ;
         cout << "\nFaculty ID/Roll no. : " << rollno ;
         cout << "\nFaculty Father's name : " << fname;
         cout << "\nFaculty Mobile No. : " << mobile;
@@ -473,8 +472,7 @@ int main(){
                 fs.open("fainfo.txt",ios::in);
                 fs.seekg(0);
 
-                while(!fs.eof()){
-                    fs.read((char*)&a,sizeof(Admin));
+                while(fs.read((char*)&a,sizeof(Admin))){
                     a.fadisplay();
                 }
             }
@@ -483,21 +481,23 @@ int main(){
             if(temp==4){
                 char tmpfaid[15];
                 int del=0,result=-1;
-                cout << "\nEnter The faculty ID\roll : ";
+                cout << "\nEnter The faculty ID-roll : ";
                 cin >> tmpfaid;
                 fstream fs;
                 fs.open("fainfo.txt",ios::in);
                 fstream fs1;
                 fs1.open("fanewinfo.txt",ios::out | ios::app);
 
-                while(!fs.eof()){
-                        fs.read((char*)&a,sizeof(Admin));
-                        result==strcmp(tmpfaid,a.rollno);
+                while(fs.read((char*)&a,sizeof(Admin))){
+
+                        result=strcmp(tmpfaid,a.rollno);
                         if(result==0){
                             del=1;
                         }
-                        else
+                        else{
                             fs1.write((char*)&a,sizeof(Admin));
+                        }
+                    }
                         if(del==1){
                             cout << "\nRecord Deleted Successfully...";
                         }else{
@@ -508,7 +508,6 @@ int main(){
                         fs1.close();
                         remove("fainfo.txt");
                         rename("fanewinfo.txt","fainfo.txt");
-                }
             }
             // for inserting d single faculty records
             if(temp==5){
@@ -544,8 +543,7 @@ int main(){
                 fs.open("stinfo.txt",ios::in);
                 fs.seekg(0);
 
-                while(!fs.eof()){
-                    fs.read((char*)&a,sizeof(Admin));
+                while(fs.read((char*)&a,sizeof(Admin))){
                     a.stdisplay();
                 }
             }
@@ -554,21 +552,21 @@ int main(){
             if(temp==8){
                 char tmpstid[15];
                 int del=0,result=-1;
-                cout << "\nEnter The faculty ID\roll : ";
+                cout << "\nEnter The faculty ID-roll : ";
                 cin >> tmpstid;
                 fstream fs;
                 fs.open("stinfo.txt",ios::in);
                 fstream fs1;
                 fs1.open("stnewinfo.txt",ios::out | ios::app);
 
-                while(!fs.eof()){
-                        fs.read((char*)&a,sizeof(Admin));
-                        result==strcmp(tmpstid,a.rollno);
+                while(fs.read((char*)&a,sizeof(Admin))){
+                        result=strcmp(tmpstid,a.rollno);
                         if(result==0){
                             del=1;
                         }
                         else
                             fs1.write((char*)&a,sizeof(Admin));
+                    }
                         if(del==1){
                             cout << "\nRecord Deleted Successfully...";
                         }else{
@@ -579,7 +577,6 @@ int main(){
                         fs1.close();
                         remove("stinfo.txt");
                         rename("stnewinfo.txt","stinfo.txt");
-                }
             }
 
             if(temp==9){
@@ -597,7 +594,6 @@ int main(){
             cin >> opera;
 
             if(opera=='y'){
-                getch();
                 system("cls");
                 cout << "\n\n\n\n\t\t\t\tThank You !!! ";
                 getch();
@@ -617,9 +613,8 @@ int main(){
         fstream fs;
         fs.open("fainfo.txt",ios::in | ios::binary);
         fs.seekg(0);
-        while(!fs.eof()){
+        while(fs.read((char*)&f,sizeof(Admin))){
             val = -1;
-            fs.read((char*)&f,sizeof(Admin));
             val=f.login();
             if(val==1){
                 s=1;
@@ -647,9 +642,8 @@ int main(){
             fs.open("fainfo.txt",ios::in | ios::binary);
             fs.seekg(0);
             int re,su=-1;
-            while(!fs.eof()){
+            while(fs.read((char*)&f,sizeof(Admin))){
                 re=-1;
-                fs.read((char*)&f,sizeof(Admin));
                 re=f.recover();
                 if(re==1){
                     su=1;
@@ -678,9 +672,8 @@ int main(){
                 fs.open("fainfo.txt",ios::in | ios::binary);
                 fs.seekg(0);
                 int suc=-1,valu; // valu for storing login() returned value , suc for success login
-                while(!fs.eof()){
+                while(fs.read((char*)&f,sizeof(Admin))){
                     valu=-1;
-                    fs.read((char*)&f,sizeof(Admin));
                     valu = f.login();
                     if(valu==1){
                         suc=1;
@@ -728,9 +721,8 @@ int main(){
                 fs.open("fainfo.txt",ios::in);
                 fs.seekg(0);
                 int x;
-                while(!fs.eof()){
+                while(fs.read((char*)&f,sizeof(Admin))){
                     x=0;
-                    fs.read((char*)&f,sizeof(Admin));
                     x=f.faprofile();
                     if(x==1){
                         break;
@@ -744,9 +736,8 @@ int main(){
                 fs.open("fainfo.txt",ios::in);
                 fs.seekg(0);
                 int y;
-                while(!fs.eof()){
+                while(fs.read((char*)&f,sizeof(Admin))){
                     y=0;
-                    fs.read((char*)&f,sizeof(Admin));
                     y=f.knowfasub();
                     if(y==1){
                         break;
@@ -757,27 +748,35 @@ int main(){
 
             if(choice==3){
                 fstream fs;
+                fstream fs1;
+
                 fs.open("fainfo.txt",ios::in | ios::binary);
+                fs1.open("tempfainfo.txt",ios::out | ios::binary);
+
                 fs.seekg(0);
 
                 while(fs.read((char*)&f,sizeof(Admin))){
                     f.addfasub();
-                    fs.write((char*)&f,sizeof(Admin));
+                    fs1.write((char*)&f,sizeof(Admin));
                 }
 
                 fs.close();
+                fs1.close();
+
+                remove("fainfo.txt");
+                rename("tempfainfo.txt","fainfo.txt");
 
             } // closing of choice = 3;
 
             if(choice==4){
                 fstream fs;
                 fstream fs1;
+
                 fs.open("fainfo.txt",ios::in | ios::binary);
                 fs1.open("delfainfo.txt",ios::out | ios::app);
                 fs.seekg(0);
 
-                while(!fs.eof()){
-                    fs.read((char*)&f,sizeof(Admin));
+                while(fs.read((char*)&f,sizeof(Admin))){
                     f.delfasub();
                     fs1.write((char*)&f,sizeof(Admin));
                 }
@@ -791,12 +790,12 @@ int main(){
             if(choice==5){
                 fstream fs;
                 fstream fs1;
+
                 fs.open("fainfo.txt",ios::in | ios::binary);
                 fs1.open("modfainfo.txt",ios::out | ios::app);
                 fs.seekg(0);
 
-                while(!fs.eof()){
-                    fs.read((char*)&f,sizeof(Admin));
+                while(fs.read((char*)&f,sizeof(Admin))){
                     f.modfaprofile();
                     fs1.write((char*)&f,sizeof(Admin));
                 }
@@ -835,9 +834,8 @@ int main(){
         fstream fs;
         fs.open("stinfo.txt",ios::in | ios::binary);
         fs.seekg(0);
-        while(!fs.eof()){
+        while(fs.read((char *)&f,sizeof(Admin))){
             value =-1;
-            fs.read((char *)&f,sizeof(Admin));
             value = f.login();
             if(value==1){
                 s=1;
@@ -854,7 +852,7 @@ int main(){
             system("cls");
             int sho=0;
             cout << "\n\n\t\tYour Login Credentials are In-Correct";
-            cout << "\nThe UserName is Your ID/Rollno.";
+            cout << "\nThe UserName is Your ID-Rollno.";
             cout << "\nTHe Password is Case-Sensitive.";
             cout << "\nPress 1 to Re-COver Password & 2 to Re-Attempt Login ";
             cout << "\nEnter The Choice : ";
@@ -867,10 +865,10 @@ int main(){
                 fs.open("stinfo.txt", ios::in | ios::binary);
                 fs.seekg(0);
                 int re,su=-1;
-                while(!fs.eof()){
-                    value=-1;
-                    fs.read((char *)&f,sizeof(Admin));
-                    value=f.recover();
+                while(fs.read((char *)&f,sizeof(Admin))){
+                    re=-1;
+
+                    re=f.recover();
                     if(re==1){
                         su=1;
                         break;
@@ -898,9 +896,8 @@ int main(){
                 fs.seekg(0);
                 int suc=-1,valu; //  value for storing login() returned value , suc for success
 
-                while(!fs.eof()){
+                while(fs.read((char *)&f,sizeof(Admin))){
                     valu=-1;
-                    fs.read((char *)&f,sizeof(Admin));
                     valu=f.login();
                     if(valu==1){
                         suc=1;
@@ -939,6 +936,7 @@ int main(){
             cout << "\nPress 3 to Add a Subjects.";
             cout << "\nPress 4 to Delete a Subjects.";
             cout << "\nPress 5 to Modify your Profile.";
+            cout << "\nEnter The Choice : ";
             int inchoice;
             cin >> inchoice;
 
@@ -947,9 +945,8 @@ int main(){
                 fs.open("stinfo.txt",ios::in);
                 fs.seekg(0);
                 int x;
-                while(!fs.eof()){
+                while(fs.read((char*)&f,sizeof(Admin))){
                     x=0;
-                    fs.read((char*)&f,sizeof(Admin));
                     x=f.stprofile();
                     if(x==1){
                         break;
@@ -963,9 +960,8 @@ int main(){
                 fs.open("stinfo.txt",ios::in);
                 fs.seekg(0);
                 int y;
-                while(!fs.eof()){
+                while(fs.read((char*)&f,sizeof(Admin))){
                     y=0;
-                    fs.read((char*)&f,sizeof(Admin));
                     y=f.knowstsub();
                     if(y==1){
                         break;
@@ -981,10 +977,9 @@ int main(){
                 fs1.open("tmpstinfo.txt",ios::out | ios::app);
                 fs.seekg(0);
 
-                while(!fs.eof()){
-                    fs.read((char*)&f,sizeof(Admin));
+                while(fs.read((char*)&f,sizeof(Admin))){
                     f.addstsub();
-                    fs1.write((char*)&f,sizeof(Admin));
+                    fs1.write((char*)&f,sizeof(Admin)) << flush;
                 }
                 fs.close();
                 fs1.close();
@@ -1000,8 +995,7 @@ int main(){
                 fs1.open("delstinfo.txt",ios::out | ios::app);
                 fs.seekg(0);
 
-                while(!fs.eof()){
-                    fs.read((char*)&f,sizeof(Admin));
+                while(fs.read((char*)&f,sizeof(Admin))){
                     f.delstsub();
                     fs1.write((char*)&f,sizeof(Admin));
                 }
@@ -1019,8 +1013,7 @@ int main(){
                 fs1.open("modstinfo.txt",ios::out | ios::app);
                 fs.seekg(0);
 
-                while(!fs.eof()){
-                    fs.read((char*)&f,sizeof(Admin));
+                while(fs.read((char*)&f,sizeof(Admin))){
                     f.modfstrofile();
                     fs1.write((char*)&f,sizeof(Admin));
                 }
@@ -1044,7 +1037,6 @@ int main(){
                     system("cls");
                     cout << "\n\n\n\n\n\t\t\t\tThank You !!! ";
                     getch();
-                    exit(0);
                 }
         }while(moreop == 'y' || moreop == 'Y');
         getch();
