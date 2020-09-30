@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1601457911 source:d:\users\dhruv\documents\github\robotics\the c++ programming language - bjarne stroustrup\chapter 3 - a tour of standard library\3.7.1 vector with range checking\main.cpp
+	<iostream>
+	<vector>
+
