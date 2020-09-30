@@ -22,9 +22,9 @@ struct Entry{
     string name;
     int numbers;
 
-    void fill_up(string name,int num){
-        this->name=name;
-        numbers=num;
+    Entry(){
+        cin >> name;
+        cin >> numbers;
     }
 
     void print_name(){
@@ -38,7 +38,7 @@ int main()
 {
     try{
         Vec<Entry> phone_book(1000);
-        phone_book[0].fill_up("xyz",100);
+        phone_book[0];
         phone_book[0].print_name();
 
         }catch(out_of_range){
