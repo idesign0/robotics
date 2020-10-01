@@ -21,6 +21,7 @@ int countt(const C &v, t val){
 int main()
 {
     string s = "Mary had a little lamp!";
+
     int i = countt(s,'a');
 
     cout << i << endl;
