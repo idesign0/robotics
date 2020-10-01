@@ -32,5 +32,10 @@ int main()
 
     int j = count(vc.begin(),vc.end(),"dhruv");
     cout << j << endl;
+
+    char s_char[30] = "hii my name is dhruv";
+    int k = count(&s_char[0],&s_char[30],'s');
+
+    cout << k << endl;
     return 0;
 }
