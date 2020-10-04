@@ -1,0 +1,4 @@
+for gcc there is no documented limit for local and external variables name, but specified platforms may impose a limit.
+
+for msvc longest local variable name = 2048 significant character, extra character ignored. compiled name can not be longer than 2048.
+longest external variable name = 2047 significant characters, extra character ignored. 

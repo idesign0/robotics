@@ -17,4 +17,10 @@ int main(){
     std::cout << "Size of float data type: " << sizeof(float) <<std::endl;
     std::cout << "Size of double data type: " << sizeof(double) <<std::endl;
     std::cout << "Size of long double data type: " << sizeof(long double) <<std::endl;
+
+    enum enum1{a};
+    enum enum2{b,c,d,e,f,g};
+
+    std::cout << "Enum1 : " << sizeof(enum1) <<std::endl;
+    std::cout << "Enum2 : " << sizeof(enum2) <<std::endl;
 }
