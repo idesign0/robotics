@@ -22,13 +22,13 @@ int find_substr_num(string &s, string &val){
 }
 /*use of templates to find and count elements... one can use count directly as well*/
 template<class T,class C>
-int count_accurance(const T&value,C val){
+int count_accurance(const T&container,C val){
     int countt=0;
-    typename T::const_iterator i = find(value.begin(),value.end(),val);
-    while(i!=value.end()){
+    typename T::const_iterator i = find(container.begin(),container.end(),val);
+    while(i!=container.end()){
         countt++;
         i++;
-        i =find(i,value.end(),val);
+        i =find(i,container.end(),val);
     }
     return countt;
 }
@@ -40,6 +40,7 @@ int main(){
     string sub_s = "dass";
 
     int e = find_substr_num(s,sub_s);
+    cout << "Find Sub string: ";
     cout << e << endl;
 
     /*Use of Templates */
@@ -48,9 +49,12 @@ int main(){
     comp.push_back(complex<double>(1,1));
 
     int c = count_accurance(s,'d');
+    cout << "Find Number of Character 'C': ";
     cout << c << endl;
     int d = count(s.begin(),s.end(),'d');
+    cout << "Find Number of Character 'D': ";
     cout << d << endl;
     int f = count_accurance(comp,complex<double>(1,1));
+    cout << "Find Number of Element complex(1,1): ";
     cout << f << endl;
 }

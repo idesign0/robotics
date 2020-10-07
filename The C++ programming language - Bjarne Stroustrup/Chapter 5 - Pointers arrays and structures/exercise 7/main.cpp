@@ -10,7 +10,7 @@ struct calender{
 int main(){
 
     cout << "Using Arrays : \n" << endl;
-    string months[12]={"Jan","Feb","March","April","May","June","July","Aug","Sep","Oct","Nov","Dec"};
+    char * months[12]={"Jan","Feb","March","April","May","June","July","Aug","Sep","Oct","Nov","Dec"};
     int days[12]={31,28,31,30,31,30,31,31,30,31,30,31};
 
     for(int i=0;i<12;i++){

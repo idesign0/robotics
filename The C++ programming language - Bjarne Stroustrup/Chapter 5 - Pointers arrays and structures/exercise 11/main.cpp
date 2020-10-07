@@ -1,32 +1,32 @@
 #include<iostream>
-#include<string>
 #include<vector>
+#include<string>
 #include<set>
 
 using namespace std;
-
-
 int main(){
-    vector<string> words;
-    set<string> sortedwords;
-
     string s;
+    vector<string> str;
+    set<string> sortedwords;
+    cin >> s;
 
     while(s!="Quit"){
-            if(sortedwords.insert(s).second)
-                words.push_back(s);
+        if(sortedwords.insert(s).second){
+            str.push_back(s);
+        }
         cin >> s;
     }
 
-    cout << "In entered Words : " << endl;
-    for(int i =0;i<words.size();i++){
-        cout << words[i]<<" ";
+    for(int i=0;i<str.size();i++){
+        cout << str[i] << " ";
     }
 
-    cout << "\n\nIn sorted Words : " << endl;
-    for(set<string>::const_iterator itr =sortedwords.begin();itr!=sortedwords.end();itr++){
-        cout << *itr<<" ";
-    }
+    typedef set<string> :: const_iterator itr;
+    itr i= sortedwords.begin();
 
+    cout << endl;
+    for(i;i!=sortedwords.end();i++){
+    cout << *i <<" ";
+    }
     return 0;
 }
