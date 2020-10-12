@@ -1,48 +1,56 @@
+
+
 #include <iostream>
-#include<vector>
-#include<map>
-#include<string>
+#include <map>
+#include <string>
+#include <vector>
+
 using namespace std;
 
-// TYPEDEFS
-typedef vector<double> valuelist;
-typedef map<string,valuelist> maplist;
-typedef pair<string,valuelist> mappair;
+typedef vector<double> ValueList;
+typedef map<string,ValueList> Matrix;
+typedef pair<string,ValueList> MatrixPair;
 
-double getsum(valuelist v){
-    double sum=0;
-    for(valuelist::const_iterator i = v.begin();i!=v.end();i++){
-        sum+=(*i);
-    }
+double getSum(ValueList list)
+{
+    double sum = 0;
+    for(ValueList::const_iterator i = list.begin(); i != list.end(); i++)
+        sum += *i;
     return sum;
 }
 
-double printstat(maplist& m){
-    for(maplist::const_iterator i = m.begin();i!=m.end();i++){
-        double sum = getsum((*i).second);
-        cout <<"Name : "<<(*i).first << " Total Sum : " << sum <<" Avg Sum : "<< sum/(*i).second.size() << endl;
+void printStats(Matrix data)
+{
+    cout << "Here are the stats so far:" << endl;
+    for(Matrix::const_iterator i = data.begin(); i != data.end(); i++)
+    {
+        double sum = getSum((*i).second);
+        cout << "Name = " << (*i).first << ", Sum = " << sum << ", Avg = " << sum / (*i).second.size() << endl;
     }
 }
 
 int main()
 {
+    char *n;
     string name;
     double value;
+    Matrix data;
 
-    maplist data;
+    for(;;)
+    {
+        cout << "Enter 'name value':" << endl;
 
-    while(true){
-     cin >> name;
-     cin >> value;
+        name.clear();
+        cin >> name;
+        cin >> value;
 
-     if(!data.count(name)){
-        valuelist v;
-        data.insert(mappair(name,v));
-     }
+        if (!data.count(name))
+        {
+            ValueList v;
+            data.insert(MatrixPair(name,v));
+        }
+        data[name].push_back(value);
 
-     data[name].push_back(value);
-     printstat(data);
+        printStats(data);
     }
-
-    return 0;
 }
