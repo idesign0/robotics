@@ -21,14 +21,13 @@ int atoi_(const char *s){
     }
 
     char c;
-    while((c=*s++) && // check if element is valid
-          ((isdigit(c)) && ((c-'0')<base)) || // for digit
-          ((c=toupper(c))&&base>10&&(c>='A')&&(c<='A'+(base-10))) // for letters
-          ){
-            num *= base;
-            num += (isalpha(c))? (c-'A'+10) : (c-'0');
-          }
-
+    while((c = *s++) && // check for end of string
+          (isdigit(c) && (c-'0'<=base))|| // check if number is digit
+          ((c=toupper(c))&&base>10&&(c >='A')&&(c<='A'+(base-10)))) // check element is letter
+    {
+        num*=base;
+        num += (isalpha(c))? (c-'A'+10) : c - '0';
+    }
     return num;
 }
 
