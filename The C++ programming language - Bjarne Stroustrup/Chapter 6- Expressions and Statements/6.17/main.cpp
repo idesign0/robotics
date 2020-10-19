@@ -8,25 +8,25 @@ void rev(char * c){
     while(*end_ptr)end_ptr++;
 
     end_ptr = end_ptr -1;
+
     while(end_ptr>c){
         char ch = *c;
         *c = *end_ptr;
         *end_ptr = ch;
-        --end_ptr;c++;
+        --end_ptr;
+        ++c;
     }
 }
 
 char * itoa(int i,char result[], int base){
-    if(!base)base=10;
+    if(!base)base =10;
 
     int idx=0;
-
     do{
         int digit = i%base;
-        result[idx++]= (digit>10) ? 'A'+digit-10 : '0'+digit;
+        result[idx++] = (digit>10)? ('A'+ digit -10) : ('0'+digit);
         i /= base;
     }while(i>0);
-
     result[idx]=0;
     rev(result);
     return result;
