@@ -21,12 +21,13 @@ string string_value;
 map<string, double> table;
 int no_of_errors;
 istream* input;
+int curr_line=0;
 
 // Prints a syntax error message
 double error(const string& s)
 {
     no_of_errors++;
-    cerr << "error: " << s << endl;
+    cerr << "error: ("<<curr_line+1<<"):" << s << endl;
     return 1;
 }
 
@@ -45,7 +46,7 @@ Token_value get_token()
     case ';':
         return curr_tok = PRINT;
     case '\n':
-        return curr_tok = PRINT;
+        curr_line++;
 
     case 0:
         return curr_tok = END;
